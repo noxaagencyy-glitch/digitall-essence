@@ -57,7 +57,7 @@ export function Hero() {
         </div>
 
         {/* Mockup */}
-        <div className="relative mt-20 mx-auto max-w-5xl animate-fade-up" style={{ animationDelay: "320ms" }}>
+        <div className="relative mt-20 mx-auto max-w-5xl animate-fade-up will-change-transform" style={{ animationDelay: "320ms", transform: `translate3d(0, ${y * -0.06}px, 0)` }}>
           <div className="absolute -inset-10 bg-gradient-noxa opacity-30 blur-3xl rounded-[40px]" />
           <div className="relative glass-strong rounded-3xl p-3 shadow-card ring-1 ring-white/10">
             <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-[oklch(0.16_0.05_270)] to-[oklch(0.13_0.06_295)] aspect-[16/9] relative">
