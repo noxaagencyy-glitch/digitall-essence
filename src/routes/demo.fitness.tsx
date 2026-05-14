@@ -112,9 +112,41 @@ function FitnessDemo() {
         </div>
       </section>
 
-      <footer className="px-6 md:px-12 py-12 border-t border-white/5 text-sm text-white/60 flex flex-col md:flex-row justify-between gap-4">
-        <div>© PowerHouse Gym 2026 · Cluj-Napoca</div>
-        <div className="flex gap-6"><a>IG</a><a>FB</a><a>YouTube</a></div>
+      <footer className="bg-[#0a0a0a] border-t border-white/5">
+        <div className="px-6 md:px-12 py-14 grid md:grid-cols-4 gap-10 text-sm text-white/65">
+          <div>
+            <div className="text-2xl font-black tracking-tight text-white">POWERHOUSE<span className="text-[#ff3d00]">.</span></div>
+            <p className="mt-3 text-xs leading-relaxed">Sală de fitness 24/7 în Cluj-Napoca. Echipamente Hammer Strength, antrenori certificați, comunitate solidă.</p>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-widest text-white mb-3 font-bold">Antrenament</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Clase live</a></li><li><a>Antrenori</a></li><li><a>Personal Training</a></li><li><a>Plan nutrițional</a></li></ul>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-widest text-white mb-3 font-bold">Companie</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Despre PowerHouse</a></li><li><a>Locații</a></li><li><a>Cariere</a></li><li><a>Blog</a></li><li><a>Contact</a></li></ul>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-widest text-white mb-3 font-bold">Legal</div>
+            <ul className="space-y-1.5 text-xs">
+              <li><a>Termeni și condiții</a></li>
+              <li><a>Politica de confidențialitate</a></li>
+              <li><a>Politica de cookies</a></li>
+              <li><a>FAQ</a></li>
+              <li><a>Regulament sală</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="px-6 md:px-12 py-5 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50">
+          <div>© PowerHouse Gym 2026 · Cluj-Napoca · CUI RO34567890</div>
+          <div className="flex items-center gap-4">
+            <a className="hover:text-white">ANPC</a>
+            <a className="hover:text-white">SOL</a>
+            <a className="hover:text-white">Instagram</a>
+            <a className="hover:text-white">YouTube</a>
+            <a className="hover:text-white">Facebook</a>
+          </div>
+        </div>
       </footer>
     </div>
   );

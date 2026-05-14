@@ -81,9 +81,41 @@ function BeautyDemo() {
         <button className="mt-8 bg-[#f8f1ea] text-[#2a1d17] px-8 py-4 text-xs tracking-[0.2em] uppercase" style={{ fontFamily: "Inter" }}>Rezervă o programare</button>
       </section>
 
-      <footer className="px-8 md:px-16 py-10 text-xs tracking-[0.2em] uppercase flex flex-col md:flex-row justify-between gap-4 border-t border-[#2a1d17]/10" style={{ fontFamily: "Inter" }}>
-        <div>© Bella Hair Studio 2026</div>
-        <div className="flex gap-6"><a>Instagram</a><a>Facebook</a><a>TikTok</a></div>
+      <footer className="bg-[#efe5db] border-t border-[#2a1d17]/10" style={{ fontFamily: "Inter" }}>
+        <div className="px-8 md:px-16 py-14 grid md:grid-cols-4 gap-10 text-sm text-[#2a1d17]/75">
+          <div>
+            <div className="text-2xl tracking-[0.3em] text-[#2a1d17]" style={{ fontFamily: "'Cormorant Garamond'" }}>BELLA</div>
+            <p className="mt-3 text-xs leading-relaxed">Salon de înfrumusețare premium din inima Bucureștiului. Tratamente personalizate, produse premium, echipă pasionată.</p>
+          </div>
+          <div>
+            <div className="text-xs tracking-[0.3em] uppercase text-[#2a1d17] mb-3">Servicii</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Hair Couture</a></li><li><a>Visage</a></li><li><a>Manucure</a></li><li><a>Spa Ritual</a></li><li><a>Bridal Suite</a></li></ul>
+          </div>
+          <div>
+            <div className="text-xs tracking-[0.3em] uppercase text-[#2a1d17] mb-3">Companie</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Despre noi</a></li><li><a>Echipa</a></li><li><a>Cariere</a></li><li><a>Card cadou</a></li><li><a>Contact</a></li></ul>
+          </div>
+          <div>
+            <div className="text-xs tracking-[0.3em] uppercase text-[#2a1d17] mb-3">Legal</div>
+            <ul className="space-y-1.5 text-xs">
+              <li><a>Termeni și condiții</a></li>
+              <li><a>Politica de confidențialitate</a></li>
+              <li><a>Politica de cookies</a></li>
+              <li><a>FAQ</a></li>
+              <li><a>Politica de retur</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="px-8 md:px-16 py-5 border-t border-[#2a1d17]/10 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] tracking-[0.2em] uppercase text-[#2a1d17]/60">
+          <div>© Bella Hair Studio 2026 · CUI RO12345678 · Reg. Com. J40/1234/2020</div>
+          <div className="flex items-center gap-4">
+            <a className="hover:text-[#2a1d17]">ANPC</a>
+            <a className="hover:text-[#2a1d17]">SOL</a>
+            <a className="hover:text-[#2a1d17]">Instagram</a>
+            <a className="hover:text-[#2a1d17]">Facebook</a>
+            <a className="hover:text-[#2a1d17]">TikTok</a>
+          </div>
+        </div>
       </footer>
     </div>
   );

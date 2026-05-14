@@ -103,9 +103,44 @@ function ClinicDemo() {
         <button className="mt-8 bg-[#c9a960] text-[#0f1f2e] px-8 py-4 rounded-md font-semibold">Rezervă consultație gratuită</button>
       </section>
 
-      <footer className="px-6 md:px-12 py-10 text-sm text-[#0f1f2e]/60 flex flex-col md:flex-row justify-between gap-4">
-        <div>© Smile Dental Clinic 2026</div>
-        <div>Calea Victoriei 89 · București · +40 21 555 0199</div>
+      <footer className="bg-[#f5f7f9] border-t border-[#0f1f2e]/10">
+        <div className="px-6 md:px-12 py-14 grid md:grid-cols-4 gap-10 text-sm text-[#0f1f2e]/70">
+          <div>
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-full bg-[#c9a960]" />
+              <div className="text-lg font-semibold text-[#0f1f2e]">Smile Dental</div>
+            </div>
+            <p className="mt-3 text-xs leading-relaxed">Clinică stomatologică acreditată în Sector 1. Servicii complete pentru întreaga familie.</p>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-wider text-[#0f1f2e] font-semibold mb-3">Servicii</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Implantologie</a></li><li><a>Estetică dentară</a></li><li><a>Ortodonție Invisalign</a></li><li><a>Stomatologie pediatrică</a></li><li><a>Urgențe dentare</a></li></ul>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-wider text-[#0f1f2e] font-semibold mb-3">Pacienți</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Programare online</a></li><li><a>Tarife</a></li><li><a>Asigurări medicale</a></li><li><a>Plan de tratament</a></li><li><a>Recenzii pacienți</a></li></ul>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-wider text-[#0f1f2e] font-semibold mb-3">Legal & info</div>
+            <ul className="space-y-1.5 text-xs">
+              <li><a>Termeni și condiții</a></li>
+              <li><a>Politica de confidențialitate</a></li>
+              <li><a>GDPR pacienți</a></li>
+              <li><a>Politica de cookies</a></li>
+              <li><a>FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="px-6 md:px-12 py-5 border-t border-[#0f1f2e]/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#0f1f2e]/55">
+          <div>© Smile Dental Clinic 2026 · CUI RO23456789 · Autorizație DSP nr. 1234/2019 · Calea Victoriei 89, București</div>
+          <div className="flex items-center gap-4">
+            <a className="hover:text-[#0f1f2e]">ANPC</a>
+            <a className="hover:text-[#0f1f2e]">SOL</a>
+            <a className="hover:text-[#0f1f2e]">CMR</a>
+            <a className="hover:text-[#0f1f2e]">Facebook</a>
+            <a className="hover:text-[#0f1f2e]">Instagram</a>
+          </div>
+        </div>
       </footer>
     </div>
   );

@@ -98,9 +98,40 @@ function RealEstateDemo() {
         <button className="mt-8 bg-[#b8956a] text-[#0f1419] px-10 py-4 text-xs tracking-[0.3em] uppercase">Solicită apel</button>
       </section>
 
-      <footer className="px-8 md:px-16 py-10 border-t border-white/5 text-xs tracking-[0.2em] uppercase text-[#e8e6e0]/50 flex flex-col md:flex-row justify-between gap-4">
-        <div>© Premier Imobiliare 2026</div>
-        <div>concierge@premier-imobiliare.ro</div>
+      <footer className="border-t border-white/5 bg-[#0f1419]">
+        <div className="px-8 md:px-16 py-14 grid md:grid-cols-4 gap-10 text-sm text-[#e8e6e0]/65">
+          <div>
+            <div style={{ fontFamily: "'Cormorant Garamond'" }} className="text-2xl tracking-wide text-[#e8e6e0]">Premier<span className="text-[#b8956a]"> Imobiliare</span></div>
+            <p className="mt-3 text-xs leading-relaxed">Agenție imobiliară premium. Selecție curatoriată de proprietăți pentru cei care înțeleg diferența.</p>
+          </div>
+          <div>
+            <div className="text-[10px] tracking-[0.3em] uppercase text-[#b8956a] mb-3">Proprietăți</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Apartamente</a></li><li><a>Vile & Case</a></li><li><a>Penthouse</a></li><li><a>Off-market</a></li><li><a>Investiții</a></li></ul>
+          </div>
+          <div>
+            <div className="text-[10px] tracking-[0.3em] uppercase text-[#b8956a] mb-3">Servicii</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Consultanță privată</a></li><li><a>Evaluare proprietate</a></li><li><a>Consultanță legală</a></li><li><a>Design interior</a></li><li><a>Mutare premium</a></li></ul>
+          </div>
+          <div>
+            <div className="text-[10px] tracking-[0.3em] uppercase text-[#b8956a] mb-3">Legal</div>
+            <ul className="space-y-1.5 text-xs">
+              <li><a>Termeni și condiții</a></li>
+              <li><a>Politica de confidențialitate</a></li>
+              <li><a>Politica de cookies</a></li>
+              <li><a>FAQ</a></li>
+              <li><a>Comisioane</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="px-8 md:px-16 py-5 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] tracking-[0.3em] uppercase text-[#e8e6e0]/45">
+          <div>© Premier Imobiliare 2026 · CUI RO67890123 · Licență ANEVAR · concierge@premier-imobiliare.ro</div>
+          <div className="flex items-center gap-4">
+            <a className="hover:text-[#b8956a]">ANPC</a>
+            <a className="hover:text-[#b8956a]">SOL</a>
+            <a className="hover:text-[#b8956a]">Instagram</a>
+            <a className="hover:text-[#b8956a]">LinkedIn</a>
+          </div>
+        </div>
       </footer>
     </div>
   );

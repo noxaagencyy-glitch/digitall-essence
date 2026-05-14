@@ -93,9 +93,41 @@ function EducationDemo() {
         <button className="mt-8 bg-[#6d4ee8] text-white px-8 py-4 rounded-full font-semibold">Creează cont gratuit</button>
       </section>
 
-      <footer className="px-6 md:px-12 py-10 border-t border-[#1a1a2e]/10 text-sm text-[#1a1a2e]/60 flex flex-col md:flex-row justify-between gap-4">
-        <div>© Codify Academy 2026</div>
-        <div className="flex gap-6"><a>LinkedIn</a><a>YouTube</a><a>Discord</a></div>
+      <footer className="bg-white border-t border-[#1a1a2e]/10">
+        <div className="px-6 md:px-12 py-14 grid md:grid-cols-4 gap-10 text-sm text-[#1a1a2e]/70">
+          <div>
+            <div style={{ fontFamily: "'Space Grotesk'" }} className="text-2xl font-bold text-[#1a1a2e]">codify<span className="text-[#6d4ee8]">.</span></div>
+            <p className="mt-3 text-xs leading-relaxed">Platformă educațională cu 8.400+ cursanți. Cursuri online live, proiecte reale, mentori din industrie.</p>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-wider text-[#1a1a2e] font-semibold mb-3">Învață</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Toate cursurile</a></li><li><a>Bootcamp</a></li><li><a>Pentru începători</a></li><li><a>Mentori</a></li><li><a>Cariere în tech</a></li></ul>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-wider text-[#1a1a2e] font-semibold mb-3">Companie</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Despre Codify</a></li><li><a>Pentru companii</a></li><li><a>Devino mentor</a></li><li><a>Blog</a></li><li><a>Contact</a></li></ul>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-wider text-[#1a1a2e] font-semibold mb-3">Legal & suport</div>
+            <ul className="space-y-1.5 text-xs">
+              <li><a>Termeni și condiții</a></li>
+              <li><a>Politica de confidențialitate</a></li>
+              <li><a>Politica de cookies</a></li>
+              <li><a>Politica de rambursare</a></li>
+              <li><a>FAQ & Centru de ajutor</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="px-6 md:px-12 py-5 border-t border-[#1a1a2e]/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#1a1a2e]/55">
+          <div>© Codify Academy 2026 · CUI RO56789012 · Reg. Com. J40/5678/2021 · Plăți securizate prin Stripe</div>
+          <div className="flex items-center gap-4">
+            <a className="hover:text-[#1a1a2e]">ANPC</a>
+            <a className="hover:text-[#1a1a2e]">SOL</a>
+            <a className="hover:text-[#1a1a2e]">LinkedIn</a>
+            <a className="hover:text-[#1a1a2e]">YouTube</a>
+            <a className="hover:text-[#1a1a2e]">Discord</a>
+          </div>
+        </div>
       </footer>
     </div>
   );
