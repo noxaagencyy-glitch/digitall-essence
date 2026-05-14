@@ -66,6 +66,25 @@ function RestaurantDemo() {
         </div>
       </section>
 
+      <section className="px-8 md:px-16 py-24 border-t border-[#c9a84c]/20">
+        <div className="text-center text-xs tracking-[0.5em] uppercase text-[#c9a84c]">Galerie</div>
+        <h2 style={{ fontFamily: "'Playfair Display'" }} className="mt-6 text-center text-5xl italic font-light mb-16">Momente din bucătărie</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          {[
+            "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1532980400857-e8d9d275d858?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&auto=format&fit=crop&q=80",
+          ].map((src, i) => (
+            <img key={i} src={src} alt={`Preparat ${i + 1}`} loading="lazy" className="aspect-square w-full object-cover" />
+          ))}
+        </div>
+      </section>
+
       <section className="px-8 md:px-16 py-32 text-center bg-[#15100b]">
         <div className="text-xs tracking-[0.5em] uppercase text-[#c9a84c]">Bucătar</div>
         <h2 style={{ fontFamily: "'Playfair Display'" }} className="mt-6 text-5xl italic font-light">Antoine Renaud</h2>
