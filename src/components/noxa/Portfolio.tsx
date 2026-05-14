@@ -33,7 +33,7 @@ const items: Item[] = [
     tag: "Beauty & Salon",
     title: "Lumière Beauty",
     url: "lumiere-beauty.ro",
-    demoUrl: "https://demo-lumiere-beauty.lovable.app",
+    demoUrl: "/demo/beauty",
     description: "Site premium pentru salon de înfrumusețare cu sistem de programări online și galerie servicii.",
     image: beauty,
     caseStudy: {
@@ -51,7 +51,7 @@ const items: Item[] = [
     tag: "Fitness & Gym",
     title: "Forge Athletics",
     url: "forge-athletics.ro",
-    demoUrl: "https://demo-forge-athletics.lovable.app",
+    demoUrl: "/demo/fitness",
     description: "Platformă pentru sală de fitness cu abonamente, clase live și profile pentru antrenori.",
     image: fitness,
     caseStudy: {
@@ -69,7 +69,7 @@ const items: Item[] = [
     tag: "Restaurante",
     title: "Maison Noir",
     url: "maison-noir.ro",
-    demoUrl: "https://demo-maison-noir.lovable.app",
+    demoUrl: "/demo/restaurant",
     description: "Site de fine dining cu meniu interactiv, rezervări instant și storytelling pentru bucătar.",
     image: restaurant,
     caseStudy: {
@@ -87,7 +87,7 @@ const items: Item[] = [
     tag: "Clinici & Medical",
     title: "Aurum Dental Clinic",
     url: "aurum-dental.ro",
-    demoUrl: "https://demo-aurum-dental.lovable.app",
+    demoUrl: "/demo/clinic",
     description: "Clinică stomatologică cu programări online, prezentare echipă medicală și recenzii pacienți.",
     image: clinic,
     caseStudy: {
@@ -105,7 +105,7 @@ const items: Item[] = [
     tag: "Educație & Cursuri",
     title: "Lumen Academy",
     url: "lumen-academy.ro",
-    demoUrl: "https://demo-lumen-academy.lovable.app",
+    demoUrl: "/demo/education",
     description: "Platformă educațională cu cursuri online, plăți integrate și dashboard pentru cursanți.",
     image: education,
     caseStudy: {
@@ -123,7 +123,7 @@ const items: Item[] = [
     tag: "Imobiliare",
     title: "Vanta Estates",
     url: "vanta-estates.ro",
-    demoUrl: "https://demo-vanta-estates.lovable.app",
+    demoUrl: "/demo/realestate",
     description: "Agenție imobiliară premium cu căutare avansată proprietăți și tururi virtuale.",
     image: realestate,
     caseStudy: {

@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DemoRestaurantRouteImport } from './routes/demo.restaurant'
+import { Route as DemoRealestateRouteImport } from './routes/demo.realestate'
+import { Route as DemoFitnessRouteImport } from './routes/demo.fitness'
+import { Route as DemoEducationRouteImport } from './routes/demo.education'
+import { Route as DemoClinicRouteImport } from './routes/demo.clinic'
+import { Route as DemoBeautyRouteImport } from './routes/demo.beauty'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DemoRestaurantRoute = DemoRestaurantRouteImport.update({
+  id: '/demo/restaurant',
+  path: '/demo/restaurant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRealestateRoute = DemoRealestateRouteImport.update({
+  id: '/demo/realestate',
+  path: '/demo/realestate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoFitnessRoute = DemoFitnessRouteImport.update({
+  id: '/demo/fitness',
+  path: '/demo/fitness',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoEducationRoute = DemoEducationRouteImport.update({
+  id: '/demo/education',
+  path: '/demo/education',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoClinicRoute = DemoClinicRouteImport.update({
+  id: '/demo/clinic',
+  path: '/demo/clinic',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoBeautyRoute = DemoBeautyRouteImport.update({
+  id: '/demo/beauty',
+  path: '/demo/beauty',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/demo/beauty': typeof DemoBeautyRoute
+  '/demo/clinic': typeof DemoClinicRoute
+  '/demo/education': typeof DemoEducationRoute
+  '/demo/fitness': typeof DemoFitnessRoute
+  '/demo/realestate': typeof DemoRealestateRoute
+  '/demo/restaurant': typeof DemoRestaurantRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/demo/beauty': typeof DemoBeautyRoute
+  '/demo/clinic': typeof DemoClinicRoute
+  '/demo/education': typeof DemoEducationRoute
+  '/demo/fitness': typeof DemoFitnessRoute
+  '/demo/realestate': typeof DemoRealestateRoute
+  '/demo/restaurant': typeof DemoRestaurantRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/demo/beauty': typeof DemoBeautyRoute
+  '/demo/clinic': typeof DemoClinicRoute
+  '/demo/education': typeof DemoEducationRoute
+  '/demo/fitness': typeof DemoFitnessRoute
+  '/demo/realestate': typeof DemoRealestateRoute
+  '/demo/restaurant': typeof DemoRestaurantRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/demo/beauty'
+    | '/demo/clinic'
+    | '/demo/education'
+    | '/demo/fitness'
+    | '/demo/realestate'
+    | '/demo/restaurant'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/demo/beauty'
+    | '/demo/clinic'
+    | '/demo/education'
+    | '/demo/fitness'
+    | '/demo/realestate'
+    | '/demo/restaurant'
+  id:
+    | '__root__'
+    | '/'
+    | '/demo/beauty'
+    | '/demo/clinic'
+    | '/demo/education'
+    | '/demo/fitness'
+    | '/demo/realestate'
+    | '/demo/restaurant'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DemoBeautyRoute: typeof DemoBeautyRoute
+  DemoClinicRoute: typeof DemoClinicRoute
+  DemoEducationRoute: typeof DemoEducationRoute
+  DemoFitnessRoute: typeof DemoFitnessRoute
+  DemoRealestateRoute: typeof DemoRealestateRoute
+  DemoRestaurantRoute: typeof DemoRestaurantRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/demo/restaurant': {
+      id: '/demo/restaurant'
+      path: '/demo/restaurant'
+      fullPath: '/demo/restaurant'
+      preLoaderRoute: typeof DemoRestaurantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/realestate': {
+      id: '/demo/realestate'
+      path: '/demo/realestate'
+      fullPath: '/demo/realestate'
+      preLoaderRoute: typeof DemoRealestateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/fitness': {
+      id: '/demo/fitness'
+      path: '/demo/fitness'
+      fullPath: '/demo/fitness'
+      preLoaderRoute: typeof DemoFitnessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/education': {
+      id: '/demo/education'
+      path: '/demo/education'
+      fullPath: '/demo/education'
+      preLoaderRoute: typeof DemoEducationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/clinic': {
+      id: '/demo/clinic'
+      path: '/demo/clinic'
+      fullPath: '/demo/clinic'
+      preLoaderRoute: typeof DemoClinicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/beauty': {
+      id: '/demo/beauty'
+      path: '/demo/beauty'
+      fullPath: '/demo/beauty'
+      preLoaderRoute: typeof DemoBeautyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DemoBeautyRoute: DemoBeautyRoute,
+  DemoClinicRoute: DemoClinicRoute,
+  DemoEducationRoute: DemoEducationRoute,
+  DemoFitnessRoute: DemoFitnessRoute,
+  DemoRealestateRoute: DemoRealestateRoute,
+  DemoRestaurantRoute: DemoRestaurantRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
