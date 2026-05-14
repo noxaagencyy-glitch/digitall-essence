@@ -2,6 +2,28 @@ import { ArrowUpRight, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NoxaLogo } from "./Logo";
 
+const INDUSTRIES = [
+  "Beauty & Salon",
+  "Fitness & Gym",
+  "Educație & Cursuri",
+  "Restaurante & Cafenele",
+  "Clinici & Medical",
+  "Business-uri locale",
+  "Imobiliare",
+  "Avocatură",
+];
+
+const INDUSTRIES_2 = [
+  "Hotel & Turism",
+  "Coaching & Mentorat",
+  "Magazine Online",
+  "Construcții",
+  "Auto & Service",
+  "Frizerie & Barber",
+  "Foto & Video",
+  "Agenții & Studio",
+];
+
 export function Hero() {
   const [y, setY] = useState(0);
   useEffect(() => {
@@ -106,16 +128,39 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Logos strip */}
-        <div className="mt-20 text-xs uppercase tracking-[0.2em] text-muted-foreground/70">
-          Brand-uri care ne-au ales
-        </div>
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 opacity-60">
-          {["AURORA", "LUMEN", "NOVA", "VANTA", "KORE", "PRISM"].map((b) => (
-            <span key={b} className="text-lg font-semibold tracking-widest">{b}</span>
-          ))}
-        </div>
       </div>
+
+      {/* Industries marquee */}
+      <div className="relative mt-24">
+        <div className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground/70 px-6">
+          Tipuri de afaceri pentru care construim
+        </div>
+        <div className="mt-8 relative overflow-hidden marquee-mask">
+          <div className="flex w-max animate-marquee gap-4 py-2">
+            {[...INDUSTRIES, ...INDUSTRIES].map((item, i) => (
+              <div
+                key={i}
+                className="group flex items-center gap-3 glass rounded-full px-5 py-3 whitespace-nowrap hover:ring-glow transition-all"
+              >
+                <span className="h-2 w-2 rounded-full bg-gradient-noxa shadow-[0_0_10px_oklch(0.65_0.22_290_/_0.9)]" />
+                <span className="text-sm font-medium">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="mt-3 relative overflow-hidden marquee-mask">
+          <div className="flex w-max animate-marquee-reverse gap-4 py-2">
+            {[...INDUSTRIES_2, ...INDUSTRIES_2].map((item, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-3 glass rounded-full px-5 py-3 whitespace-nowrap hover:ring-glow transition-all"
+              >
+                <span className="h-2 w-2 rounded-full bg-electric shadow-[0_0_10px_oklch(0.7_0.2_240_/_0.9)]" />
+                <span className="text-sm font-medium">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
     </section>
   );
 }
