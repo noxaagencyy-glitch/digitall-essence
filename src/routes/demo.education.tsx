@@ -46,15 +46,15 @@ function EducationDemo() {
         </div>
         <div className="mt-14 grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {[
-            { tag: "Development", title: "Full-Stack JavaScript", price: "1.890 lei", weeks: "12 săpt", color: "#6d4ee8" },
-            { tag: "Design", title: "UX/UI Design Bootcamp", price: "2.190 lei", weeks: "10 săpt", color: "#e85d8e" },
-            { tag: "Data", title: "Data Analytics cu Python", price: "1.690 lei", weeks: "8 săpt", color: "#4ec9c9" },
-            { tag: "Marketing", title: "Performance Marketing", price: "1.290 lei", weeks: "6 săpt", color: "#e8a64e" },
-            { tag: "Product", title: "Product Management", price: "1.990 lei", weeks: "8 săpt", color: "#6d4ee8" },
-            { tag: "AI", title: "AI Engineering Foundations", price: "2.390 lei", weeks: "10 săpt", color: "#e85d8e" },
+            { tag: "Development", title: "Full-Stack JavaScript", price: "1.890 lei", weeks: "12 săpt", color: "#6d4ee8", img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=900&auto=format&fit=crop&q=80" },
+            { tag: "Design", title: "UX/UI Design Bootcamp", price: "2.190 lei", weeks: "10 săpt", color: "#e85d8e", img: "https://images.unsplash.com/photo-1561070791-2526d30994b8?w=900&auto=format&fit=crop&q=80" },
+            { tag: "Data", title: "Data Analytics cu Python", price: "1.690 lei", weeks: "8 săpt", color: "#4ec9c9", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&auto=format&fit=crop&q=80" },
+            { tag: "Marketing", title: "Performance Marketing", price: "1.290 lei", weeks: "6 săpt", color: "#e8a64e", img: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=900&auto=format&fit=crop&q=80" },
+            { tag: "Product", title: "Product Management", price: "1.990 lei", weeks: "8 săpt", color: "#6d4ee8", img: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=900&auto=format&fit=crop&q=80" },
+            { tag: "AI", title: "AI Engineering Foundations", price: "2.390 lei", weeks: "10 săpt", color: "#e85d8e", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&q=80" },
           ].map((c) => (
             <div key={c.title} className="bg-white rounded-2xl p-7 border border-[#1a1a2e]/5 hover:shadow-xl transition-shadow">
-              <div className="aspect-[16/10] rounded-xl mb-5" style={{ background: `linear-gradient(135deg, ${c.color}, ${c.color}88)` }} />
+              <img src={c.img} alt={c.title} className="aspect-[16/10] rounded-xl mb-5 w-full object-cover" loading="lazy" />
               <div className="text-xs font-semibold uppercase tracking-wider" style={{ color: c.color }}>{c.tag}</div>
               <div style={{ fontFamily: "'Space Grotesk'" }} className="mt-2 text-xl font-bold">{c.title}</div>
               <div className="mt-4 flex items-center justify-between text-sm">
