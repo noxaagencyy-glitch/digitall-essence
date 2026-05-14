@@ -30,7 +30,7 @@ function BeautyDemo() {
             <button className="px-6 py-3 text-xs tracking-[0.2em] uppercase border border-[#2a1d17]/30">Vezi servicii</button>
           </div>
         </div>
-        <div className="aspect-[4/5] bg-gradient-to-br from-[#e8d5c4] to-[#c9a896] rounded-sm" />
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&auto=format&fit=crop&q=80" alt="Salon Lumière" className="aspect-[4/5] w-full object-cover rounded-sm" loading="lazy" />
       </section>
 
       {/* Services */}
