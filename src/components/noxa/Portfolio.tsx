@@ -5,13 +5,6 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/compone
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowUpRight, X, Target, Lightbulb, Package, TrendingUp, Star, Monitor, Tablet, Smartphone, RefreshCw } from "lucide-react";
 
-import beauty from "@/assets/portfolio/beauty.jpg";
-import fitness from "@/assets/portfolio/fitness.jpg";
-import restaurant from "@/assets/portfolio/restaurant.jpg";
-import clinic from "@/assets/portfolio/clinic.jpg";
-import education from "@/assets/portfolio/education.jpg";
-import realestate from "@/assets/portfolio/realestate.jpg";
-
 type CaseStudy = {
   problem: string;
   solution: string;
@@ -42,11 +35,11 @@ type Item = {
 const items: Item[] = [
   {
     tag: "Beauty & Salon",
-    title: "Lumière Beauty",
-    url: "lumiere-beauty.ro",
+    title: "Bella Hair Studio",
+    url: "bella-studio.ro",
     demoUrl: "/demo/beauty",
     description: "Site premium pentru salon de înfrumusețare cu sistem de programări online și galerie servicii.",
-    image: beauty,
+    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1280&auto=format&fit=crop&q=80",
     caseStudy: {
       problem: "Salonul pierdea programări din cauza unui site învechit, fără rezervări online și greu de folosit pe mobil.",
       solution: "Am construit o experiență premium, mobile-first, cu rezervări instant și o galerie ce pune în valoare lucrările.",
@@ -65,18 +58,18 @@ const items: Item[] = [
         { label: "Lead-uri WhatsApp", value: "180+" },
       ],
       reviews: [
-        { author: "Andreea M.", role: "Owner Lumière", text: "În prima lună am triplat programările online. Site-ul arată ca o reclamă Vogue.", rating: 5 },
+        { author: "Andreea M.", role: "Owner Bella Studio", text: "În prima lună am triplat programările online. Site-ul arată ca o reclamă Vogue.", rating: 5 },
         { author: "Cristina V.", role: "Manager salon", text: "Clientele noi ne spun constant că au venit din site. Diferență ca de la cer la pământ.", rating: 5 },
       ],
     },
   },
   {
     tag: "Fitness & Gym",
-    title: "Forge Athletics",
-    url: "forge-athletics.ro",
+    title: "PowerHouse Gym",
+    url: "powerhouse-gym.ro",
     demoUrl: "/demo/fitness",
     description: "Platformă pentru sală de fitness cu abonamente, clase live și profile pentru antrenori.",
-    image: fitness,
+    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1280&auto=format&fit=crop&q=80",
     caseStudy: {
       problem: "Sala de fitness nu avea o platformă centralizată pentru abonamente și orarul claselor era greu de actualizat.",
       solution: "Am creat o platformă completă cu management de abonamente, orar dinamic și profile pentru antrenori.",
@@ -95,18 +88,18 @@ const items: Item[] = [
         { label: "Membri noi/lună", value: "85+" },
       ],
       reviews: [
-        { author: "Răzvan T.", role: "Head Coach Forge", text: "Aplicația de orar singură ne-a economisit 10 ore/săptămână. Membri sunt încântați.", rating: 5 },
+        { author: "Răzvan T.", role: "Head Coach", text: "Aplicația de orar singură ne-a economisit 10 ore/săptămână. Membrii sunt încântați.", rating: 5 },
         { author: "Mihai D.", role: "Owner", text: "ROI-ul s-a întors în prima lună din abonamente noi venite direct prin site.", rating: 5 },
       ],
     },
   },
   {
     tag: "Restaurante",
-    title: "Maison Noir",
-    url: "maison-noir.ro",
+    title: "Trattoria 23",
+    url: "trattoria23.ro",
     demoUrl: "/demo/restaurant",
     description: "Site de fine dining cu meniu interactiv, rezervări instant și storytelling pentru bucătar.",
-    image: restaurant,
+    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1280&auto=format&fit=crop&q=80",
     caseStudy: {
       problem: "Restaurantul fine dining avea nevoie de o prezență digitală pe măsura experienței oferite în local.",
       solution: "Am livrat un site cinematic cu meniu interactiv, rezervări instant și storytelling vizual pentru chef.",
@@ -132,11 +125,11 @@ const items: Item[] = [
   },
   {
     tag: "Clinici & Medical",
-    title: "Aurum Dental Clinic",
-    url: "aurum-dental.ro",
+    title: "Smile Dental Clinic",
+    url: "smile-dental.ro",
     demoUrl: "/demo/clinic",
     description: "Clinică stomatologică cu programări online, prezentare echipă medicală și recenzii pacienți.",
-    image: clinic,
+    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1280&auto=format&fit=crop&q=80",
     caseStudy: {
       problem: "Clinica primea majoritatea programărilor telefonic și pierdea pacienți care căutau servicii online.",
       solution: "Am construit un site profesional cu programări 24/7, prezentare detaliată a serviciilor și încredere prin recenzii.",
@@ -162,11 +155,11 @@ const items: Item[] = [
   },
   {
     tag: "Educație & Cursuri",
-    title: "Lumen Academy",
-    url: "lumen-academy.ro",
+    title: "Codify Academy",
+    url: "codify-academy.ro",
     demoUrl: "/demo/education",
     description: "Platformă educațională cu cursuri online, plăți integrate și dashboard pentru cursanți.",
-    image: education,
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1280&auto=format&fit=crop&q=80",
     caseStudy: {
       problem: "Cursurile erau vândute manual prin email, fără plată online și fără acces structurat la materiale.",
       solution: "Am dezvoltat o platformă LMS completă cu plăți, dashboard cursanți și progres tracking.",
@@ -185,18 +178,18 @@ const items: Item[] = [
         { label: "Conversii landing", value: "11.2%" },
       ],
       reviews: [
-        { author: "Alex M.", role: "Co-founder Lumen", text: "Vânzările au explodat din ziua 1. Checkout-ul convertește mai bine decât orice am încercat înainte.", rating: 5 },
-        { author: "Raluca G.", role: "Head of Growth", text: "Dashboard-ul cursanților a crescut retenția cu 65%. Material didactic accesibil = clienți fericiți.", rating: 5 },
+        { author: "Alex M.", role: "Co-founder", text: "Vânzările au explodat din ziua 1. Checkout-ul convertește mai bine decât orice am încercat înainte.", rating: 5 },
+        { author: "Raluca G.", role: "Head of Growth", text: "Dashboard-ul cursanților a crescut retenția cu 65%. Material accesibil = clienți fericiți.", rating: 5 },
       ],
     },
   },
   {
     tag: "Imobiliare",
-    title: "Vanta Estates",
-    url: "vanta-estates.ro",
+    title: "Premier Imobiliare",
+    url: "premier-imobiliare.ro",
     demoUrl: "/demo/realestate",
     description: "Agenție imobiliară premium cu căutare avansată proprietăți și tururi virtuale.",
-    image: realestate,
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1280&auto=format&fit=crop&q=80",
     caseStudy: {
       problem: "Agenția prezenta proprietățile pe portaluri externe și pierdea controlul asupra branding-ului și lead-urilor.",
       solution: "Am creat o platformă proprie cu căutare avansată, tururi virtuale și captare directă de lead-uri.",
@@ -215,7 +208,7 @@ const items: Item[] = [
         { label: "Tranzacții închise", value: "18/lună" },
       ],
       reviews: [
-        { author: "Sergiu A.", role: "Founder Vanta", text: "Lead-urile vin direct, calificate, cu buget. Nu mai depindem de portaluri externe.", rating: 5 },
+        { author: "Sergiu A.", role: "Founder", text: "Lead-urile vin direct, calificate, cu buget. Nu mai depindem de portaluri externe.", rating: 5 },
         { author: "Elena V.", role: "Senior Agent", text: "Tururile virtuale au tăiat 70% din vizionările inutile. Câștig timp imens.", rating: 5 },
       ],
     },
@@ -238,22 +231,27 @@ export function Portfolio() {
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const [iframeSlow, setIframeSlow] = useState(false);
   const [iframeKey, setIframeKey] = useState(0);
+  const [loadedUrls, setLoadedUrls] = useState<Set<string>>(new Set());
   const slowTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const filters = useMemo(() => [ALL, ...Array.from(new Set(items.map((i) => i.tag)))], []);
   const filtered = useMemo(() => (filter === ALL ? items : items.filter((i) => i.tag === filter)), [filter]);
 
-  // Reset iframe state when project / device / reload changes
+  // Reset only on project change or manual refresh — NOT on device change (CSS-only, no reload)
   useEffect(() => {
     if (!active) return;
-    setIframeLoaded(false);
+    const cached = loadedUrls.has(active.demoUrl);
+    setIframeLoaded(cached);
     setIframeSlow(false);
     if (slowTimer.current) clearTimeout(slowTimer.current);
-    slowTimer.current = setTimeout(() => setIframeSlow(true), 6000);
+    if (!cached) {
+      slowTimer.current = setTimeout(() => setIframeSlow(true), 6000);
+    }
     return () => {
       if (slowTimer.current) clearTimeout(slowTimer.current);
     };
-  }, [active, device, iframeKey]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active, iframeKey]);
 
   return (
     <section id="portofoliu" className="relative py-24 sm:py-32">
@@ -295,7 +293,7 @@ export function Portfolio() {
             <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-black/40">
               <img
                 src={it.image}
-                alt={`Mockup site ${it.title} — ${it.tag}`}
+                alt={`Site ${it.title} — ${it.tag}`}
                 loading="lazy"
                 width={1280}
                 height={800}
@@ -303,14 +301,12 @@ export function Portfolio() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0" />
 
-              {/* Proof badge top-left */}
               <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full glass-strong px-2.5 py-1 text-[11px]">
                 <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                 <span className="font-semibold">{it.proof.rating}</span>
                 <span className="text-muted-foreground">({it.proof.reviewsCount})</span>
               </div>
 
-              {/* KPIs bottom */}
               <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5">
                 {it.proof.highlightKpis.map((k) => (
                   <span key={k.label} className="rounded-full glass-strong px-2.5 py-1 text-[10px] uppercase tracking-wider">
@@ -366,7 +362,6 @@ export function Portfolio() {
                 </div>
 
                 <div className="flex items-center gap-1.5">
-                  {/* Device selector */}
                   <div className="flex items-center gap-0.5 rounded-full glass p-0.5">
                     {([
                       { id: "desktop" as const, Icon: Monitor, label: "Desktop" },
@@ -389,7 +384,14 @@ export function Portfolio() {
                   </div>
 
                   <button
-                    onClick={() => setIframeKey((k) => k + 1)}
+                    onClick={() => {
+                      setLoadedUrls((prev) => {
+                        const next = new Set(prev);
+                        next.delete(active.demoUrl);
+                        return next;
+                      });
+                      setIframeKey((k) => k + 1);
+                    }}
                     aria-label="Reîncarcă demo"
                     title="Reîncarcă"
                     className="rounded-full p-2 hover:bg-white/10 transition-colors text-muted-foreground hover:text-foreground"
@@ -408,10 +410,9 @@ export function Portfolio() {
               </div>
 
               <div className="max-h-[85vh] overflow-y-auto">
-                {/* Iframe stage */}
                 <div className="relative bg-[#0a0a0a] p-3 sm:p-6 flex items-start justify-center">
                   <div
-                    className="relative bg-white rounded-md overflow-hidden shadow-2xl transition-[width] duration-300 ease-out w-full"
+                    className="relative bg-white rounded-md overflow-hidden shadow-2xl transition-[max-width] duration-300 ease-out w-full"
                     style={{ maxWidth: deviceWidth[device], height: "70vh" }}
                   >
                     {!iframeLoaded && (
@@ -429,7 +430,14 @@ export function Portfolio() {
                           <div className="absolute inset-x-0 bottom-6 text-center text-xs text-black/60 px-6">
                             Demo-ul se încarcă mai greu decât de obicei...{" "}
                             <button
-                              onClick={() => setIframeKey((k) => k + 1)}
+                              onClick={() => {
+                                setLoadedUrls((prev) => {
+                                  const next = new Set(prev);
+                                  next.delete(active.demoUrl);
+                                  return next;
+                                });
+                                setIframeKey((k) => k + 1);
+                              }}
                               className="underline font-medium"
                             >
                               încearcă reîncărcarea
@@ -442,7 +450,16 @@ export function Portfolio() {
                       key={`${active.demoUrl}-${iframeKey}`}
                       src={active.demoUrl}
                       title={`${active.title} — demo live`}
-                      onLoad={() => setIframeLoaded(true)}
+                      onLoad={() => {
+                        setIframeLoaded(true);
+                        setLoadedUrls((prev) => {
+                          if (prev.has(active.demoUrl)) return prev;
+                          const next = new Set(prev);
+                          next.add(active.demoUrl);
+                          return next;
+                        });
+                      }}
+                      scrolling="auto"
                       className="w-full h-full border-0 block bg-white"
                     />
                   </div>
@@ -454,7 +471,6 @@ export function Portfolio() {
                   <p className="text-sm text-muted-foreground mt-2 max-w-2xl">{active.description}</p>
                 </div>
 
-                {/* Proof / KPIs / Reviews */}
                 <div className="px-6 pb-6">
                   <div className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Dovezi & rezultate live</div>
 
