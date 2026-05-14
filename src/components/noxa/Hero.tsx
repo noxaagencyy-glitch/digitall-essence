@@ -12,17 +12,17 @@ export function Hero() {
       <div className="relative mx-auto max-w-6xl px-6 text-center">
         <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs sm:text-sm text-muted-foreground animate-fade-up">
           <Sparkles className="h-3.5 w-3.5 text-accent" />
-          Studio premium de web design & AI
+          Experiențe digitale premium
         </div>
 
         <h1 className="mt-6 text-5xl sm:text-7xl md:text-[88px] font-semibold leading-[1.02] tracking-tight animate-fade-up" style={{ animationDelay: "60ms" }}>
-          Construim <span className="text-gradient">Experiențe Digitale</span>
-          <br className="hidden sm:block" /> Moderne
+          Website-uri <span className="text-gradient">Premium</span> Pentru Orice Tip
+          <br className="hidden sm:block" /> De Afacere
         </h1>
 
         <p className="mt-6 mx-auto max-w-2xl text-base sm:text-lg text-muted-foreground animate-fade-up" style={{ animationDelay: "140ms" }}>
-          Design premium, conversii reale și estetică Apple-grade pentru brand-urile care vor să arate
-          ca un produs de milioane de dolari.
+          Creăm website-uri moderne, rapide și premium pentru business-uri care vor să inspire
+          încredere și profesionalism.
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-up" style={{ animationDelay: "220ms" }}>
