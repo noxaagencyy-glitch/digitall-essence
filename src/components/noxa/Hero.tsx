@@ -1,0 +1,106 @@
+import { ArrowUpRight, Sparkles } from "lucide-react";
+import { NoxaLogo } from "./Logo";
+
+export function Hero() {
+  return (
+    <section id="top" className="relative pt-36 sm:pt-44 pb-24 sm:pb-32 overflow-hidden">
+      {/* Ambient blobs */}
+      <div aria-hidden className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-gradient-noxa opacity-30 blur-[120px]" />
+      <div aria-hidden className="absolute top-40 right-0 w-[420px] h-[420px] rounded-full bg-accent/40 blur-[120px] animate-pulse-glow" />
+      <div aria-hidden className="absolute top-60 left-0 w-[420px] h-[420px] rounded-full bg-electric/40 blur-[120px] animate-pulse-glow" />
+
+      <div className="relative mx-auto max-w-6xl px-6 text-center">
+        <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs sm:text-sm text-muted-foreground animate-fade-up">
+          <Sparkles className="h-3.5 w-3.5 text-accent" />
+          Studio premium de web design & AI
+        </div>
+
+        <h1 className="mt-6 text-5xl sm:text-7xl md:text-[88px] font-semibold leading-[1.02] tracking-tight animate-fade-up" style={{ animationDelay: "60ms" }}>
+          Construim <span className="text-gradient">Experiențe Digitale</span>
+          <br className="hidden sm:block" /> Moderne
+        </h1>
+
+        <p className="mt-6 mx-auto max-w-2xl text-base sm:text-lg text-muted-foreground animate-fade-up" style={{ animationDelay: "140ms" }}>
+          Design premium, conversii reale și estetică Apple-grade pentru brand-urile care vor să arate
+          ca un produs de milioane de dolari.
+        </p>
+
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-up" style={{ animationDelay: "220ms" }}>
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-6 py-3.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform"
+          >
+            Începe un proiect
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </a>
+          <a
+            href="#portofoliu"
+            className="inline-flex items-center gap-2 rounded-full glass px-6 py-3.5 text-sm font-medium text-foreground hover:bg-white/5 transition-colors"
+          >
+            Vezi portofoliul
+          </a>
+        </div>
+
+        {/* Mockup */}
+        <div className="relative mt-20 mx-auto max-w-5xl animate-fade-up" style={{ animationDelay: "320ms" }}>
+          <div className="absolute -inset-10 bg-gradient-noxa opacity-30 blur-3xl rounded-[40px]" />
+          <div className="relative glass-strong rounded-3xl p-3 shadow-card ring-1 ring-white/10">
+            <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-[oklch(0.16_0.05_270)] to-[oklch(0.13_0.06_295)] aspect-[16/9] relative">
+              {/* Window chrome */}
+              <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/5">
+                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+              </div>
+              <div className="grid grid-cols-12 gap-4 p-6 sm:p-10 h-full">
+                <div className="col-span-7 space-y-4">
+                  <div className="h-3 w-24 rounded-full bg-white/10" />
+                  <div className="h-10 w-3/4 rounded-lg bg-gradient-to-r from-white/15 to-white/5" />
+                  <div className="h-10 w-2/3 rounded-lg bg-gradient-to-r from-white/15 to-white/5" />
+                  <div className="h-3 w-1/2 rounded-full bg-white/10" />
+                  <div className="h-3 w-2/5 rounded-full bg-white/10" />
+                  <div className="flex gap-2 pt-3">
+                    <div className="h-9 w-32 rounded-full bg-gradient-noxa" />
+                    <div className="h-9 w-28 rounded-full bg-white/10" />
+                  </div>
+                </div>
+                <div className="col-span-5 relative">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-noxa opacity-80 blur-xl" />
+                  <div className="relative h-full rounded-2xl glass-strong flex items-center justify-center">
+                    <NoxaLogo className="h-24 w-24 animate-float" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Floating cards */}
+          <div className="hidden sm:flex absolute -left-6 top-1/3 glass-strong rounded-2xl px-4 py-3 items-center gap-3 animate-float">
+            <div className="h-8 w-8 rounded-lg bg-gradient-noxa" />
+            <div>
+              <div className="text-xs text-muted-foreground">Conversion</div>
+              <div className="text-sm font-semibold">+184%</div>
+            </div>
+          </div>
+          <div className="hidden sm:flex absolute -right-6 bottom-1/4 glass-strong rounded-2xl px-4 py-3 items-center gap-3 animate-float" style={{ animationDelay: "1.5s" }}>
+            <div className="h-8 w-8 rounded-lg bg-electric" />
+            <div>
+              <div className="text-xs text-muted-foreground">Page speed</div>
+              <div className="text-sm font-semibold">98 / 100</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Logos strip */}
+        <div className="mt-20 text-xs uppercase tracking-[0.2em] text-muted-foreground/70">
+          Brand-uri care ne-au ales
+        </div>
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 opacity-60">
+          {["AURORA", "LUMEN", "NOVA", "VANTA", "KORE", "PRISM"].map((b) => (
+            <span key={b} className="text-lg font-semibold tracking-widest">{b}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
