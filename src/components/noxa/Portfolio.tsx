@@ -1,4 +1,5 @@
 import { SectionHeader } from "./Services";
+import { Reveal } from "./Reveal";
 
 const items = [
   { tag: "SaaS · Dashboard", title: "Lumen Analytics", hue: "from-[oklch(0.45_0.25_260)] to-[oklch(0.55_0.28_295)]" },
@@ -12,12 +13,11 @@ export function Portfolio() {
     <section id="portofoliu" className="relative py-24 sm:py-32">
       <SectionHeader eyebrow="Portofoliu" title="Proiecte construite cu obsesie pentru detalii" />
 
-      <div className="mx-auto max-w-6xl px-6 mt-14 grid grid-cols-1 md:grid-cols-2 gap-6">
+      <Reveal stagger direction="scale" className="mx-auto max-w-6xl px-6 mt-14 grid grid-cols-1 md:grid-cols-2 gap-6">
         {items.map((it) => (
-          <div key={it.title} className="group relative rounded-3xl overflow-hidden glass-strong p-3">
+          <div key={it.title} data-reveal-item className="group relative rounded-3xl overflow-hidden glass-strong p-3">
             <div className={`relative aspect-[16/10] rounded-2xl bg-gradient-to-br ${it.hue} overflow-hidden`}>
               <div className="absolute inset-0 opacity-40 mix-blend-overlay" style={{ backgroundImage: "radial-gradient(circle at 30% 20%, white, transparent 50%)" }} />
-              {/* fake UI */}
               <div className="absolute inset-6 rounded-xl glass-strong p-4 flex flex-col gap-3 transition-transform duration-700 group-hover:-translate-y-2 group-hover:scale-[1.02]">
                 <div className="flex gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-white/30" />
@@ -42,7 +42,7 @@ export function Portfolio() {
             </div>
           </div>
         ))}
-      </div>
+      </Reveal>
     </section>
   );
 }

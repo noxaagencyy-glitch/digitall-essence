@@ -36,7 +36,7 @@ export function Reveal({
     if (stagger) {
       targets.forEach((t, i) => {
         t.classList.add("reveal", `reveal-${direction}`);
-        t.style.transitionDelay = `${i * 90 + delay}ms`;
+        t.style.transitionDelay = `${Math.min(i, 8) * 70 + delay}ms`;
       });
     } else {
       el.style.transitionDelay = `${delay}ms`;

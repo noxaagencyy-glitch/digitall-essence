@@ -1,4 +1,5 @@
 import { Brush, Layout, RefreshCcw, Sparkles, Cpu, Crown, ShoppingBag } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 const services = [
   { icon: Brush, title: "Web Design", desc: "Site-uri custom, premium, gândite ca produse de top." },
@@ -15,12 +16,12 @@ export function Services() {
     <section id="servicii" className="relative py-24 sm:py-32">
       <SectionHeader eyebrow="Servicii" title="Tot ce ai nevoie pentru un brand modern" />
 
-      <div className="mx-auto max-w-6xl px-6 mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {services.map((s, i) => (
+      <Reveal stagger direction="up" className="mx-auto max-w-6xl px-6 mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {services.map((s) => (
           <div
             key={s.title}
+            data-reveal-item
             className="group relative glass rounded-3xl p-6 sm:p-7 transition-all duration-500 hover:-translate-y-1 hover:ring-glow"
-            style={{ animationDelay: `${i * 60}ms` }}
           >
             <div className="absolute -inset-px rounded-3xl bg-gradient-noxa opacity-0 group-hover:opacity-20 blur-xl transition-opacity" />
             <div className="relative">
@@ -32,7 +33,7 @@ export function Services() {
             </div>
           </div>
         ))}
-      </div>
+      </Reveal>
     </section>
   );
 }
