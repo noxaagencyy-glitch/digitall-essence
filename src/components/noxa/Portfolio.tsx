@@ -1,8 +1,9 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { SectionHeader } from "./Services";
 import { Reveal } from "./Reveal";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { ArrowUpRight, ExternalLink, X, Target, Lightbulb, Package, TrendingUp } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
+import { ArrowUpRight, X, Target, Lightbulb, Package, TrendingUp, Star, Monitor, Tablet, Smartphone, RefreshCw } from "lucide-react";
 
 import beauty from "@/assets/portfolio/beauty.jpg";
 import fitness from "@/assets/portfolio/fitness.jpg";
@@ -18,6 +19,15 @@ type CaseStudy = {
   results: { label: string; value: string }[];
 };
 
+type Review = { author: string; role: string; text: string; rating: number };
+
+type Proof = {
+  rating: number;
+  reviewsCount: number;
+  highlightKpis: { label: string; value: string }[];
+  reviews: Review[];
+};
+
 type Item = {
   tag: string;
   title: string;
@@ -26,6 +36,7 @@ type Item = {
   description: string;
   image: string;
   caseStudy: CaseStudy;
+  proof: Proof;
 };
 
 const items: Item[] = [
@@ -46,6 +57,18 @@ const items: Item[] = [
         { label: "Trafic organic", value: "+220%" },
       ],
     },
+    proof: {
+      rating: 4.9,
+      reviewsCount: 142,
+      highlightKpis: [
+        { label: "Programări/lună", value: "320+" },
+        { label: "Lead-uri WhatsApp", value: "180+" },
+      ],
+      reviews: [
+        { author: "Andreea M.", role: "Owner Lumière", text: "În prima lună am triplat programările online. Site-ul arată ca o reclamă Vogue.", rating: 5 },
+        { author: "Cristina V.", role: "Manager salon", text: "Clientele noi ne spun constant că au venit din site. Diferență ca de la cer la pământ.", rating: 5 },
+      ],
+    },
   },
   {
     tag: "Fitness & Gym",
@@ -62,6 +85,18 @@ const items: Item[] = [
         { label: "Abonamente noi", value: "+135%" },
         { label: "Retenție membri", value: "+58%" },
         { label: "Timp admin", value: "-70%" },
+      ],
+    },
+    proof: {
+      rating: 4.8,
+      reviewsCount: 98,
+      highlightKpis: [
+        { label: "Conversii free trial", value: "62%" },
+        { label: "Membri noi/lună", value: "85+" },
+      ],
+      reviews: [
+        { author: "Răzvan T.", role: "Head Coach Forge", text: "Aplicația de orar singură ne-a economisit 10 ore/săptămână. Membri sunt încântați.", rating: 5 },
+        { author: "Mihai D.", role: "Owner", text: "ROI-ul s-a întors în prima lună din abonamente noi venite direct prin site.", rating: 5 },
       ],
     },
   },
@@ -82,6 +117,18 @@ const items: Item[] = [
         { label: "Reviews Google", value: "4.9★" },
       ],
     },
+    proof: {
+      rating: 4.9,
+      reviewsCount: 211,
+      highlightKpis: [
+        { label: "Rezervări/seară", value: "48" },
+        { label: "Ocupare weekend", value: "100%" },
+      ],
+      reviews: [
+        { author: "Antoine R.", role: "Chef & Founder", text: "Site-ul reflectă perfect atmosfera restaurantului. Rezervări full pentru luni întregi.", rating: 5 },
+        { author: "Diana P.", role: "Manager", text: "Procesul de rezervare e atât de fluid încât 80% dintre clienți rezervă acum online.", rating: 5 },
+      ],
+    },
   },
   {
     tag: "Clinici & Medical",
@@ -98,6 +145,18 @@ const items: Item[] = [
         { label: "Programări online", value: "+310%" },
         { label: "Pacienți noi/lună", value: "+85%" },
         { label: "Pozitia Google", value: "Top 3" },
+      ],
+    },
+    proof: {
+      rating: 5.0,
+      reviewsCount: 187,
+      highlightKpis: [
+        { label: "Programări online/lună", value: "240+" },
+        { label: "Lead-uri calificate", value: "95%" },
+      ],
+      reviews: [
+        { author: "Dr. Andrei P.", role: "Medic primar", text: "Pacienții vin pregătiți, informați. Site-ul face jumătate din muncă înainte să intre în cabinet.", rating: 5 },
+        { author: "Ioana B.", role: "Manager clinică", text: "De când avem programări online, telefonul recepției e descongestionat 70%.", rating: 5 },
       ],
     },
   },
@@ -118,6 +177,18 @@ const items: Item[] = [
         { label: "Suport manual", value: "-80%" },
       ],
     },
+    proof: {
+      rating: 4.9,
+      reviewsCount: 524,
+      highlightKpis: [
+        { label: "Cursanți activi", value: "8.4k+" },
+        { label: "Conversii landing", value: "11.2%" },
+      ],
+      reviews: [
+        { author: "Alex M.", role: "Co-founder Lumen", text: "Vânzările au explodat din ziua 1. Checkout-ul convertește mai bine decât orice am încercat înainte.", rating: 5 },
+        { author: "Raluca G.", role: "Head of Growth", text: "Dashboard-ul cursanților a crescut retenția cu 65%. Material didactic accesibil = clienți fericiți.", rating: 5 },
+      ],
+    },
   },
   {
     tag: "Imobiliare",
@@ -136,17 +207,53 @@ const items: Item[] = [
         { label: "Cost per lead", value: "-55%" },
       ],
     },
+    proof: {
+      rating: 4.8,
+      reviewsCount: 76,
+      highlightKpis: [
+        { label: "Lead-uri/lună", value: "120+" },
+        { label: "Tranzacții închise", value: "18/lună" },
+      ],
+      reviews: [
+        { author: "Sergiu A.", role: "Founder Vanta", text: "Lead-urile vin direct, calificate, cu buget. Nu mai depindem de portaluri externe.", rating: 5 },
+        { author: "Elena V.", role: "Senior Agent", text: "Tururile virtuale au tăiat 70% din vizionările inutile. Câștig timp imens.", rating: 5 },
+      ],
+    },
   },
 ];
 
 const ALL = "Toate";
 
+type Device = "desktop" | "tablet" | "mobile";
+const deviceWidth: Record<Device, string> = {
+  desktop: "100%",
+  tablet: "820px",
+  mobile: "390px",
+};
+
 export function Portfolio() {
   const [active, setActive] = useState<Item | null>(null);
   const [filter, setFilter] = useState<string>(ALL);
+  const [device, setDevice] = useState<Device>("desktop");
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [iframeSlow, setIframeSlow] = useState(false);
+  const [iframeKey, setIframeKey] = useState(0);
+  const slowTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const filters = useMemo(() => [ALL, ...Array.from(new Set(items.map((i) => i.tag)))], []);
   const filtered = useMemo(() => (filter === ALL ? items : items.filter((i) => i.tag === filter)), [filter]);
+
+  // Reset iframe state when project / device / reload changes
+  useEffect(() => {
+    if (!active) return;
+    setIframeLoaded(false);
+    setIframeSlow(false);
+    if (slowTimer.current) clearTimeout(slowTimer.current);
+    slowTimer.current = setTimeout(() => setIframeSlow(true), 6000);
+    return () => {
+      if (slowTimer.current) clearTimeout(slowTimer.current);
+    };
+  }, [active, device, iframeKey]);
 
   return (
     <section id="portofoliu" className="relative py-24 sm:py-32">
@@ -194,9 +301,27 @@ export function Portfolio() {
                 height={800}
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0" />
+
+              {/* Proof badge top-left */}
+              <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full glass-strong px-2.5 py-1 text-[11px]">
+                <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                <span className="font-semibold">{it.proof.rating}</span>
+                <span className="text-muted-foreground">({it.proof.reviewsCount})</span>
+              </div>
+
+              {/* KPIs bottom */}
+              <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5">
+                {it.proof.highlightKpis.map((k) => (
+                  <span key={k.label} className="rounded-full glass-strong px-2.5 py-1 text-[10px] uppercase tracking-wider">
+                    <span className="font-semibold text-foreground">{k.value}</span>
+                    <span className="text-muted-foreground ml-1.5">{k.label}</span>
+                  </span>
+                ))}
+              </div>
+
               <div className="absolute top-3 right-3 flex items-center gap-1.5 rounded-full glass-strong px-3 py-1.5 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Vezi proiectul <ArrowUpRight className="w-3.5 h-3.5" />
+                Deschide demo <ArrowUpRight className="w-3.5 h-3.5" />
               </div>
             </div>
             <div className="flex items-center justify-between p-5">
@@ -212,34 +337,66 @@ export function Portfolio() {
         ))}
       </Reveal>
 
-      <Dialog open={!!active} onOpenChange={(o) => !o && setActive(null)}>
+      <Dialog
+        open={!!active}
+        onOpenChange={(o) => {
+          if (!o) {
+            setActive(null);
+            setDevice("desktop");
+          }
+        }}
+      >
         <DialogContent className="max-w-6xl w-[95vw] p-0 overflow-hidden border-white/10 bg-background/95 backdrop-blur-xl [&>button]:hidden">
           {active && (
             <>
               <DialogTitle className="sr-only">{active.title}</DialogTitle>
               <DialogDescription className="sr-only">{active.description}</DialogDescription>
 
-              <div className="flex items-center justify-between px-5 py-3 border-b border-white/10">
-                <div className="flex items-center gap-3">
-                  <div className="flex gap-1.5">
+              <div className="flex items-center justify-between gap-3 px-5 py-3 border-b border-white/10">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="hidden sm:flex gap-1.5">
                     <span className="h-3 w-3 rounded-full bg-red-400/70" />
                     <span className="h-3 w-3 rounded-full bg-yellow-400/70" />
                     <span className="h-3 w-3 rounded-full bg-green-400/70" />
                   </div>
-                  <div className="hidden sm:flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-muted-foreground">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-                    https://{active.url}
+                  <div className="hidden md:flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-muted-foreground truncate">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shrink-0" />
+                    <span className="truncate">https://{active.url}</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <a
-                    href={active.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-foreground text-background px-3 py-1.5 text-xs font-medium hover:opacity-90 transition-opacity"
+
+                <div className="flex items-center gap-1.5">
+                  {/* Device selector */}
+                  <div className="flex items-center gap-0.5 rounded-full glass p-0.5">
+                    {([
+                      { id: "desktop" as const, Icon: Monitor, label: "Desktop" },
+                      { id: "tablet" as const, Icon: Tablet, label: "Tablet" },
+                      { id: "mobile" as const, Icon: Smartphone, label: "Mobile" },
+                    ]).map(({ id, Icon, label }) => (
+                      <button
+                        key={id}
+                        onClick={() => setDevice(id)}
+                        aria-label={label}
+                        title={label}
+                        className={
+                          "p-1.5 rounded-full transition-colors " +
+                          (device === id ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground")
+                        }
+                      >
+                        <Icon className="w-3.5 h-3.5" />
+                      </button>
+                    ))}
+                  </div>
+
+                  <button
+                    onClick={() => setIframeKey((k) => k + 1)}
+                    aria-label="Reîncarcă demo"
+                    title="Reîncarcă"
+                    className="rounded-full p-2 hover:bg-white/10 transition-colors text-muted-foreground hover:text-foreground"
                   >
-                    Vezi demo live <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
+                    <RefreshCw className="w-3.5 h-3.5" />
+                  </button>
+
                   <button
                     onClick={() => setActive(null)}
                     className="rounded-full p-2 hover:bg-white/10 transition-colors"
@@ -250,29 +407,101 @@ export function Portfolio() {
                 </div>
               </div>
 
-              <div className="max-h-[80vh] overflow-y-auto">
-                <div className="bg-black/40 h-[70vh]">
-                  <iframe
-                    src={active.demoUrl}
-                    title={`${active.title} — demo live`}
-                    className="w-full h-full border-0 block bg-white"
-                    loading="lazy"
-                  />
+              <div className="max-h-[85vh] overflow-y-auto">
+                {/* Iframe stage */}
+                <div className="relative bg-[#0a0a0a] p-3 sm:p-6 flex items-start justify-center">
+                  <div
+                    className="relative bg-white rounded-md overflow-hidden shadow-2xl transition-[width] duration-300 ease-out w-full"
+                    style={{ maxWidth: deviceWidth[device], height: "70vh" }}
+                  >
+                    {!iframeLoaded && (
+                      <div className="absolute inset-0 z-10 p-6 space-y-4 bg-white">
+                        <Skeleton className="h-10 w-1/3 bg-black/5" />
+                        <Skeleton className="h-40 w-full bg-black/5" />
+                        <div className="grid grid-cols-3 gap-4">
+                          <Skeleton className="h-24 w-full bg-black/5" />
+                          <Skeleton className="h-24 w-full bg-black/5" />
+                          <Skeleton className="h-24 w-full bg-black/5" />
+                        </div>
+                        <Skeleton className="h-6 w-2/3 bg-black/5" />
+                        <Skeleton className="h-6 w-1/2 bg-black/5" />
+                        {iframeSlow && (
+                          <div className="absolute inset-x-0 bottom-6 text-center text-xs text-black/60 px-6">
+                            Demo-ul se încarcă mai greu decât de obicei...{" "}
+                            <button
+                              onClick={() => setIframeKey((k) => k + 1)}
+                              className="underline font-medium"
+                            >
+                              încearcă reîncărcarea
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    )}
+                    <iframe
+                      key={`${active.demoUrl}-${iframeKey}`}
+                      src={active.demoUrl}
+                      title={`${active.title} — demo live`}
+                      onLoad={() => setIframeLoaded(true)}
+                      className="w-full h-full border-0 block bg-white"
+                    />
+                  </div>
                 </div>
 
                 <div className="px-6 py-6 border-t border-white/10">
                   <div className="text-xs uppercase tracking-widest text-muted-foreground">{active.tag}</div>
                   <div className="text-xl font-semibold mt-1">{active.title}</div>
                   <p className="text-sm text-muted-foreground mt-2 max-w-2xl">{active.description}</p>
+                </div>
 
-                  <a
-                    href={active.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="sm:hidden mt-4 inline-flex items-center gap-1.5 rounded-full bg-foreground text-background px-3 py-1.5 text-xs font-medium"
-                  >
-                    Vezi demo live <ExternalLink className="w-3.5 h-3.5" />
-                  </a>
+                {/* Proof / KPIs / Reviews */}
+                <div className="px-6 pb-6">
+                  <div className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Dovezi & rezultate live</div>
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+                    <div className="rounded-2xl glass p-4">
+                      <div className="flex items-center gap-1 text-yellow-400">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <Star key={i} className="w-3.5 h-3.5 fill-yellow-400" />
+                        ))}
+                      </div>
+                      <div className="mt-2 text-2xl font-semibold">{active.proof.rating}</div>
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">
+                        {active.proof.reviewsCount} recenzii
+                      </div>
+                    </div>
+                    {active.proof.highlightKpis.map((k) => (
+                      <div key={k.label} className="rounded-2xl glass p-4">
+                        <div className="text-2xl font-semibold">{k.value}</div>
+                        <div className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">
+                          {k.label}
+                        </div>
+                      </div>
+                    ))}
+                    <div className="rounded-2xl glass p-4">
+                      <div className="text-2xl font-semibold">{active.caseStudy.results[0].value}</div>
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground mt-1">
+                        {active.caseStudy.results[0].label}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {active.proof.reviews.map((r) => (
+                      <div key={r.author} className="rounded-2xl glass p-5">
+                        <div className="flex items-center gap-1 text-yellow-400 mb-2">
+                          {Array.from({ length: r.rating }).map((_, i) => (
+                            <Star key={i} className="w-3 h-3 fill-yellow-400" />
+                          ))}
+                        </div>
+                        <p className="text-sm leading-relaxed">"{r.text}"</p>
+                        <div className="mt-3 text-xs">
+                          <span className="font-semibold">{r.author}</span>
+                          <span className="text-muted-foreground"> · {r.role}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="px-6 pb-8">
