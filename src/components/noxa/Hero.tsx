@@ -1,13 +1,28 @@
 import { ArrowUpRight, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
 import { NoxaLogo } from "./Logo";
 
 export function Hero() {
+  const [y, setY] = useState(0);
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => setY(window.scrollY));
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
     <section id="top" className="relative pt-36 sm:pt-44 pb-24 sm:pb-32 overflow-hidden">
-      {/* Ambient blobs */}
-      <div aria-hidden className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-gradient-noxa opacity-30 blur-[120px]" />
-      <div aria-hidden className="absolute top-40 right-0 w-[420px] h-[420px] rounded-full bg-accent/40 blur-[120px] animate-pulse-glow" />
-      <div aria-hidden className="absolute top-60 left-0 w-[420px] h-[420px] rounded-full bg-electric/40 blur-[120px] animate-pulse-glow" />
+      {/* Ambient blobs — parallax */}
+      <div aria-hidden style={{ transform: `translate3d(-50%, ${y * 0.25}px, 0)` }} className="absolute -top-40 left-1/2 w-[900px] h-[900px] rounded-full bg-gradient-noxa opacity-30 blur-[120px] will-change-transform" />
+      <div aria-hidden style={{ transform: `translate3d(0, ${y * 0.12}px, 0)` }} className="absolute top-40 right-0 w-[420px] h-[420px] rounded-full bg-accent/40 blur-[120px] animate-pulse-glow will-change-transform" />
+      <div aria-hidden style={{ transform: `translate3d(0, ${y * -0.18}px, 0)` }} className="absolute top-60 left-0 w-[420px] h-[420px] rounded-full bg-electric/40 blur-[120px] animate-pulse-glow will-change-transform" />
 
       <div className="relative mx-auto max-w-6xl px-6 text-center">
         <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs sm:text-sm text-muted-foreground animate-fade-up">
@@ -42,7 +57,7 @@ export function Hero() {
         </div>
 
         {/* Mockup */}
-        <div className="relative mt-20 mx-auto max-w-5xl animate-fade-up" style={{ animationDelay: "320ms" }}>
+        <div className="relative mt-20 mx-auto max-w-5xl animate-fade-up will-change-transform" style={{ animationDelay: "320ms", transform: `translate3d(0, ${y * -0.06}px, 0)` }}>
           <div className="absolute -inset-10 bg-gradient-noxa opacity-30 blur-3xl rounded-[40px]" />
           <div className="relative glass-strong rounded-3xl p-3 shadow-card ring-1 ring-white/10">
             <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-[oklch(0.16_0.05_270)] to-[oklch(0.13_0.06_295)] aspect-[16/9] relative">
