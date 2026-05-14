@@ -9,6 +9,7 @@ import { Process } from "@/components/noxa/Process";
 import { FAQ } from "@/components/noxa/FAQ";
 import { Contact } from "@/components/noxa/Contact";
 import { Footer } from "@/components/noxa/Footer";
+import { Reveal } from "@/components/noxa/Reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,14 +26,14 @@ function Index() {
     <main className="relative overflow-x-hidden">
       <Nav />
       <Hero />
-      <Services />
-      <Portfolio />
-      <WhyUs />
-      <Testimonials />
-      <Process />
-      <FAQ />
-      <Contact />
-      <Footer />
+      <Reveal><Services /></Reveal>
+      <Reveal direction="scale"><Portfolio /></Reveal>
+      <Reveal><WhyUs /></Reveal>
+      <Reveal direction="left"><Testimonials /></Reveal>
+      <Reveal><Process /></Reveal>
+      <Reveal direction="right"><FAQ /></Reveal>
+      <Reveal direction="scale"><Contact /></Reveal>
+      <Reveal><Footer /></Reveal>
     </main>
   );
 }
