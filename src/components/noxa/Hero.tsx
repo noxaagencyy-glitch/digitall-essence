@@ -1,13 +1,28 @@
 import { ArrowUpRight, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
 import { NoxaLogo } from "./Logo";
 
 export function Hero() {
+  const [y, setY] = useState(0);
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => setY(window.scrollY));
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
   return (
     <section id="top" className="relative pt-36 sm:pt-44 pb-24 sm:pb-32 overflow-hidden">
-      {/* Ambient blobs */}
-      <div aria-hidden className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-gradient-noxa opacity-30 blur-[120px]" />
-      <div aria-hidden className="absolute top-40 right-0 w-[420px] h-[420px] rounded-full bg-accent/40 blur-[120px] animate-pulse-glow" />
-      <div aria-hidden className="absolute top-60 left-0 w-[420px] h-[420px] rounded-full bg-electric/40 blur-[120px] animate-pulse-glow" />
+      {/* Ambient blobs — parallax */}
+      <div aria-hidden style={{ transform: `translate3d(-50%, ${y * 0.25}px, 0)` }} className="absolute -top-40 left-1/2 w-[900px] h-[900px] rounded-full bg-gradient-noxa opacity-30 blur-[120px] will-change-transform" />
+      <div aria-hidden style={{ transform: `translate3d(0, ${y * 0.12}px, 0)` }} className="absolute top-40 right-0 w-[420px] h-[420px] rounded-full bg-accent/40 blur-[120px] animate-pulse-glow will-change-transform" />
+      <div aria-hidden style={{ transform: `translate3d(0, ${y * -0.18}px, 0)` }} className="absolute top-60 left-0 w-[420px] h-[420px] rounded-full bg-electric/40 blur-[120px] animate-pulse-glow will-change-transform" />
 
       <div className="relative mx-auto max-w-6xl px-6 text-center">
         <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs sm:text-sm text-muted-foreground animate-fade-up">
