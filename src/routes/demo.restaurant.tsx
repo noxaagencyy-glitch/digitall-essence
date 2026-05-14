@@ -20,13 +20,17 @@ function RestaurantDemo() {
         </nav>
       </header>
 
-      <section className="relative px-8 md:px-16 py-32 md:py-48 text-center">
-        <div className="text-xs tracking-[0.5em] uppercase text-[#c9a84c]">Fine Dining · Bucureștii Vechi</div>
-        <h1 style={{ fontFamily: "'Playfair Display'" }} className="mt-8 text-6xl md:text-9xl font-light italic leading-[1]">L'art de vivre,<br />redéfini.</h1>
-        <p className="mt-10 max-w-xl mx-auto text-lg text-[#e8d9b8]/70 leading-relaxed">Un meniu degustare în 9 acte, semnat de Chef Antoine Renaud. O călătorie culinară între tradiția franceză și ingredientele românești de sezon.</p>
-        <div className="mt-12 flex justify-center gap-6">
-          <button className="bg-[#c9a84c] text-[#0d0a07] px-8 py-4 text-xs tracking-[0.3em] uppercase">Rezervă o masă</button>
-          <button className="border border-[#c9a84c]/40 px-8 py-4 text-xs tracking-[0.3em] uppercase">Vezi meniul</button>
+      <section className="relative px-8 md:px-16 py-32 md:py-48 text-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&auto=format&fit=crop&q=80" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover opacity-25" loading="lazy" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d0a07] via-[#0d0a07]/60 to-[#0d0a07]" />
+        <div className="relative">
+          <div className="text-xs tracking-[0.5em] uppercase text-[#c9a84c]">Fine Dining · Bucureștii Vechi</div>
+          <h1 style={{ fontFamily: "'Playfair Display'" }} className="mt-8 text-6xl md:text-9xl font-light italic leading-[1]">L'art de vivre,<br />redéfini.</h1>
+          <p className="mt-10 max-w-xl mx-auto text-lg text-[#e8d9b8]/70 leading-relaxed">Un meniu degustare în 9 acte, semnat de Chef Antoine Renaud. O călătorie culinară între tradiția franceză și ingredientele românești de sezon.</p>
+          <div className="mt-12 flex justify-center gap-6">
+            <button className="bg-[#c9a84c] text-[#0d0a07] px-8 py-4 text-xs tracking-[0.3em] uppercase">Rezervă o masă</button>
+            <button className="border border-[#c9a84c]/40 px-8 py-4 text-xs tracking-[0.3em] uppercase">Vezi meniul</button>
+          </div>
         </div>
       </section>
 
