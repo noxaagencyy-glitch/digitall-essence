@@ -10,6 +10,19 @@ function ClinicDemo() {
     <div className="min-h-screen bg-white text-[#0f1f2e]" style={{ fontFamily: "'Inter', sans-serif" }}>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
 
+      {/* Top utility bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2 px-6 md:px-12 py-2 text-xs bg-[#0f1f2e] text-white/80">
+        <div className="flex items-center gap-4">
+          <span>📞 +40 21 555 0199</span>
+          <span className="hidden md:inline">📍 Calea Victoriei 89, București</span>
+          <span className="hidden lg:inline">L–V 08:00–20:00 · S 09:00–14:00</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <a className="hover:text-[#c9a960]">Urgențe 24/7</a>
+          <a className="hover:text-[#c9a960]">Asigurări medicale</a>
+        </div>
+      </div>
+
       <header className="flex items-center justify-between px-6 md:px-12 py-5 border-b border-[#0f1f2e]/10">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-[#c9a960]" />

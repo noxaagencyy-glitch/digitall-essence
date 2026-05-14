@@ -10,6 +10,19 @@ function EducationDemo() {
     <div className="min-h-screen bg-[#fafaf7] text-[#1a1a2e]" style={{ fontFamily: "'Inter', sans-serif" }}>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
 
+      {/* Top utility bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2 px-6 md:px-12 py-2 text-xs bg-[#1a1a2e] text-white">
+        <div className="flex items-center gap-4">
+          <span>🎓 Reducere -25% la bootcamp-ul de toamnă</span>
+          <span className="hidden md:inline">⏰ Mai rămân 4 zile</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <a className="hover:text-[#a99eff]">Pentru companii</a>
+          <a className="hover:text-[#a99eff]">Devino mentor</a>
+          <a className="hover:text-[#a99eff]">RO · EN</a>
+        </div>
+      </div>
+
       <header className="flex items-center justify-between px-6 md:px-12 py-5">
         <div style={{ fontFamily: "'Space Grotesk'" }} className="text-2xl font-bold">codify<span className="text-[#6d4ee8]">.</span></div>
         <nav className="hidden md:flex gap-8 text-sm font-medium">

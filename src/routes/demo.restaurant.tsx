@@ -10,6 +10,18 @@ function RestaurantDemo() {
     <div className="min-h-screen bg-[#0d0a07] text-[#e8d9b8]" style={{ fontFamily: "'Lora', serif" }}>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=Lora:wght@300;400;500&display=swap" />
 
+      {/* Top utility bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2 px-8 md:px-16 py-2 text-[10px] tracking-[0.3em] uppercase border-b border-[#c9a84c]/20 text-[#e8d9b8]/70">
+        <div className="flex items-center gap-4">
+          <span>Strada Lipscani 23, București</span>
+          <span className="hidden md:inline">Mar–Sâm · 19:00–23:00</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <span>+40 21 555 0123</span>
+          <a className="hover:text-[#c9a84c]">RO · FR · EN</a>
+        </div>
+      </div>
+
       <header className="flex items-center justify-between px-8 md:px-16 py-6">
         <nav className="hidden md:flex gap-8 text-xs tracking-[0.3em] uppercase">
           <a>Meniu</a><a>Bucătar</a><a>Vinuri</a>

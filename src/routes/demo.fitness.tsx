@@ -10,6 +10,19 @@ function FitnessDemo() {
     <div style={{ fontFamily: "'Inter', sans-serif" }} className="min-h-screen bg-[#0a0a0a] text-white">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;900&display=swap" />
 
+      {/* Top utility bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2 px-6 md:px-12 py-2 text-[11px] uppercase tracking-wider bg-[#ff3d00] text-black font-semibold">
+        <div className="flex items-center gap-4">
+          <span>🔥 7 zile gratuite — fără card</span>
+          <span className="hidden md:inline">📞 +40 264 555 022</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <a className="hover:underline">Locații</a>
+          <a className="hover:underline">Cariere</a>
+          <a className="hover:underline">RO · EN</a>
+        </div>
+      </div>
+
       <header className="flex items-center justify-between px-6 md:px-12 py-5 border-b border-white/5 sticky top-0 bg-[#0a0a0a]/90 backdrop-blur">
         <div className="text-2xl font-black tracking-tight">POWERHOUSE<span className="text-[#ff3d00]">.</span></div>
         <nav className="hidden md:flex gap-8 text-sm font-medium">

@@ -10,6 +10,19 @@ function RealEstateDemo() {
     <div className="min-h-screen bg-[#0f1419] text-[#e8e6e0]" style={{ fontFamily: "'Inter', sans-serif" }}>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap" />
 
+      {/* Top utility bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2 px-8 md:px-16 py-2 text-[10px] tracking-[0.3em] uppercase border-b border-white/5 text-[#e8e6e0]/60">
+        <div className="flex items-center gap-4">
+          <span>+40 21 555 0166</span>
+          <span className="hidden md:inline">concierge@premier-imobiliare.ro</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <a className="hover:text-[#b8956a]">Off-market</a>
+          <a className="hover:text-[#b8956a]">Investiții</a>
+          <a className="hover:text-[#b8956a]">RO · EN · RU</a>
+        </div>
+      </div>
+
       <header className="flex items-center justify-between px-8 md:px-16 py-6 border-b border-white/5">
         <div style={{ fontFamily: "'Cormorant Garamond'" }} className="text-3xl tracking-wide">Premier<span className="text-[#b8956a]"> Estates</span></div>
         <nav className="hidden md:flex gap-8 text-sm">

@@ -11,6 +11,19 @@ function BeautyDemo() {
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" />
 
       {/* Nav */}
+      {/* Top utility bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2 px-8 md:px-16 py-2 text-[11px] tracking-[0.2em] uppercase border-b border-[#2a1d17]/10 bg-[#efe5db]" style={{ fontFamily: "Inter" }}>
+        <div className="flex items-center gap-4 text-[#2a1d17]/70">
+          <span>📞 +40 21 555 0188</span>
+          <span className="hidden sm:inline">L–S 09:00–20:00</span>
+          <span className="hidden md:inline">Calea Victoriei 124, București</span>
+        </div>
+        <div className="flex items-center gap-4 text-[#2a1d17]/70">
+          <a className="hover:text-[#2a1d17]">Card cadou</a>
+          <a className="hover:text-[#2a1d17]">RO · EN</a>
+        </div>
+      </div>
+
       <header className="flex items-center justify-between px-8 md:px-16 py-6 border-b border-[#2a1d17]/10">
         <div className="text-2xl tracking-[0.3em]">BELLA</div>
         <nav className="hidden md:flex gap-8 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
