@@ -44,7 +44,7 @@ export function Nav() {
           href="#contact"
           className="ml-1 sm:ml-2 inline-flex items-center rounded-full bg-gradient-noxa px-4 py-2 text-sm font-medium text-white shadow-[0_8px_24px_-8px_oklch(0.55_0.27_285_/_0.7)] hover:opacity-95 transition-opacity"
         >
-          Începe un proiect
+          Cere ofertă gratuită
         </a>
       </nav>
     </header>

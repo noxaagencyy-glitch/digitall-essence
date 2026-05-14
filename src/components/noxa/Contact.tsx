@@ -6,7 +6,7 @@ export function Contact() {
   const [sent, setSent] = useState(false);
   return (
     <section id="contact" className="relative py-24 sm:py-32">
-      <SectionHeader eyebrow="Contact" title="Să construim ceva legendar" subtitle="Spune-ne despre proiectul tău. Răspundem în maxim 24h." />
+      <SectionHeader eyebrow="Contact" title="Hai să-ți creștem afacerea online" subtitle="Primești o ofertă personalizată, gratuită, în maxim 24h. Fără obligații." />
 
       <div className="mx-auto max-w-5xl px-6 mt-14 grid grid-cols-1 lg:grid-cols-5 gap-6">
         <div className="lg:col-span-3 glass-strong rounded-3xl p-6 sm:p-8">
@@ -24,7 +24,7 @@ export function Contact() {
             <div className="sm:col-span-2 flex items-center justify-between gap-3 mt-2">
               <p className="text-xs text-muted-foreground">Trimițând, ești de acord cu politica noastră.</p>
               <button className="inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-5 py-3 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform">
-                {sent ? "Trimis ✓" : "Trimite mesaj"} <Send className="h-4 w-4" />
+                {sent ? "Mesaj trimis ✓" : "Solicită oferta gratuită"} <Send className="h-4 w-4" />
               </button>
             </div>
           </form>
