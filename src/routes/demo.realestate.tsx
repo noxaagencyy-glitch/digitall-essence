@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/demo/realestate")({
   component: RealEstateDemo,
-  head: () => ({ meta: [{ title: "Vanta Estates — Demo" }] }),
+  head: () => ({ meta: [{ title: "Premier Imobiliare — Demo" }] }),
 });
 
 function RealEstateDemo() {
@@ -10,8 +10,21 @@ function RealEstateDemo() {
     <div className="min-h-screen bg-[#0f1419] text-[#e8e6e0]" style={{ fontFamily: "'Inter', sans-serif" }}>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap" />
 
+      {/* Top utility bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2 px-8 md:px-16 py-2 text-[10px] tracking-[0.3em] uppercase border-b border-white/5 text-[#e8e6e0]/60">
+        <div className="flex items-center gap-4">
+          <span>+40 21 555 0166</span>
+          <span className="hidden md:inline">concierge@premier-imobiliare.ro</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <a className="hover:text-[#b8956a]">Off-market</a>
+          <a className="hover:text-[#b8956a]">Investiții</a>
+          <a className="hover:text-[#b8956a]">RO · EN · RU</a>
+        </div>
+      </div>
+
       <header className="flex items-center justify-between px-8 md:px-16 py-6 border-b border-white/5">
-        <div style={{ fontFamily: "'Cormorant Garamond'" }} className="text-3xl tracking-wide">Vanta<span className="text-[#b8956a]"> Estates</span></div>
+        <div style={{ fontFamily: "'Cormorant Garamond'" }} className="text-3xl tracking-wide">Premier<span className="text-[#b8956a]"> Estates</span></div>
         <nav className="hidden md:flex gap-8 text-sm">
           <a>Proprietăți</a><a>Lux</a><a>Investiții</a><a>Despre</a><a>Contact</a>
         </nav>
@@ -76,7 +89,7 @@ function RealEstateDemo() {
             ))}
           </ul>
         </div>
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&auto=format&fit=crop&q=80" alt="Concierge Vanta Estates" className="aspect-[4/5] w-full object-cover" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&auto=format&fit=crop&q=80" alt="Concierge Premier Imobiliare" className="aspect-[4/5] w-full object-cover" loading="lazy" />
       </section>
 
       <section className="px-8 md:px-16 py-24 text-center border-t border-white/5">
@@ -85,9 +98,40 @@ function RealEstateDemo() {
         <button className="mt-8 bg-[#b8956a] text-[#0f1419] px-10 py-4 text-xs tracking-[0.3em] uppercase">Solicită apel</button>
       </section>
 
-      <footer className="px-8 md:px-16 py-10 border-t border-white/5 text-xs tracking-[0.2em] uppercase text-[#e8e6e0]/50 flex flex-col md:flex-row justify-between gap-4">
-        <div>© Vanta Estates 2026</div>
-        <div>concierge@vanta-estates.ro</div>
+      <footer className="border-t border-white/5 bg-[#0f1419]">
+        <div className="px-8 md:px-16 py-14 grid md:grid-cols-4 gap-10 text-sm text-[#e8e6e0]/65">
+          <div>
+            <div style={{ fontFamily: "'Cormorant Garamond'" }} className="text-2xl tracking-wide text-[#e8e6e0]">Premier<span className="text-[#b8956a]"> Imobiliare</span></div>
+            <p className="mt-3 text-xs leading-relaxed">Agenție imobiliară premium. Selecție curatoriată de proprietăți pentru cei care înțeleg diferența.</p>
+          </div>
+          <div>
+            <div className="text-[10px] tracking-[0.3em] uppercase text-[#b8956a] mb-3">Proprietăți</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Apartamente</a></li><li><a>Vile & Case</a></li><li><a>Penthouse</a></li><li><a>Off-market</a></li><li><a>Investiții</a></li></ul>
+          </div>
+          <div>
+            <div className="text-[10px] tracking-[0.3em] uppercase text-[#b8956a] mb-3">Servicii</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Consultanță privată</a></li><li><a>Evaluare proprietate</a></li><li><a>Consultanță legală</a></li><li><a>Design interior</a></li><li><a>Mutare premium</a></li></ul>
+          </div>
+          <div>
+            <div className="text-[10px] tracking-[0.3em] uppercase text-[#b8956a] mb-3">Legal</div>
+            <ul className="space-y-1.5 text-xs">
+              <li><a>Termeni și condiții</a></li>
+              <li><a>Politica de confidențialitate</a></li>
+              <li><a>Politica de cookies</a></li>
+              <li><a>FAQ</a></li>
+              <li><a>Comisioane</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="px-8 md:px-16 py-5 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] tracking-[0.3em] uppercase text-[#e8e6e0]/45">
+          <div>© Premier Imobiliare 2026 · CUI RO67890123 · Licență ANEVAR · concierge@premier-imobiliare.ro</div>
+          <div className="flex items-center gap-4">
+            <a className="hover:text-[#b8956a]">ANPC</a>
+            <a className="hover:text-[#b8956a]">SOL</a>
+            <a className="hover:text-[#b8956a]">Instagram</a>
+            <a className="hover:text-[#b8956a]">LinkedIn</a>
+          </div>
+        </div>
       </footer>
     </div>
   );

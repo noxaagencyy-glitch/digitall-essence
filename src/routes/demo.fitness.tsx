@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/demo/fitness")({
   component: FitnessDemo,
-  head: () => ({ meta: [{ title: "Forge Athletics — Demo" }] }),
+  head: () => ({ meta: [{ title: "PowerHouse Gym — Demo" }] }),
 });
 
 function FitnessDemo() {
@@ -10,8 +10,21 @@ function FitnessDemo() {
     <div style={{ fontFamily: "'Inter', sans-serif" }} className="min-h-screen bg-[#0a0a0a] text-white">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;900&display=swap" />
 
+      {/* Top utility bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2 px-6 md:px-12 py-2 text-[11px] uppercase tracking-wider bg-[#ff3d00] text-black font-semibold">
+        <div className="flex items-center gap-4">
+          <span>🔥 7 zile gratuite — fără card</span>
+          <span className="hidden md:inline">📞 +40 264 555 022</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <a className="hover:underline">Locații</a>
+          <a className="hover:underline">Cariere</a>
+          <a className="hover:underline">RO · EN</a>
+        </div>
+      </div>
+
       <header className="flex items-center justify-between px-6 md:px-12 py-5 border-b border-white/5 sticky top-0 bg-[#0a0a0a]/90 backdrop-blur">
-        <div className="text-2xl font-black tracking-tight">FORGE<span className="text-[#ff3d00]">.</span></div>
+        <div className="text-2xl font-black tracking-tight">POWERHOUSE<span className="text-[#ff3d00]">.</span></div>
         <nav className="hidden md:flex gap-8 text-sm font-medium">
           <a>Clase</a><a>Antrenori</a><a>Abonamente</a><a>Despre</a>
         </nav>
@@ -21,7 +34,7 @@ function FitnessDemo() {
       <section className="relative px-6 md:px-12 py-20 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#ff3d00]/20 via-transparent to-transparent" />
         <div className="relative max-w-5xl">
-          <div className="text-[#ff3d00] text-sm font-bold uppercase tracking-[0.3em] mb-6">Forge Athletics · Cluj-Napoca</div>
+          <div className="text-[#ff3d00] text-sm font-bold uppercase tracking-[0.3em] mb-6">PowerHouse Gym · Cluj-Napoca</div>
           <h1 style={{ fontFamily: "'Bebas Neue', sans-serif" }} className="text-7xl md:text-[140px] leading-[0.9] tracking-tight">
             BUILD<br />THE BODY<br /><span className="text-[#ff3d00]">YOU DESERVE.</span>
           </h1>
@@ -94,14 +107,46 @@ function FitnessDemo() {
             "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=800&auto=format&fit=crop&q=80",
             "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&auto=format&fit=crop&q=80",
           ].map((src, i) => (
-            <img key={i} src={src} alt={`Forge gym ${i + 1}`} loading="lazy" className="aspect-square w-full object-cover" />
+            <img key={i} src={src} alt={`PowerHouse gym ${i + 1}`} loading="lazy" className="aspect-square w-full object-cover" />
           ))}
         </div>
       </section>
 
-      <footer className="px-6 md:px-12 py-12 border-t border-white/5 text-sm text-white/60 flex flex-col md:flex-row justify-between gap-4">
-        <div>© Forge Athletics 2026 · Cluj-Napoca</div>
-        <div className="flex gap-6"><a>IG</a><a>FB</a><a>YouTube</a></div>
+      <footer className="bg-[#0a0a0a] border-t border-white/5">
+        <div className="px-6 md:px-12 py-14 grid md:grid-cols-4 gap-10 text-sm text-white/65">
+          <div>
+            <div className="text-2xl font-black tracking-tight text-white">POWERHOUSE<span className="text-[#ff3d00]">.</span></div>
+            <p className="mt-3 text-xs leading-relaxed">Sală de fitness 24/7 în Cluj-Napoca. Echipamente Hammer Strength, antrenori certificați, comunitate solidă.</p>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-widest text-white mb-3 font-bold">Antrenament</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Clase live</a></li><li><a>Antrenori</a></li><li><a>Personal Training</a></li><li><a>Plan nutrițional</a></li></ul>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-widest text-white mb-3 font-bold">Companie</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Despre PowerHouse</a></li><li><a>Locații</a></li><li><a>Cariere</a></li><li><a>Blog</a></li><li><a>Contact</a></li></ul>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-widest text-white mb-3 font-bold">Legal</div>
+            <ul className="space-y-1.5 text-xs">
+              <li><a>Termeni și condiții</a></li>
+              <li><a>Politica de confidențialitate</a></li>
+              <li><a>Politica de cookies</a></li>
+              <li><a>FAQ</a></li>
+              <li><a>Regulament sală</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="px-6 md:px-12 py-5 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50">
+          <div>© PowerHouse Gym 2026 · Cluj-Napoca · CUI RO34567890</div>
+          <div className="flex items-center gap-4">
+            <a className="hover:text-white">ANPC</a>
+            <a className="hover:text-white">SOL</a>
+            <a className="hover:text-white">Instagram</a>
+            <a className="hover:text-white">YouTube</a>
+            <a className="hover:text-white">Facebook</a>
+          </div>
+        </div>
       </footer>
     </div>
   );

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/demo/clinic")({
   component: ClinicDemo,
-  head: () => ({ meta: [{ title: "Aurum Dental — Demo" }] }),
+  head: () => ({ meta: [{ title: "Smile Dental — Demo" }] }),
 });
 
 function ClinicDemo() {
@@ -10,10 +10,23 @@ function ClinicDemo() {
     <div className="min-h-screen bg-white text-[#0f1f2e]" style={{ fontFamily: "'Inter', sans-serif" }}>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
 
+      {/* Top utility bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2 px-6 md:px-12 py-2 text-xs bg-[#0f1f2e] text-white/80">
+        <div className="flex items-center gap-4">
+          <span>📞 +40 21 555 0199</span>
+          <span className="hidden md:inline">📍 Calea Victoriei 89, București</span>
+          <span className="hidden lg:inline">L–V 08:00–20:00 · S 09:00–14:00</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <a className="hover:text-[#c9a960]">Urgențe 24/7</a>
+          <a className="hover:text-[#c9a960]">Asigurări medicale</a>
+        </div>
+      </div>
+
       <header className="flex items-center justify-between px-6 md:px-12 py-5 border-b border-[#0f1f2e]/10">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-[#c9a960]" />
-          <div className="text-xl font-semibold">Aurum Dental</div>
+          <div className="text-xl font-semibold">Smile Dental</div>
         </div>
         <nav className="hidden md:flex gap-8 text-sm">
           <a>Servicii</a><a>Echipa</a><a>Tarife</a><a>Recenzii</a><a>Contact</a>
@@ -38,7 +51,7 @@ function ClinicDemo() {
             <div><div className="text-3xl font-bold">4.9★</div><div className="text-sm text-[#0f1f2e]/60">Google reviews</div></div>
           </div>
         </div>
-        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&auto=format&fit=crop&q=80" alt="Cabinet stomatologic Aurum" className="aspect-square w-full object-cover rounded-3xl" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&auto=format&fit=crop&q=80" alt="Cabinet stomatologic Smile" className="aspect-square w-full object-cover rounded-3xl" loading="lazy" />
       </section>
 
       <section className="px-6 md:px-12 py-20 bg-[#f5f7f9]">
@@ -90,9 +103,44 @@ function ClinicDemo() {
         <button className="mt-8 bg-[#c9a960] text-[#0f1f2e] px-8 py-4 rounded-md font-semibold">Rezervă consultație gratuită</button>
       </section>
 
-      <footer className="px-6 md:px-12 py-10 text-sm text-[#0f1f2e]/60 flex flex-col md:flex-row justify-between gap-4">
-        <div>© Aurum Dental Clinic 2026</div>
-        <div>Calea Victoriei 89 · București · +40 21 555 0199</div>
+      <footer className="bg-[#f5f7f9] border-t border-[#0f1f2e]/10">
+        <div className="px-6 md:px-12 py-14 grid md:grid-cols-4 gap-10 text-sm text-[#0f1f2e]/70">
+          <div>
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-full bg-[#c9a960]" />
+              <div className="text-lg font-semibold text-[#0f1f2e]">Smile Dental</div>
+            </div>
+            <p className="mt-3 text-xs leading-relaxed">Clinică stomatologică acreditată în Sector 1. Servicii complete pentru întreaga familie.</p>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-wider text-[#0f1f2e] font-semibold mb-3">Servicii</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Implantologie</a></li><li><a>Estetică dentară</a></li><li><a>Ortodonție Invisalign</a></li><li><a>Stomatologie pediatrică</a></li><li><a>Urgențe dentare</a></li></ul>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-wider text-[#0f1f2e] font-semibold mb-3">Pacienți</div>
+            <ul className="space-y-1.5 text-xs"><li><a>Programare online</a></li><li><a>Tarife</a></li><li><a>Asigurări medicale</a></li><li><a>Plan de tratament</a></li><li><a>Recenzii pacienți</a></li></ul>
+          </div>
+          <div>
+            <div className="text-xs uppercase tracking-wider text-[#0f1f2e] font-semibold mb-3">Legal & info</div>
+            <ul className="space-y-1.5 text-xs">
+              <li><a>Termeni și condiții</a></li>
+              <li><a>Politica de confidențialitate</a></li>
+              <li><a>GDPR pacienți</a></li>
+              <li><a>Politica de cookies</a></li>
+              <li><a>FAQ</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="px-6 md:px-12 py-5 border-t border-[#0f1f2e]/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#0f1f2e]/55">
+          <div>© Smile Dental Clinic 2026 · CUI RO23456789 · Autorizație DSP nr. 1234/2019 · Calea Victoriei 89, București</div>
+          <div className="flex items-center gap-4">
+            <a className="hover:text-[#0f1f2e]">ANPC</a>
+            <a className="hover:text-[#0f1f2e]">SOL</a>
+            <a className="hover:text-[#0f1f2e]">CMR</a>
+            <a className="hover:text-[#0f1f2e]">Facebook</a>
+            <a className="hover:text-[#0f1f2e]">Instagram</a>
+          </div>
+        </div>
       </footer>
     </div>
   );

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/demo/restaurant")({
   component: RestaurantDemo,
-  head: () => ({ meta: [{ title: "Maison Noir — Demo" }] }),
+  head: () => ({ meta: [{ title: "Trattoria 23 — Demo" }] }),
 });
 
 function RestaurantDemo() {
@@ -10,11 +10,23 @@ function RestaurantDemo() {
     <div className="min-h-screen bg-[#0d0a07] text-[#e8d9b8]" style={{ fontFamily: "'Lora', serif" }}>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700;900&family=Lora:wght@300;400;500&display=swap" />
 
+      {/* Top utility bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2 px-8 md:px-16 py-2 text-[10px] tracking-[0.3em] uppercase border-b border-[#c9a84c]/20 text-[#e8d9b8]/70">
+        <div className="flex items-center gap-4">
+          <span>Strada Lipscani 23, București</span>
+          <span className="hidden md:inline">Mar–Sâm · 19:00–23:00</span>
+        </div>
+        <div className="flex items-center gap-4">
+          <span>+40 21 555 0123</span>
+          <a className="hover:text-[#c9a84c]">RO · FR · EN</a>
+        </div>
+      </div>
+
       <header className="flex items-center justify-between px-8 md:px-16 py-6">
         <nav className="hidden md:flex gap-8 text-xs tracking-[0.3em] uppercase">
           <a>Meniu</a><a>Bucătar</a><a>Vinuri</a>
         </nav>
-        <div style={{ fontFamily: "'Playfair Display'" }} className="text-3xl tracking-wide">Maison Noir</div>
+        <div style={{ fontFamily: "'Playfair Display'" }} className="text-3xl tracking-wide">Trattoria 23</div>
         <nav className="hidden md:flex gap-8 text-xs tracking-[0.3em] uppercase">
           <a>Despre</a><a>Contact</a><a className="text-[#c9a84c]">Rezervă</a>
         </nav>
@@ -92,10 +104,40 @@ function RestaurantDemo() {
         <div className="mt-6 text-xs tracking-[0.3em] uppercase text-[#e8d9b8]/50">Ex Le Bristol Paris · 15 ani Michelin</div>
       </section>
 
-      <footer className="px-8 md:px-16 py-12 border-t border-[#c9a84c]/20 text-xs tracking-[0.3em] uppercase flex flex-col md:flex-row justify-between gap-4">
-        <div>Strada Lipscani 23, București</div>
-        <div>Mar–Sâm · 19:00–23:00</div>
-        <div>+40 21 555 0123</div>
+      <footer className="border-t border-[#c9a84c]/20">
+        <div className="px-8 md:px-16 py-14 grid md:grid-cols-4 gap-10 text-xs text-[#e8d9b8]/70">
+          <div>
+            <div style={{ fontFamily: "'Playfair Display'" }} className="text-3xl tracking-wide text-[#c9a84c]">Trattoria 23</div>
+            <p className="mt-3 leading-relaxed">Fine dining în Bucureștiul vechi. Meniu degustare semnat de Chef Antoine Renaud.</p>
+          </div>
+          <div>
+            <div className="tracking-[0.3em] uppercase text-[#c9a84c] mb-3">Restaurant</div>
+            <ul className="space-y-1.5"><li><a>Meniu</a></li><li><a>Carta de vinuri</a></li><li><a>Bucătar</a></li><li><a>Galerie</a></li><li><a>Evenimente private</a></li></ul>
+          </div>
+          <div>
+            <div className="tracking-[0.3em] uppercase text-[#c9a84c] mb-3">Vizită</div>
+            <ul className="space-y-1.5"><li>Strada Lipscani 23</li><li>București, Sector 3</li><li>+40 21 555 0123</li><li>contact@trattoria23.ro</li><li>Mar–Sâm · 19:00–23:00</li></ul>
+          </div>
+          <div>
+            <div className="tracking-[0.3em] uppercase text-[#c9a84c] mb-3">Legal</div>
+            <ul className="space-y-1.5">
+              <li><a>Termeni și condiții</a></li>
+              <li><a>Politica de confidențialitate</a></li>
+              <li><a>Politica de cookies</a></li>
+              <li><a>FAQ rezervări</a></li>
+              <li><a>Politica de anulare</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="px-8 md:px-16 py-5 border-t border-[#c9a84c]/20 flex flex-col md:flex-row items-center justify-between gap-4 text-[10px] tracking-[0.3em] uppercase text-[#e8d9b8]/50">
+          <div>© Trattoria 23 2026 · CUI RO45678901 · Reg. Com. J40/4567/2018</div>
+          <div className="flex items-center gap-4">
+            <a className="hover:text-[#c9a84c]">ANPC</a>
+            <a className="hover:text-[#c9a84c]">SOL</a>
+            <a className="hover:text-[#c9a84c]">Instagram</a>
+            <a className="hover:text-[#c9a84c]">Facebook</a>
+          </div>
+        </div>
       </footer>
     </div>
   );
