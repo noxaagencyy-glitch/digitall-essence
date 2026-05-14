@@ -136,28 +136,26 @@ export function Hero() {
           Tipuri de afaceri pentru care construim
         </div>
         <div className="mt-8 relative overflow-hidden marquee-mask">
-          <div className="flex w-max animate-marquee gap-4 py-2">
+          <div className="flex w-max animate-marquee gap-12 sm:gap-16 py-2 items-center">
             {[...INDUSTRIES, ...INDUSTRIES].map((item, i) => (
-              <div
+              <span
                 key={i}
-                className="group flex items-center gap-3 glass rounded-full px-5 py-3 whitespace-nowrap hover:ring-glow transition-all"
+                className="text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-wider text-foreground/80 whitespace-nowrap"
               >
-                <span className="h-2 w-2 rounded-full bg-gradient-noxa shadow-[0_0_10px_oklch(0.65_0.22_290_/_0.9)]" />
-                <span className="text-sm font-medium">{item}</span>
-              </div>
+                {item}
+              </span>
             ))}
           </div>
         </div>
-        <div className="mt-3 relative overflow-hidden marquee-mask">
-          <div className="flex w-max animate-marquee-reverse gap-4 py-2">
+        <div className="mt-4 relative overflow-hidden marquee-mask">
+          <div className="flex w-max animate-marquee-reverse gap-12 sm:gap-16 py-2 items-center">
             {[...INDUSTRIES_2, ...INDUSTRIES_2].map((item, i) => (
-              <div
+              <span
                 key={i}
-                className="flex items-center gap-3 glass rounded-full px-5 py-3 whitespace-nowrap hover:ring-glow transition-all"
+                className="text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-wider text-foreground/70 whitespace-nowrap"
               >
-                <span className="h-2 w-2 rounded-full bg-electric shadow-[0_0_10px_oklch(0.7_0.2_240_/_0.9)]" />
-                <span className="text-sm font-medium">{item}</span>
-              </div>
+                {item}
+              </span>
             ))}
           </div>
         </div>
