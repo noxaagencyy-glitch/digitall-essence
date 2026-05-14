@@ -140,7 +140,7 @@ export function Hero() {
             {[...INDUSTRIES, ...INDUSTRIES].map((item, i) => (
               <span
                 key={i}
-                className="text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-wider text-foreground/80 whitespace-nowrap"
+                className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-wider text-foreground/80 whitespace-nowrap"
               >
                 {item}
               </span>
@@ -152,7 +152,7 @@ export function Hero() {
             {[...INDUSTRIES_2, ...INDUSTRIES_2].map((item, i) => (
               <span
                 key={i}
-                className="text-2xl sm:text-3xl md:text-4xl font-bold uppercase tracking-wider text-foreground/70 whitespace-nowrap"
+                className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-wider text-foreground/70 whitespace-nowrap"
               >
                 {item}
               </span>
