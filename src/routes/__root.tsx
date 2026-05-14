@@ -72,14 +72,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "NOXA Agency — Premium Web Design & Digital Experiences" },
-      { name: "description", content: "NOXA Agency builds premium, high-converting websites, AI platforms and luxury digital experiences for ambitious brands." },
+      { title: "NOXA Agency" },
+      { name: "description", content: "NOXA Agency builds premium, high-converting websites." },
       { name: "author", content: "NOXA Agency" },
-      { property: "og:title", content: "NOXA Agency — Premium Web Design Studio" },
-      { property: "og:description", content: "Construim experiențe digitale moderne. Web design premium, branding și platforme AI." },
+      { property: "og:title", content: "NOXA Agency" },
+      { property: "og:description", content: "NOXA Agency builds premium, high-converting websites." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "NOXA Agency" },
+      { name: "twitter:description", content: "NOXA Agency builds premium, high-converting websites." },
     ],
     links: [
       {
