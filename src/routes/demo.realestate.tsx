@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/demo/realestate")({
   component: RealEstateDemo,
-  head: () => ({ meta: [{ title: "Vanta Estates — Demo" }] }),
+  head: () => ({ meta: [{ title: "Premier Imobiliare — Demo" }] }),
 });
 
 function RealEstateDemo() {
@@ -11,7 +11,7 @@ function RealEstateDemo() {
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500&display=swap" />
 
       <header className="flex items-center justify-between px-8 md:px-16 py-6 border-b border-white/5">
-        <div style={{ fontFamily: "'Cormorant Garamond'" }} className="text-3xl tracking-wide">Vanta<span className="text-[#b8956a]"> Estates</span></div>
+        <div style={{ fontFamily: "'Cormorant Garamond'" }} className="text-3xl tracking-wide">Premier<span className="text-[#b8956a]"> Estates</span></div>
         <nav className="hidden md:flex gap-8 text-sm">
           <a>Proprietăți</a><a>Lux</a><a>Investiții</a><a>Despre</a><a>Contact</a>
         </nav>
@@ -76,7 +76,7 @@ function RealEstateDemo() {
             ))}
           </ul>
         </div>
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&auto=format&fit=crop&q=80" alt="Concierge Vanta Estates" className="aspect-[4/5] w-full object-cover" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&auto=format&fit=crop&q=80" alt="Concierge Premier Imobiliare" className="aspect-[4/5] w-full object-cover" loading="lazy" />
       </section>
 
       <section className="px-8 md:px-16 py-24 text-center border-t border-white/5">
@@ -86,8 +86,8 @@ function RealEstateDemo() {
       </section>
 
       <footer className="px-8 md:px-16 py-10 border-t border-white/5 text-xs tracking-[0.2em] uppercase text-[#e8e6e0]/50 flex flex-col md:flex-row justify-between gap-4">
-        <div>© Vanta Estates 2026</div>
-        <div>concierge@vanta-estates.ro</div>
+        <div>© Premier Imobiliare 2026</div>
+        <div>concierge@premier-imobiliare.ro</div>
       </footer>
     </div>
   );

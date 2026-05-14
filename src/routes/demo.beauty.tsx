@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/demo/beauty")({
   component: BeautyDemo,
-  head: () => ({ meta: [{ title: "Lumière Beauty — Demo" }] }),
+  head: () => ({ meta: [{ title: "Bella Hair Studio — Demo" }] }),
 });
 
 function BeautyDemo() {
@@ -12,7 +12,7 @@ function BeautyDemo() {
 
       {/* Nav */}
       <header className="flex items-center justify-between px-8 md:px-16 py-6 border-b border-[#2a1d17]/10">
-        <div className="text-2xl tracking-[0.3em]">LUMIÈRE</div>
+        <div className="text-2xl tracking-[0.3em]">BELLA</div>
         <nav className="hidden md:flex gap-8 text-sm" style={{ fontFamily: "Inter, sans-serif" }}>
           <a>Servicii</a><a>Echipa</a><a>Galerie</a><a>Contact</a>
         </nav>
@@ -30,7 +30,7 @@ function BeautyDemo() {
             <button className="px-6 py-3 text-xs tracking-[0.2em] uppercase border border-[#2a1d17]/30">Vezi servicii</button>
           </div>
         </div>
-        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&auto=format&fit=crop&q=80" alt="Salon Lumière" className="aspect-[4/5] w-full object-cover rounded-sm" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=900&auto=format&fit=crop&q=80" alt="Salon Bella" className="aspect-[4/5] w-full object-cover rounded-sm" loading="lazy" />
       </section>
 
       {/* Services */}
@@ -63,13 +63,13 @@ function BeautyDemo() {
 
       {/* CTA */}
       <section className="px-8 md:px-16 py-24 bg-[#2a1d17] text-[#f8f1ea] text-center">
-        <h2 className="text-4xl md:text-5xl font-light">Programează-te la Lumière</h2>
+        <h2 className="text-4xl md:text-5xl font-light">Programează-te la Bella</h2>
         <p className="mt-4 max-w-xl mx-auto text-[#f8f1ea]/70" style={{ fontFamily: "Inter" }}>Disponibil de luni până sâmbătă, între 09:00 și 20:00.</p>
         <button className="mt-8 bg-[#f8f1ea] text-[#2a1d17] px-8 py-4 text-xs tracking-[0.2em] uppercase" style={{ fontFamily: "Inter" }}>Rezervă o programare</button>
       </section>
 
       <footer className="px-8 md:px-16 py-10 text-xs tracking-[0.2em] uppercase flex flex-col md:flex-row justify-between gap-4 border-t border-[#2a1d17]/10" style={{ fontFamily: "Inter" }}>
-        <div>© Lumière Beauty 2026</div>
+        <div>© Bella Hair Studio 2026</div>
         <div className="flex gap-6"><a>Instagram</a><a>Facebook</a><a>TikTok</a></div>
       </footer>
     </div>

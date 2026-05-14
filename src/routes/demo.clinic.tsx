@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/demo/clinic")({
   component: ClinicDemo,
-  head: () => ({ meta: [{ title: "Aurum Dental — Demo" }] }),
+  head: () => ({ meta: [{ title: "Smile Dental — Demo" }] }),
 });
 
 function ClinicDemo() {
@@ -13,7 +13,7 @@ function ClinicDemo() {
       <header className="flex items-center justify-between px-6 md:px-12 py-5 border-b border-[#0f1f2e]/10">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-[#c9a960]" />
-          <div className="text-xl font-semibold">Aurum Dental</div>
+          <div className="text-xl font-semibold">Smile Dental</div>
         </div>
         <nav className="hidden md:flex gap-8 text-sm">
           <a>Servicii</a><a>Echipa</a><a>Tarife</a><a>Recenzii</a><a>Contact</a>
@@ -38,7 +38,7 @@ function ClinicDemo() {
             <div><div className="text-3xl font-bold">4.9★</div><div className="text-sm text-[#0f1f2e]/60">Google reviews</div></div>
           </div>
         </div>
-        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&auto=format&fit=crop&q=80" alt="Cabinet stomatologic Aurum" className="aspect-square w-full object-cover rounded-3xl" loading="lazy" />
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&auto=format&fit=crop&q=80" alt="Cabinet stomatologic Smile" className="aspect-square w-full object-cover rounded-3xl" loading="lazy" />
       </section>
 
       <section className="px-6 md:px-12 py-20 bg-[#f5f7f9]">
@@ -91,7 +91,7 @@ function ClinicDemo() {
       </section>
 
       <footer className="px-6 md:px-12 py-10 text-sm text-[#0f1f2e]/60 flex flex-col md:flex-row justify-between gap-4">
-        <div>© Aurum Dental Clinic 2026</div>
+        <div>© Smile Dental Clinic 2026</div>
         <div>Calea Victoriei 89 · București · +40 21 555 0199</div>
       </footer>
     </div>

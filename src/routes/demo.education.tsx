@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/demo/education")({
   component: EducationDemo,
-  head: () => ({ meta: [{ title: "Lumen Academy — Demo" }] }),
+  head: () => ({ meta: [{ title: "Codify Academy — Demo" }] }),
 });
 
 function EducationDemo() {
@@ -11,7 +11,7 @@ function EducationDemo() {
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" />
 
       <header className="flex items-center justify-between px-6 md:px-12 py-5">
-        <div style={{ fontFamily: "'Space Grotesk'" }} className="text-2xl font-bold">lumen<span className="text-[#6d4ee8]">.</span></div>
+        <div style={{ fontFamily: "'Space Grotesk'" }} className="text-2xl font-bold">codify<span className="text-[#6d4ee8]">.</span></div>
         <nav className="hidden md:flex gap-8 text-sm font-medium">
           <a>Cursuri</a><a>Bootcamp</a><a>Mentori</a><a>Pentru companii</a>
         </nav>
@@ -81,7 +81,7 @@ function EducationDemo() {
       </section>
 
       <footer className="px-6 md:px-12 py-10 border-t border-[#1a1a2e]/10 text-sm text-[#1a1a2e]/60 flex flex-col md:flex-row justify-between gap-4">
-        <div>© Lumen Academy 2026</div>
+        <div>© Codify Academy 2026</div>
         <div className="flex gap-6"><a>LinkedIn</a><a>YouTube</a><a>Discord</a></div>
       </footer>
     </div>

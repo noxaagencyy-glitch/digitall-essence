@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/demo/restaurant")({
   component: RestaurantDemo,
-  head: () => ({ meta: [{ title: "Maison Noir — Demo" }] }),
+  head: () => ({ meta: [{ title: "Trattoria 23 — Demo" }] }),
 });
 
 function RestaurantDemo() {
@@ -14,7 +14,7 @@ function RestaurantDemo() {
         <nav className="hidden md:flex gap-8 text-xs tracking-[0.3em] uppercase">
           <a>Meniu</a><a>Bucătar</a><a>Vinuri</a>
         </nav>
-        <div style={{ fontFamily: "'Playfair Display'" }} className="text-3xl tracking-wide">Maison Noir</div>
+        <div style={{ fontFamily: "'Playfair Display'" }} className="text-3xl tracking-wide">Trattoria 23</div>
         <nav className="hidden md:flex gap-8 text-xs tracking-[0.3em] uppercase">
           <a>Despre</a><a>Contact</a><a className="text-[#c9a84c]">Rezervă</a>
         </nav>
