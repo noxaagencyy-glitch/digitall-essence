@@ -81,6 +81,24 @@ function FitnessDemo() {
         </div>
       </section>
 
+      <section className="px-6 md:px-12 py-24 bg-[#0a0a0a]">
+        <h2 style={{ fontFamily: "'Bebas Neue'" }} className="text-5xl md:text-7xl mb-12">SALA</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {[
+            "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=800&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1605296867424-35fc25c9212a?w=800&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=800&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&auto=format&fit=crop&q=80",
+          ].map((src, i) => (
+            <img key={i} src={src} alt={`Forge gym ${i + 1}`} loading="lazy" className="aspect-square w-full object-cover" />
+          ))}
+        </div>
+      </section>
+
       <footer className="px-6 md:px-12 py-12 border-t border-white/5 text-sm text-white/60 flex flex-col md:flex-row justify-between gap-4">
         <div>© Forge Athletics 2026 · Cluj-Napoca</div>
         <div className="flex gap-6"><a>IG</a><a>FB</a><a>YouTube</a></div>

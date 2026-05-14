@@ -44,13 +44,13 @@ function RealEstateDemo() {
 
         <div className="grid md:grid-cols-2 gap-px bg-white/5">
           {[
-            { name: "Penthouse Floreasca", loc: "București · Sector 1", price: "€1.480.000", spec: "320 m² · 4 cam · terasă 90m²", grad: "from-[#3a4a5e] to-[#1a2129]" },
-            { name: "Vila Cotroceni", loc: "București · Cotroceni", price: "€2.200.000", spec: "550 m² · 6 cam · grădină 800m²", grad: "from-[#5e4a3a] to-[#2a1f15]" },
-            { name: "Apartament Herăstrău", loc: "București · Herăstrău", price: "€890.000", spec: "180 m² · 3 cam · vedere lac", grad: "from-[#3a5e5a] to-[#152a27]" },
-            { name: "Casa Poiana Brașov", loc: "Brașov · Poiana", price: "€1.650.000", spec: "420 m² · 5 cam · vedere munte", grad: "from-[#4a3a5e] to-[#1f152a]" },
+            { name: "Penthouse Floreasca", loc: "București · Sector 1", price: "€1.480.000", spec: "320 m² · 4 cam · terasă 90m²", photo: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&auto=format&fit=crop&q=80" },
+            { name: "Vila Cotroceni", loc: "București · Cotroceni", price: "€2.200.000", spec: "550 m² · 6 cam · grădină 800m²", photo: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&auto=format&fit=crop&q=80" },
+            { name: "Apartament Herăstrău", loc: "București · Herăstrău", price: "€890.000", spec: "180 m² · 3 cam · vedere lac", photo: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&auto=format&fit=crop&q=80" },
+            { name: "Casa Poiana Brașov", loc: "Brașov · Poiana", price: "€1.650.000", spec: "420 m² · 5 cam · vedere munte", photo: "https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=1200&auto=format&fit=crop&q=80" },
           ].map((p) => (
             <div key={p.name} className="bg-[#0f1419] p-6">
-              <div className={`aspect-[16/10] bg-gradient-to-br ${p.grad}`} />
+              <img src={p.photo} alt={p.name} className="aspect-[16/10] w-full object-cover" loading="lazy" />
               <div className="mt-6 flex items-start justify-between">
                 <div>
                   <div className="text-xs tracking-[0.3em] uppercase text-[#b8956a]">{p.loc}</div>
@@ -76,7 +76,7 @@ function RealEstateDemo() {
             ))}
           </ul>
         </div>
-        <div className="aspect-[4/5] bg-gradient-to-br from-[#3a4a5e] to-[#1a2129]" />
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&auto=format&fit=crop&q=80" alt="Concierge Vanta Estates" className="aspect-[4/5] w-full object-cover" loading="lazy" />
       </section>
 
       <section className="px-8 md:px-16 py-24 text-center border-t border-white/5">

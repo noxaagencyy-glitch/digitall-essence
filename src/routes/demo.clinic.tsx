@@ -38,7 +38,7 @@ function ClinicDemo() {
             <div><div className="text-3xl font-bold">4.9★</div><div className="text-sm text-[#0f1f2e]/60">Google reviews</div></div>
           </div>
         </div>
-        <div className="aspect-square rounded-3xl bg-gradient-to-br from-[#e8efe8] to-[#c9d8e0]" />
+        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=900&auto=format&fit=crop&q=80" alt="Cabinet stomatologic Aurum" className="aspect-square w-full object-cover rounded-3xl" loading="lazy" />
       </section>
 
       <section className="px-6 md:px-12 py-20 bg-[#f5f7f9]">
@@ -71,12 +71,12 @@ function ClinicDemo() {
         </div>
         <div className="mt-14 grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {[
-            { name: "Dr. Andrei Popescu", spec: "Implantologie · Chirurgie orală" },
-            { name: "Dr. Ioana Marinescu", spec: "Estetică dentară · Fațete" },
-            { name: "Dr. Mihai Stoica", spec: "Ortodonție · Invisalign" },
+            { name: "Dr. Andrei Popescu", spec: "Implantologie · Chirurgie orală", photo: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&auto=format&fit=crop&q=80" },
+            { name: "Dr. Ioana Marinescu", spec: "Estetică dentară · Fațete", photo: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&auto=format&fit=crop&q=80" },
+            { name: "Dr. Mihai Stoica", spec: "Ortodonție · Invisalign", photo: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=600&auto=format&fit=crop&q=80" },
           ].map((m) => (
             <div key={m.name} className="text-center">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-[#e8efe8] to-[#c9d8e0]" />
+              <img src={m.photo} alt={m.name} className="aspect-square w-full object-cover rounded-2xl" loading="lazy" />
               <div className="mt-4 font-semibold text-lg">{m.name}</div>
               <div className="text-sm text-[#0f1f2e]/60">{m.spec}</div>
             </div>

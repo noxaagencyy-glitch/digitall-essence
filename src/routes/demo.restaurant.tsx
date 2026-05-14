@@ -20,13 +20,17 @@ function RestaurantDemo() {
         </nav>
       </header>
 
-      <section className="relative px-8 md:px-16 py-32 md:py-48 text-center">
-        <div className="text-xs tracking-[0.5em] uppercase text-[#c9a84c]">Fine Dining · Bucureștii Vechi</div>
-        <h1 style={{ fontFamily: "'Playfair Display'" }} className="mt-8 text-6xl md:text-9xl font-light italic leading-[1]">L'art de vivre,<br />redéfini.</h1>
-        <p className="mt-10 max-w-xl mx-auto text-lg text-[#e8d9b8]/70 leading-relaxed">Un meniu degustare în 9 acte, semnat de Chef Antoine Renaud. O călătorie culinară între tradiția franceză și ingredientele românești de sezon.</p>
-        <div className="mt-12 flex justify-center gap-6">
-          <button className="bg-[#c9a84c] text-[#0d0a07] px-8 py-4 text-xs tracking-[0.3em] uppercase">Rezervă o masă</button>
-          <button className="border border-[#c9a84c]/40 px-8 py-4 text-xs tracking-[0.3em] uppercase">Vezi meniul</button>
+      <section className="relative px-8 md:px-16 py-32 md:py-48 text-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&auto=format&fit=crop&q=80" alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover opacity-25" loading="lazy" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0d0a07] via-[#0d0a07]/60 to-[#0d0a07]" />
+        <div className="relative">
+          <div className="text-xs tracking-[0.5em] uppercase text-[#c9a84c]">Fine Dining · Bucureștii Vechi</div>
+          <h1 style={{ fontFamily: "'Playfair Display'" }} className="mt-8 text-6xl md:text-9xl font-light italic leading-[1]">L'art de vivre,<br />redéfini.</h1>
+          <p className="mt-10 max-w-xl mx-auto text-lg text-[#e8d9b8]/70 leading-relaxed">Un meniu degustare în 9 acte, semnat de Chef Antoine Renaud. O călătorie culinară între tradiția franceză și ingredientele românești de sezon.</p>
+          <div className="mt-12 flex justify-center gap-6">
+            <button className="bg-[#c9a84c] text-[#0d0a07] px-8 py-4 text-xs tracking-[0.3em] uppercase">Rezervă o masă</button>
+            <button className="border border-[#c9a84c]/40 px-8 py-4 text-xs tracking-[0.3em] uppercase">Vezi meniul</button>
+          </div>
         </div>
       </section>
 
@@ -59,6 +63,25 @@ function RestaurantDemo() {
         <div className="mt-16 text-center">
           <div style={{ fontFamily: "'Playfair Display'" }} className="text-4xl italic">480 lei <span className="text-base">/ persoană</span></div>
           <div className="text-xs tracking-[0.3em] uppercase text-[#e8d9b8]/50 mt-2">Pairing vinuri opțional · +260 lei</div>
+        </div>
+      </section>
+
+      <section className="px-8 md:px-16 py-24 border-t border-[#c9a84c]/20">
+        <div className="text-center text-xs tracking-[0.5em] uppercase text-[#c9a84c]">Galerie</div>
+        <h2 style={{ fontFamily: "'Playfair Display'" }} className="mt-6 text-center text-5xl italic font-light mb-16">Momente din bucătărie</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          {[
+            "https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1532980400857-e8d9d275d858?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&auto=format&fit=crop&q=80",
+            "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&auto=format&fit=crop&q=80",
+          ].map((src, i) => (
+            <img key={i} src={src} alt={`Preparat ${i + 1}`} loading="lazy" className="aspect-square w-full object-cover" />
+          ))}
         </div>
       </section>
 
