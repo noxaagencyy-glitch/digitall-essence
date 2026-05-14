@@ -251,11 +251,12 @@ export function Portfolio() {
               </div>
 
               <div className="max-h-[80vh] overflow-y-auto">
-                <div className="bg-black/40">
-                  <img
-                    src={active.image}
-                    alt={`${active.title} — preview complet`}
-                    className="w-full h-auto block"
+                <div className="bg-black/40 h-[70vh]">
+                  <iframe
+                    src={active.demoUrl}
+                    title={`${active.title} — demo live`}
+                    className="w-full h-full border-0 block bg-white"
+                    loading="lazy"
                   />
                 </div>
 
