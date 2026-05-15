@@ -1,80 +1,66 @@
-import { Mail, MessageCircle, Send, Check } from "lucide-react";
-import { useState } from "react";
+import { Mail, MessageCircle, ArrowUpRight, Sparkles } from "lucide-react";
 import { SectionHeader } from "./Services";
+import { SERVICES } from "./StartProjectDialog";
 
-const SERVICES = [
-  "Website de prezentare",
-  "Magazin online",
-  "Landing page",
-  "Branding & identitate vizuală",
-  "Redesign website",
-  
-  "SEO & optimizare",
-  "Altceva",
-];
+function openStartDialog(services?: string[]) {
+  window.dispatchEvent(
+    new CustomEvent("noxa:open-start", { detail: { services: services ?? [] } }),
+  );
+}
 
 export function Contact() {
-  const [sent, setSent] = useState(false);
-  const [selected, setSelected] = useState<string[]>([]);
-
-  const toggle = (s: string) =>
-    setSelected((prev) => (prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]));
-
   return (
     <section id="contact" className="relative py-24 sm:py-32">
-      <SectionHeader eyebrow="Contact" title="Hai să-ți creștem afacerea online" subtitle="Primești o ofertă personalizată, gratuită, în maxim 24h. Fără obligații." />
+      <SectionHeader eyebrow="Contact" title="Hai să-ți creștem afacerea online" />
 
       <div className="mx-auto max-w-5xl px-6 mt-14 grid grid-cols-1 lg:grid-cols-5 gap-6">
-        <div className="lg:col-span-3 glass-strong rounded-3xl p-6 sm:p-8">
-          <form
-            onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4"
-          >
-            <Field label="Nume" name="name" />
-            <Field label="Email" type="email" name="email" />
-            <Field label="Telefon" name="phone" type="tel" optional />
-            <Field label="Companie" name="company" optional />
+        {/* Left: CTA card */}
+        <div className="lg:col-span-3 relative glass-strong rounded-3xl p-8 sm:p-10 overflow-hidden">
+          <div className="absolute -top-24 -left-24 w-[360px] h-[360px] rounded-full bg-gradient-noxa opacity-30 blur-[100px] pointer-events-none" />
+          <div className="absolute -bottom-24 -right-24 w-[360px] h-[360px] rounded-full bg-accent/30 blur-[100px] pointer-events-none" />
 
-            <div className="sm:col-span-2">
-              <label className="text-xs uppercase tracking-widest text-muted-foreground">
-                Alege unul sau mai multe servicii
-              </label>
+          <div className="relative">
+            <div className="inline-flex items-center gap-2 glass rounded-full px-3 py-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              <Sparkles className="h-3.5 w-3.5 text-accent" />
+              Răspuns în 24h
+            </div>
+
+            <h3 className="mt-5 text-3xl sm:text-4xl font-semibold tracking-tight">
+              Spune-ne <span className="text-gradient">ce ai în plan</span>
+            </h3>
+            <p className="mt-3 text-sm sm:text-base text-muted-foreground max-w-md">
+              Configurezi totul în câțiva pași — alegi serviciul, bugetul și timeline-ul, iar noi îți răspundem cu o ofertă personalizată.
+            </p>
+
+            <div className="mt-6">
+              <div className="text-xs uppercase tracking-widest text-muted-foreground">
+                Sau alege direct un serviciu
+              </div>
               <div className="mt-3 flex flex-wrap gap-2">
-                {SERVICES.map((s) => {
-                  const active = selected.includes(s);
-                  return (
-                    <button
-                      type="button"
-                      key={s}
-                      onClick={() => toggle(s)}
-                      className={
-                        "inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs border transition-all " +
-                        (active
-                          ? "bg-foreground text-background border-foreground"
-                          : "glass border-white/10 text-muted-foreground hover:text-foreground hover:border-white/30")
-                      }
-                    >
-                      {active && <Check className="h-3 w-3" />}
-                      {s}
-                    </button>
-                  );
-                })}
+                {SERVICES.map(({ id, label, Icon }) => (
+                  <button
+                    key={id}
+                    onClick={() => openStartDialog([id])}
+                    className="inline-flex items-center gap-2 rounded-full glass border border-white/10 px-3.5 py-2 text-xs text-muted-foreground hover:text-foreground hover:border-white/30 transition-all"
+                  >
+                    <Icon className="h-3.5 w-3.5" />
+                    {label}
+                  </button>
+                ))}
               </div>
             </div>
 
-            <div className="sm:col-span-2">
-              <label className="text-xs uppercase tracking-widest text-muted-foreground">Despre proiect</label>
-              <textarea rows={5} className="mt-2 w-full rounded-2xl glass px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50" placeholder="Câteva detalii..." />
-            </div>
-            <div className="sm:col-span-2 flex items-center justify-between gap-3 mt-2">
-              <p className="text-xs text-muted-foreground">Trimițând, ești de acord cu politica noastră.</p>
-              <button className="inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-5 py-3 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform">
-                {sent ? "Mesaj trimis ✓" : "Solicită oferta gratuită"} <Send className="h-4 w-4" />
-              </button>
-            </div>
-          </form>
+            <button
+              onClick={() => openStartDialog()}
+              className="group mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-6 py-3.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform"
+            >
+              Începe acum cererea de ofertă
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </button>
+          </div>
         </div>
 
+        {/* Right: contact options */}
         <div className="lg:col-span-2 space-y-4">
           <a href="mailto:hello@noxa.agency" className="flex items-center gap-4 glass rounded-3xl p-5 hover:ring-glow transition-all">
             <div className="h-11 w-11 rounded-2xl bg-gradient-noxa flex items-center justify-center"><Mail className="h-5 w-5 text-white" /></div>
@@ -110,22 +96,5 @@ export function Contact() {
         <MessageCircle className="h-6 w-6 text-white" />
       </a>
     </section>
-  );
-}
-
-function Field({ label, name, type = "text", optional = false }: { label: string; name: string; type?: string; optional?: boolean }) {
-  return (
-    <div>
-      <label className="text-xs uppercase tracking-widest text-muted-foreground flex items-center gap-2">
-        {label}
-        {optional && <span className="normal-case tracking-normal text-[10px] text-muted-foreground/70">(opțional)</span>}
-      </label>
-      <input
-        type={type}
-        name={name}
-        className="mt-2 w-full rounded-2xl glass px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
-        placeholder={label}
-      />
-    </div>
   );
 }
