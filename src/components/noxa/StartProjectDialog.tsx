@@ -188,6 +188,7 @@ export function StartProjectDialog({
                           </button>
                         ))}
                       </div>
+                      {errors.budget && <FieldError msg={errors.budget} />}
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold tracking-tight">Când vrei să începem?</h3>
