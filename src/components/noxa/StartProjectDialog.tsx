@@ -358,5 +358,3 @@ function FieldError({ msg }: { msg: string }) {
     </div>
   );
 }
-
-}
