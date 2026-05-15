@@ -162,6 +162,8 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      <StartProjectDialog open={openStart} onOpenChange={setOpenStart} />
     </section>
   );
 }
