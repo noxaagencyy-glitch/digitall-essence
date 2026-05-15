@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { ArrowLeft, ArrowRight, Check, Sparkles, Send, Globe, ShoppingBag, Layout, Palette, RefreshCcw, MoreHorizontal } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Sparkles, Send, Globe, ShoppingBag, Layout, Palette, RefreshCcw, MoreHorizontal, AlertCircle } from "lucide-react";
 
-const SERVICES = [
+export const SERVICES = [
   { id: "site", label: "Website prezentare", Icon: Globe },
   { id: "shop", label: "Magazin online", Icon: ShoppingBag },
   { id: "landing", label: "Landing page", Icon: Layout },
@@ -11,27 +11,63 @@ const SERVICES = [
   { id: "other", label: "Altceva", Icon: MoreHorizontal },
 ];
 
-const BUDGETS = ["< €1.000", "€1.000 – €3.000", "€3.000 – €7.000", "€7.000+"];
+const BUDGETS = ["< €500", "€500 – €1.000", "€1.000 – €3.000", "€3.000 – €7.000", "€7.000+"];
 const TIMELINES = ["Cât mai repede", "În 2-4 săptămâni", "1-2 luni", "Sunt flexibil"];
 
 const STEPS = ["Servicii", "Buget & timeline", "Despre tine", "Trimite"];
 
-export function StartProjectDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (o: boolean) => void }) {
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+type Errors = Partial<Record<"services" | "budget" | "timeline" | "name" | "email", string>>;
+
+export function StartProjectDialog({
+  open,
+  onOpenChange,
+  initialServices,
+}: {
+  open: boolean;
+  onOpenChange: (o: boolean) => void;
+  initialServices?: string[];
+}) {
   const [step, setStep] = useState(0);
   const [services, setServices] = useState<string[]>([]);
   const [budget, setBudget] = useState<string>("");
   const [timeline, setTimeline] = useState<string>("");
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", message: "" });
+  const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
 
-  const toggleService = (id: string) =>
-    setServices((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]));
+  useEffect(() => {
+    if (open && initialServices && initialServices.length > 0) {
+      setServices((prev) => Array.from(new Set([...prev, ...initialServices])));
+    }
+  }, [open, initialServices]);
 
-  const canNext =
-    (step === 0 && services.length > 0) ||
-    (step === 1 && budget && timeline) ||
-    (step === 2 && form.name && form.email) ||
-    step === 3;
+  const toggleService = (id: string) => {
+    setServices((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]));
+    setErrors((e) => ({ ...e, services: undefined }));
+  };
+
+  const validateStep = (s: number): Errors => {
+    const e: Errors = {};
+    if (s === 0 && services.length === 0) e.services = "Alege cel puțin un serviciu";
+    if (s === 1) {
+      if (!budget) e.budget = "Selectează un buget estimativ";
+      if (!timeline) e.timeline = "Selectează un timeline";
+    }
+    if (s === 2) {
+      if (!form.name.trim()) e.name = "Numele este obligatoriu";
+      if (!form.email.trim()) e.email = "Email-ul este obligatoriu";
+      else if (!EMAIL_RE.test(form.email.trim())) e.email = "Email invalid";
+    }
+    return e;
+  };
+
+  const tryNext = () => {
+    const e = validateStep(step);
+    setErrors(e);
+    if (Object.keys(e).length === 0) setStep((s) => s + 1);
+  };
 
   const reset = () => {
     setStep(0);
@@ -39,10 +75,13 @@ export function StartProjectDialog({ open, onOpenChange }: { open: boolean; onOp
     setBudget("");
     setTimeline("");
     setForm({ name: "", email: "", phone: "", company: "", message: "" });
+    setErrors({});
     setSent(false);
   };
 
-  const submit = () => setSent(true);
+  const submit = () => {
+    setSent(true);
+  };
 
   return (
     <Dialog
@@ -124,6 +163,7 @@ export function StartProjectDialog({ open, onOpenChange }: { open: boolean; onOp
                         );
                       })}
                     </div>
+                    {errors.services && <FieldError msg={errors.services} />}
                   </div>
                 )}
 
@@ -148,6 +188,7 @@ export function StartProjectDialog({ open, onOpenChange }: { open: boolean; onOp
                           </button>
                         ))}
                       </div>
+                      {errors.budget && <FieldError msg={errors.budget} />}
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold tracking-tight">Când vrei să începem?</h3>
@@ -167,6 +208,7 @@ export function StartProjectDialog({ open, onOpenChange }: { open: boolean; onOp
                           </button>
                         ))}
                       </div>
+                      {errors.timeline && <FieldError msg={errors.timeline} />}
                     </div>
                   </div>
                 )}
@@ -176,8 +218,8 @@ export function StartProjectDialog({ open, onOpenChange }: { open: boolean; onOp
                     <h2 className="text-2xl font-semibold tracking-tight">Despre tine</h2>
                     <p className="mt-1 text-sm text-muted-foreground">Te contactăm în maxim 24h cu o propunere.</p>
                     <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <Input label="Nume" value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
-                      <Input label="Email" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} />
+                      <Input label="Nume" value={form.name} onChange={(v) => setForm({ ...form, name: v })} error={errors.name} />
+                      <Input label="Email" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} error={errors.email} />
                       <Input label="Telefon" type="tel" optional value={form.phone} onChange={(v) => setForm({ ...form, phone: v })} />
                       <Input label="Companie" optional value={form.company} onChange={(v) => setForm({ ...form, company: v })} />
                       <div className="sm:col-span-2">
@@ -223,9 +265,8 @@ export function StartProjectDialog({ open, onOpenChange }: { open: boolean; onOp
                 </button>
                 {step < STEPS.length - 1 ? (
                   <button
-                    onClick={() => canNext && setStep((s) => s + 1)}
-                    disabled={!canNext}
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-5 py-2.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform disabled:opacity-40 disabled:pointer-events-none disabled:hover:scale-100"
+                    onClick={tryNext}
+                    className="inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-5 py-2.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform"
                   >
                     Continuă <ArrowRight className="h-4 w-4" />
                   </button>
@@ -270,12 +311,14 @@ function Input({
   onChange,
   type = "text",
   optional = false,
+  error,
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
   type?: string;
   optional?: boolean;
+  error?: string;
 }) {
   return (
     <div>
@@ -288,8 +331,12 @@ function Input({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={label}
-        className="mt-2 w-full rounded-2xl glass px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
+        className={
+          "mt-2 w-full rounded-2xl glass px-4 py-3 text-sm focus:outline-none focus:ring-2 transition-all " +
+          (error ? "ring-1 ring-red-500/60 focus:ring-red-500/60" : "focus:ring-accent/50")
+        }
       />
+      {error && <FieldError msg={error} />}
     </div>
   );
 }
@@ -299,6 +346,15 @@ function Summary({ label, value }: { label: string; value: string }) {
     <div className="glass rounded-2xl px-4 py-3">
       <div className="text-[10px] uppercase tracking-widest text-muted-foreground">{label}</div>
       <div className="mt-1 text-sm">{value || "—"}</div>
+    </div>
+  );
+}
+
+function FieldError({ msg }: { msg: string }) {
+  return (
+    <div className="mt-2 flex items-center gap-1.5 text-xs text-red-400 animate-fade-in">
+      <AlertCircle className="h-3.5 w-3.5" />
+      {msg}
     </div>
   );
 }
