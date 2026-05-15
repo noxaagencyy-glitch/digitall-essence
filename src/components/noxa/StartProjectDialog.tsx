@@ -163,6 +163,7 @@ export function StartProjectDialog({
                         );
                       })}
                     </div>
+                    {errors.services && <FieldError msg={errors.services} />}
                   </div>
                 )}
 
