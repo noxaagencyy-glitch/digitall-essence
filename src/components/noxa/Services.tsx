@@ -1,4 +1,4 @@
-import { Brush, Layout, RefreshCcw, Sparkles, Cpu, Crown, ShoppingBag, MoreHorizontal } from "lucide-react";
+import { Brush, Layout, RefreshCcw, Sparkles, Crown, ShoppingBag, MoreHorizontal } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 const services = [
@@ -6,7 +6,7 @@ const services = [
   { icon: Layout, title: "Landing Pages", desc: "Pagini optimizate pentru conversii reale și lansări." },
   { icon: RefreshCcw, title: "Redesign Website", desc: "Transformăm site-uri vechi în experiențe moderne." },
   { icon: Sparkles, title: "Branding", desc: "Identitate vizuală coerentă, modernă, memorabilă." },
-  { icon: Cpu, title: "Website-uri AI", desc: "Integrăm AI nativ în produsele tale digitale." },
+  
   { icon: Crown, title: "Platforme Premium", desc: "SaaS, dashboards, platforme luxury la cheie." },
   { icon: ShoppingBag, title: "Magazine Online", desc: "E-commerce premium, rapid și optimizat." },
   { icon: MoreHorizontal, title: "Și multe altele", desc: "SEO, copywriting, automatizări, mentenanță, integrări API, blog, newsletter, sisteme rezervări — orice are nevoie brand-ul tău." },
