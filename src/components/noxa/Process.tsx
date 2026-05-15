@@ -43,7 +43,7 @@ export function Process() {
   const activeFloat = progress * steps.length;
 
   return (
-    <section id="proces" className="relative py-24 sm:py-32 overflow-hidden">
+    <section id="proces" className="relative py-24 sm:py-32 overflow-clip">
       <SectionHeader eyebrow="Proces" title="Cum lucrăm — clar și predictibil" />
 
       {/* Parallax glow */}
