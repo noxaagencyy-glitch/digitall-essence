@@ -291,14 +291,18 @@ export function Portfolio() {
             className="group relative rounded-3xl overflow-hidden glass-strong p-3 text-left transition-transform duration-500 hover:-translate-y-1"
           >
             <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-black/40">
-              <img
-                src={it.image}
-                alt={`Site ${it.title} — ${it.tag}`}
-                loading="lazy"
-                width={1280}
-                height={800}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-              />
+              <div className="absolute inset-0 overflow-hidden pointer-events-none transition-transform duration-[1200ms] ease-out group-hover:scale-105">
+                <iframe
+                  src={it.demoUrl}
+                  title={`Preview ${it.title}`}
+                  loading="lazy"
+                  scrolling="no"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  className="absolute top-0 left-0 origin-top-left border-0"
+                  style={{ width: "250%", height: "250%", transform: "scale(0.4)" }}
+                />
+              </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/0 to-black/0" />
 
               <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full glass-strong px-2.5 py-1 text-[11px]">
