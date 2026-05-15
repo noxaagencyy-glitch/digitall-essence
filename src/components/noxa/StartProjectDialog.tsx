@@ -208,6 +208,7 @@ export function StartProjectDialog({
                           </button>
                         ))}
                       </div>
+                      {errors.timeline && <FieldError msg={errors.timeline} />}
                     </div>
                   </div>
                 )}
