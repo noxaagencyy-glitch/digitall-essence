@@ -218,8 +218,8 @@ export function StartProjectDialog({
                     <h2 className="text-2xl font-semibold tracking-tight">Despre tine</h2>
                     <p className="mt-1 text-sm text-muted-foreground">Te contactăm în maxim 24h cu o propunere.</p>
                     <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <Input label="Nume" value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
-                      <Input label="Email" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} />
+                      <Input label="Nume" value={form.name} onChange={(v) => setForm({ ...form, name: v })} error={errors.name} />
+                      <Input label="Email" type="email" value={form.email} onChange={(v) => setForm({ ...form, email: v })} error={errors.email} />
                       <Input label="Telefon" type="tel" optional value={form.phone} onChange={(v) => setForm({ ...form, phone: v })} />
                       <Input label="Companie" optional value={form.company} onChange={(v) => setForm({ ...form, company: v })} />
                       <div className="sm:col-span-2">
