@@ -1,9 +1,25 @@
-import { Mail, MessageCircle, Send } from "lucide-react";
+import { Mail, MessageCircle, Send, Check } from "lucide-react";
 import { useState } from "react";
 import { SectionHeader } from "./Services";
 
+const SERVICES = [
+  "Website de prezentare",
+  "Magazin online",
+  "Landing page",
+  "Branding & identitate vizuală",
+  "Redesign website",
+  "Website cu AI",
+  "SEO & optimizare",
+  "Altceva",
+];
+
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [selected, setSelected] = useState<string[]>([]);
+
+  const toggle = (s: string) =>
+    setSelected((prev) => (prev.includes(s) ? prev.filter((x) => x !== s) : [...prev, s]));
+
   return (
     <section id="contact" className="relative py-24 sm:py-32">
       <SectionHeader eyebrow="Contact" title="Hai să-ți creștem afacerea online" subtitle="Primești o ofertă personalizată, gratuită, în maxim 24h. Fără obligații." />
@@ -16,7 +32,36 @@ export function Contact() {
           >
             <Field label="Nume" name="name" />
             <Field label="Email" type="email" name="email" />
-            <div className="sm:col-span-2"><Field label="Companie" name="company" /></div>
+            <Field label="Telefon" name="phone" type="tel" optional />
+            <Field label="Companie" name="company" optional />
+
+            <div className="sm:col-span-2">
+              <label className="text-xs uppercase tracking-widest text-muted-foreground">
+                Alege unul sau mai multe servicii
+              </label>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {SERVICES.map((s) => {
+                  const active = selected.includes(s);
+                  return (
+                    <button
+                      type="button"
+                      key={s}
+                      onClick={() => toggle(s)}
+                      className={
+                        "inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs border transition-all " +
+                        (active
+                          ? "bg-foreground text-background border-foreground"
+                          : "glass border-white/10 text-muted-foreground hover:text-foreground hover:border-white/30")
+                      }
+                    >
+                      {active && <Check className="h-3 w-3" />}
+                      {s}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             <div className="sm:col-span-2">
               <label className="text-xs uppercase tracking-widest text-muted-foreground">Despre proiect</label>
               <textarea rows={5} className="mt-2 w-full rounded-2xl glass px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50" placeholder="Câteva detalii..." />
@@ -68,10 +113,13 @@ export function Contact() {
   );
 }
 
-function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
+function Field({ label, name, type = "text", optional = false }: { label: string; name: string; type?: string; optional?: boolean }) {
   return (
     <div>
-      <label className="text-xs uppercase tracking-widest text-muted-foreground">{label}</label>
+      <label className="text-xs uppercase tracking-widest text-muted-foreground flex items-center gap-2">
+        {label}
+        {optional && <span className="normal-case tracking-normal text-[10px] text-muted-foreground/70">(opțional)</span>}
+      </label>
       <input
         type={type}
         name={name}
