@@ -311,12 +311,14 @@ function Input({
   onChange,
   type = "text",
   optional = false,
+  error,
 }: {
   label: string;
   value: string;
   onChange: (v: string) => void;
   type?: string;
   optional?: boolean;
+  error?: string;
 }) {
   return (
     <div>
@@ -329,8 +331,12 @@ function Input({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={label}
-        className="mt-2 w-full rounded-2xl glass px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
+        className={
+          "mt-2 w-full rounded-2xl glass px-4 py-3 text-sm focus:outline-none focus:ring-2 transition-all " +
+          (error ? "ring-1 ring-red-500/60 focus:ring-red-500/60" : "focus:ring-accent/50")
+        }
       />
+      {error && <FieldError msg={error} />}
     </div>
   );
 }
@@ -342,4 +348,15 @@ function Summary({ label, value }: { label: string; value: string }) {
       <div className="mt-1 text-sm">{value || "—"}</div>
     </div>
   );
+}
+
+function FieldError({ msg }: { msg: string }) {
+  return (
+    <div className="mt-2 flex items-center gap-1.5 text-xs text-red-400 animate-fade-in">
+      <AlertCircle className="h-3.5 w-3.5" />
+      {msg}
+    </div>
+  );
+}
+
 }
