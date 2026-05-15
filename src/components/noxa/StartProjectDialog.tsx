@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { ArrowLeft, ArrowRight, Check, Sparkles, Send, Globe, ShoppingBag, Layout, Palette, Cpu, RefreshCcw, MoreHorizontal } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Sparkles, Send, Globe, ShoppingBag, Layout, Palette, RefreshCcw, MoreHorizontal } from "lucide-react";
 
 const SERVICES = [
   { id: "site", label: "Website prezentare", Icon: Globe },
   { id: "shop", label: "Magazin online", Icon: ShoppingBag },
   { id: "landing", label: "Landing page", Icon: Layout },
   { id: "brand", label: "Branding & identitate", Icon: Palette },
-  { id: "ai", label: "Website cu AI", Icon: Cpu },
   { id: "redesign", label: "Redesign website", Icon: RefreshCcw },
   { id: "other", label: "Altceva", Icon: MoreHorizontal },
 ];
