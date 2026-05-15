@@ -40,7 +40,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="top" className="relative pt-36 sm:pt-44 pb-24 sm:pb-32 overflow-hidden">
+    <section id="top" className="relative pt-36 sm:pt-44 pb-24 sm:pb-32 overflow-clip">
       {/* Ambient blobs — parallax */}
       <div aria-hidden className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-gradient-noxa opacity-30 blur-[120px]" />
       <div aria-hidden className="absolute top-40 right-0 w-[420px] h-[420px] rounded-full bg-accent/40 blur-[120px] animate-pulse-glow" />
