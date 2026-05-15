@@ -28,6 +28,8 @@ const INDUSTRIES_2 = [
 export function Hero() {
   const [y, setY] = useState(0);
   const [openStart, setOpenStart] = useState(false);
+  const [initialServices, setInitialServices] = useState<string[]>([]);
+
   useEffect(() => {
     let raf = 0;
     const onScroll = () => {
@@ -39,6 +41,16 @@ export function Hero() {
       window.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(raf);
     };
+  }, []);
+
+  useEffect(() => {
+    const onOpen = (e: Event) => {
+      const detail = (e as CustomEvent<{ services?: string[] }>).detail || {};
+      setInitialServices(detail.services ?? []);
+      setOpenStart(true);
+    };
+    window.addEventListener("noxa:open-start", onOpen);
+    return () => window.removeEventListener("noxa:open-start", onOpen);
   }, []);
 
   return (
