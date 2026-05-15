@@ -8,7 +8,7 @@ const SERVICES = [
   "Landing page",
   "Branding & identitate vizuală",
   "Redesign website",
-  "Website cu AI",
+  
   "SEO & optimizare",
   "Altceva",
 ];
