@@ -1,11 +1,12 @@
+import { useEffect, useRef, useState } from "react";
 import { Gauge, Smartphone, TrendingUp, Crown, Sparkles, Palette } from "lucide-react";
 import { SectionHeader } from "./Services";
 
 const stats = [
-  { v: "184%", l: "Creștere medie a conversiilor" },
-  { v: "<1.2s", l: "Timp mediu de încărcare" },
-  { v: "98+", l: "Scor Lighthouse" },
-  { v: "60+", l: "Proiecte premium livrate" },
+  { value: 184, prefix: "", suffix: "%", l: "Creștere medie a conversiilor" },
+  { value: 1.2, prefix: "<", suffix: "s", l: "Timp mediu de încărcare", decimals: 1 },
+  { value: 98, prefix: "", suffix: "+", l: "Scor Lighthouse" },
+  { value: 60, prefix: "", suffix: "+", l: "Proiecte premium livrate" },
 ];
 
 const reasons = [
@@ -17,6 +18,58 @@ const reasons = [
   { icon: Gauge, title: "Viteză", desc: "Cod curat, optimizat, livrat rapid." },
 ];
 
+function CountUp({
+  end,
+  prefix = "",
+  suffix = "",
+  decimals = 0,
+  duration = 1800,
+}: {
+  end: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+  duration?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [val, setVal] = useState(0);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && !started.current) {
+            started.current = true;
+            const start = performance.now();
+            const tick = (now: number) => {
+              const p = Math.min((now - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              setVal(end * eased);
+              if (p < 1) requestAnimationFrame(tick);
+              else setVal(end);
+            };
+            requestAnimationFrame(tick);
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [end, duration]);
+
+  return (
+    <span ref={ref}>
+      {prefix}
+      {val.toFixed(decimals)}
+      {suffix}
+    </span>
+  );
+}
+
 export function WhyUs() {
   return (
     <section className="relative py-24 sm:py-32">
@@ -25,7 +78,9 @@ export function WhyUs() {
       <div className="mx-auto max-w-6xl px-6 mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((s) => (
           <div key={s.l} className="glass rounded-3xl p-6 text-center">
-            <div className="text-3xl sm:text-4xl font-semibold text-gradient">{s.v}</div>
+            <div className="text-3xl sm:text-4xl font-semibold text-gradient tabular-nums">
+              <CountUp end={s.value} prefix={s.prefix} suffix={s.suffix} decimals={s.decimals ?? 0} />
+            </div>
             <div className="mt-2 text-xs sm:text-sm text-muted-foreground">{s.l}</div>
           </div>
         ))}
