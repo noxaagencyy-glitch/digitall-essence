@@ -265,9 +265,8 @@ export function StartProjectDialog({
                 </button>
                 {step < STEPS.length - 1 ? (
                   <button
-                    onClick={() => canNext && setStep((s) => s + 1)}
-                    disabled={!canNext}
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-5 py-2.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform disabled:opacity-40 disabled:pointer-events-none disabled:hover:scale-100"
+                    onClick={tryNext}
+                    className="inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-5 py-2.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform"
                   >
                     Continuă <ArrowRight className="h-4 w-4" />
                   </button>
