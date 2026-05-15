@@ -65,13 +65,13 @@ export function Hero() {
         </p>
 
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-up" style={{ animationDelay: "220ms" }}>
-          <a
-            href="#contact"
+          <button
+            onClick={() => setOpenStart(true)}
             className="group inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-6 py-3.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform"
           >
             Începe acum să-ți creezi site-ul
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
+          </button>
           <a
             href="#portofoliu"
             className="inline-flex items-center gap-2 rounded-full glass px-6 py-3.5 text-sm font-medium text-foreground hover:bg-white/5 transition-colors"
