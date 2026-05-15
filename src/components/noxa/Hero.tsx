@@ -27,6 +27,7 @@ const INDUSTRIES_2 = [
 
 export function Hero() {
   const [y, setY] = useState(0);
+  const [openStart, setOpenStart] = useState(false);
   useEffect(() => {
     let raf = 0;
     const onScroll = () => {
