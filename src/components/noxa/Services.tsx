@@ -1,4 +1,4 @@
-import { Brush, Layout, RefreshCcw, Sparkles, Cpu, Crown, ShoppingBag, MoreHorizontal } from "lucide-react";
+import { Brush, Layout, RefreshCcw, Sparkles, Crown, ShoppingBag, MoreHorizontal } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 const services = [
