@@ -175,7 +175,7 @@ export function Hero() {
         </div>
       </div>
 
-      <StartProjectDialog open={openStart} onOpenChange={setOpenStart} />
+      <StartProjectDialog open={openStart} onOpenChange={setOpenStart} initialServices={initialServices} />
     </section>
   );
 }
