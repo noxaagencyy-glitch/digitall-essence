@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { ArrowLeft, ArrowRight, Check, Sparkles, Send, Globe, ShoppingBag, Layout, Palette, RefreshCcw, MoreHorizontal } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Sparkles, Send, Globe, ShoppingBag, Layout, Palette, RefreshCcw, MoreHorizontal, AlertCircle } from "lucide-react";
 
-const SERVICES = [
+export const SERVICES = [
   { id: "site", label: "Website prezentare", Icon: Globe },
   { id: "shop", label: "Magazin online", Icon: ShoppingBag },
   { id: "landing", label: "Landing page", Icon: Layout },
@@ -11,27 +11,63 @@ const SERVICES = [
   { id: "other", label: "Altceva", Icon: MoreHorizontal },
 ];
 
-const BUDGETS = ["< €1.000", "€1.000 – €3.000", "€3.000 – €7.000", "€7.000+"];
+const BUDGETS = ["< €500", "€500 – €1.000", "€1.000 – €3.000", "€3.000 – €7.000", "€7.000+"];
 const TIMELINES = ["Cât mai repede", "În 2-4 săptămâni", "1-2 luni", "Sunt flexibil"];
 
 const STEPS = ["Servicii", "Buget & timeline", "Despre tine", "Trimite"];
 
-export function StartProjectDialog({ open, onOpenChange }: { open: boolean; onOpenChange: (o: boolean) => void }) {
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+type Errors = Partial<Record<"services" | "budget" | "timeline" | "name" | "email", string>>;
+
+export function StartProjectDialog({
+  open,
+  onOpenChange,
+  initialServices,
+}: {
+  open: boolean;
+  onOpenChange: (o: boolean) => void;
+  initialServices?: string[];
+}) {
   const [step, setStep] = useState(0);
   const [services, setServices] = useState<string[]>([]);
   const [budget, setBudget] = useState<string>("");
   const [timeline, setTimeline] = useState<string>("");
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", message: "" });
+  const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
 
-  const toggleService = (id: string) =>
-    setServices((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]));
+  useEffect(() => {
+    if (open && initialServices && initialServices.length > 0) {
+      setServices((prev) => Array.from(new Set([...prev, ...initialServices])));
+    }
+  }, [open, initialServices]);
 
-  const canNext =
-    (step === 0 && services.length > 0) ||
-    (step === 1 && budget && timeline) ||
-    (step === 2 && form.name && form.email) ||
-    step === 3;
+  const toggleService = (id: string) => {
+    setServices((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]));
+    setErrors((e) => ({ ...e, services: undefined }));
+  };
+
+  const validateStep = (s: number): Errors => {
+    const e: Errors = {};
+    if (s === 0 && services.length === 0) e.services = "Alege cel puțin un serviciu";
+    if (s === 1) {
+      if (!budget) e.budget = "Selectează un buget estimativ";
+      if (!timeline) e.timeline = "Selectează un timeline";
+    }
+    if (s === 2) {
+      if (!form.name.trim()) e.name = "Numele este obligatoriu";
+      if (!form.email.trim()) e.email = "Email-ul este obligatoriu";
+      else if (!EMAIL_RE.test(form.email.trim())) e.email = "Email invalid";
+    }
+    return e;
+  };
+
+  const tryNext = () => {
+    const e = validateStep(step);
+    setErrors(e);
+    if (Object.keys(e).length === 0) setStep((s) => s + 1);
+  };
 
   const reset = () => {
     setStep(0);
@@ -39,10 +75,13 @@ export function StartProjectDialog({ open, onOpenChange }: { open: boolean; onOp
     setBudget("");
     setTimeline("");
     setForm({ name: "", email: "", phone: "", company: "", message: "" });
+    setErrors({});
     setSent(false);
   };
 
-  const submit = () => setSent(true);
+  const submit = () => {
+    setSent(true);
+  };
 
   return (
     <Dialog
