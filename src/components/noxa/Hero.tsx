@@ -191,3 +191,65 @@ export function Hero() {
     </section>
   );
 }
+
+const BONUSES = [
+  "Hosting gratuit",
+  "SEO inclus",
+  "Suport după lansare",
+  "Integrare WhatsApp",
+  "Website rapid & fluid",
+  "Mobile responsive",
+  "Mentenanță 1 lună gratis",
+  "Livrare 3–7 zile",
+];
+
+function BonusGrid() {
+  const ref = useInViewStagger<HTMLDivElement>();
+  return (
+    <div ref={ref} className="mt-10 mx-auto max-w-3xl">
+      <div
+        data-reveal
+        className="reveal-item text-[10px] sm:text-xs uppercase tracking-[0.25em] text-muted-foreground/70 mb-4"
+        style={{ transitionDelay: "0ms" }}
+      >
+        Totul inclus în pachet
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+        {BONUSES.map((b, i) => (
+          <div
+            key={b}
+            data-reveal
+            className="reveal-item group relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-br from-white/20 via-white/5 to-transparent hover:from-accent/60 hover:to-electric/40 transition-all"
+            style={{ transitionDelay: `${80 + i * 90}ms` }}
+          >
+            <div className="relative h-full rounded-[11px] glass-strong px-3 py-2.5 flex items-center gap-2">
+              <span
+                className="check-shine flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-noxa"
+                style={{ animationDelay: `${i * 200}ms` }}
+              >
+                <Check className="h-3 w-3 text-white" strokeWidth={3} />
+              </span>
+              <span className="text-[11px] sm:text-xs font-medium text-foreground/90 leading-tight text-left">
+                {b}
+              </span>
+            </div>
+          </div>
+        ))}
+        <div
+          data-reveal
+          className="reveal-item col-span-2 sm:col-span-4 group relative overflow-hidden rounded-xl p-[1.5px] bg-[conic-gradient(from_0deg_at_50%_50%,oklch(0.7_0.2_295)_0%,oklch(0.8_0.18_200)_25%,oklch(0.75_0.22_330)_50%,oklch(0.8_0.18_200)_75%,oklch(0.7_0.2_295)_100%)]"
+          style={{ transitionDelay: `${80 + BONUSES.length * 90}ms` }}
+        >
+          <div className="relative rounded-[10px] glass-strong px-4 py-3 flex items-center justify-center gap-2.5 overflow-hidden">
+            <span aria-hidden className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12 shimmer-sweep" />
+            <Sparkles className="h-4 w-4 text-accent animate-pulse" />
+            <span className="text-xs sm:text-sm font-semibold tracking-wide text-gradient">
+              și multe altele...
+            </span>
+            <Sparkles className="h-4 w-4 text-electric animate-pulse" style={{ animationDelay: "600ms" }} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
