@@ -30,6 +30,7 @@ function Index() {
       <Hero />
       <Reveal><Services /></Reveal>
       <Reveal direction="up"><About /></Reveal>
+      <Comparison />
       <Reveal direction="scale"><Portfolio /></Reveal>
       <Reveal><WhyUs /></Reveal>
       <Reveal direction="left"><Testimonials /></Reveal>
