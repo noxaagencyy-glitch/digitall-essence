@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermeniRouteImport } from './routes/termeni'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DemoRestaurantRouteImport } from './routes/demo.restaurant'
 import { Route as DemoRealestateRouteImport } from './routes/demo.realestate'
@@ -17,6 +18,11 @@ import { Route as DemoEducationRouteImport } from './routes/demo.education'
 import { Route as DemoClinicRouteImport } from './routes/demo.clinic'
 import { Route as DemoBeautyRouteImport } from './routes/demo.beauty'
 
+const TermeniRoute = TermeniRouteImport.update({
+  id: '/termeni',
+  path: '/termeni',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -55,6 +61,7 @@ const DemoBeautyRoute = DemoBeautyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/termeni': typeof TermeniRoute
   '/demo/beauty': typeof DemoBeautyRoute
   '/demo/clinic': typeof DemoClinicRoute
   '/demo/education': typeof DemoEducationRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/termeni': typeof TermeniRoute
   '/demo/beauty': typeof DemoBeautyRoute
   '/demo/clinic': typeof DemoClinicRoute
   '/demo/education': typeof DemoEducationRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/termeni': typeof TermeniRoute
   '/demo/beauty': typeof DemoBeautyRoute
   '/demo/clinic': typeof DemoClinicRoute
   '/demo/education': typeof DemoEducationRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/termeni'
     | '/demo/beauty'
     | '/demo/clinic'
     | '/demo/education'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/termeni'
     | '/demo/beauty'
     | '/demo/clinic'
     | '/demo/education'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/termeni'
     | '/demo/beauty'
     | '/demo/clinic'
     | '/demo/education'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  TermeniRoute: typeof TermeniRoute
   DemoBeautyRoute: typeof DemoBeautyRoute
   DemoClinicRoute: typeof DemoClinicRoute
   DemoEducationRoute: typeof DemoEducationRoute
@@ -123,6 +136,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/termeni': {
+      id: '/termeni'
+      path: '/termeni'
+      fullPath: '/termeni'
+      preLoaderRoute: typeof TermeniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -177,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  TermeniRoute: TermeniRoute,
   DemoBeautyRoute: DemoBeautyRoute,
   DemoClinicRoute: DemoClinicRoute,
   DemoEducationRoute: DemoEducationRoute,
@@ -187,3 +208,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
