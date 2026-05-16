@@ -1,7 +1,30 @@
 import { ArrowUpRight, Sparkles, Check } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NoxaLogo } from "./Logo";
 import { StartProjectDialog } from "./StartProjectDialog";
+
+function useInViewStagger<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    const items = Array.from(root.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add("in-view");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -40px 0px" },
+    );
+    items.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}
 
 const INDUSTRIES = [
   "Beauty & Salon",
@@ -79,60 +102,8 @@ export function Hero() {
           </a>
         </div>
 
-        <div className="mt-10 mx-auto max-w-3xl animate-fade-up" style={{ animationDelay: "260ms" }}>
-          <div className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-muted-foreground/70 mb-4">
-            Totul inclus în pachet
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-            {[
-              "Hosting gratuit",
-              "SEO inclus",
-              "Suport după lansare",
-              "Integrare WhatsApp",
-              "Website rapid & fluid",
-              "Mobile responsive",
-              "Mentenanță 1 lună gratis",
-              "Livrare 3–7 zile",
-            ].map((b, i) => (
-              <div
-                key={b}
-                className="group relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-br from-white/20 via-white/5 to-transparent hover:from-accent/60 hover:to-electric/40 transition-all"
-                style={{ animationDelay: `${280 + i * 40}ms` }}
-              >
-                <div className="relative h-full rounded-[11px] glass-strong px-3 py-2.5 flex items-center gap-2">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-noxa shadow-[0_0_12px_oklch(0.7_0.2_295/0.6)]">
-                    <Check className="h-3 w-3 text-white" strokeWidth={3} />
-                  </span>
-                  <span className="text-[11px] sm:text-xs font-medium text-foreground/90 leading-tight text-left">
-                    {b}
-                  </span>
-                </div>
-              </div>
-            ))}
-            <div className="col-span-2 sm:col-span-4 group relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-r from-accent/50 via-white/15 to-electric/50">
-              <div className="relative rounded-[11px] glass-strong px-3 py-2.5 flex items-center justify-center gap-2">
-                <Sparkles className="h-3.5 w-3.5 text-accent" />
-                <span className="text-[11px] sm:text-xs font-medium text-foreground/90">
-                  și multe altele...
-                </span>
-              </div>
-            </div>
-          </div>
+        <BonusGrid />
 
-          <div className="mt-6 flex justify-center">
-            <button
-              onClick={() => setOpenStart(true)}
-              className="group relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-r from-accent/60 via-primary/60 to-electric/60 hover:from-accent hover:via-primary hover:to-electric transition-all hover:-translate-y-0.5"
-            >
-              <span aria-hidden className="absolute -inset-x-12 -top-px h-px bg-gradient-to-r from-transparent via-white/80 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              <span className="relative flex items-center gap-2.5 rounded-[11px] glass-strong px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-[15px] font-semibold text-foreground">
-                <Sparkles className="h-4 w-4 text-accent" />
-                Vreau site-ul meu premium
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </span>
-            </button>
-          </div>
-        </div>
         {/* Mockup */}
         <div className="relative mt-20 mx-auto max-w-5xl animate-fade-up" style={{ animationDelay: "320ms" }}>
           <div className="absolute -inset-10 bg-gradient-noxa opacity-30 blur-3xl rounded-[40px]" />
@@ -218,5 +189,67 @@ export function Hero() {
 
       <StartProjectDialog open={openStart} onOpenChange={setOpenStart} initialServices={initialServices} />
     </section>
+  );
+}
+
+const BONUSES = [
+  "Hosting gratuit",
+  "SEO inclus",
+  "Suport după lansare",
+  "Integrare WhatsApp",
+  "Website rapid & fluid",
+  "Mobile responsive",
+  "Mentenanță 1 lună gratis",
+  "Livrare 3–7 zile",
+];
+
+function BonusGrid() {
+  const ref = useInViewStagger<HTMLDivElement>();
+  return (
+    <div ref={ref} className="mt-10 mx-auto max-w-3xl">
+      <div
+        data-reveal
+        className="reveal-item text-[10px] sm:text-xs uppercase tracking-[0.25em] text-muted-foreground/70 mb-4"
+        style={{ transitionDelay: "0ms" }}
+      >
+        Totul inclus în pachet
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+        {BONUSES.map((b, i) => (
+          <div
+            key={b}
+            data-reveal
+            className="reveal-item group relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-br from-white/20 via-white/5 to-transparent hover:from-accent/60 hover:to-electric/40 transition-all"
+            style={{ transitionDelay: `${80 + i * 90}ms` }}
+          >
+            <div className="relative h-full rounded-[11px] glass-strong px-3 py-2.5 flex items-center gap-2">
+              <span
+                className="check-shine flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-noxa"
+                style={{ animationDelay: `${i * 200}ms` }}
+              >
+                <Check className="h-3 w-3 text-white" strokeWidth={3} />
+              </span>
+              <span className="text-[11px] sm:text-xs font-medium text-foreground/90 leading-tight text-left">
+                {b}
+              </span>
+            </div>
+          </div>
+        ))}
+        <div
+          data-reveal
+          className="reveal-item col-span-2 sm:col-span-4 group relative overflow-hidden rounded-xl p-[1.5px] bg-[conic-gradient(from_0deg_at_50%_50%,oklch(0.7_0.2_295)_0%,oklch(0.8_0.18_200)_25%,oklch(0.75_0.22_330)_50%,oklch(0.8_0.18_200)_75%,oklch(0.7_0.2_295)_100%)]"
+          style={{ transitionDelay: `${80 + BONUSES.length * 90}ms` }}
+        >
+          <div className="relative rounded-[10px] glass-strong px-4 py-3 flex items-center justify-center gap-2.5 overflow-hidden">
+            <span aria-hidden className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12 shimmer-sweep" />
+            <Sparkles className="h-4 w-4 text-accent animate-pulse" />
+            <span className="text-xs sm:text-sm font-semibold tracking-wide text-gradient">
+              și multe altele...
+            </span>
+            <Sparkles className="h-4 w-4 text-electric animate-pulse" style={{ animationDelay: "600ms" }} />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
