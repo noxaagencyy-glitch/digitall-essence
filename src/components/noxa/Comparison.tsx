@@ -1,4 +1,4 @@
-import { X, Check, Clock, AlertTriangle, DollarSign, Code, MessageSquareOff, TrendingDown, Sparkles, Zap, Headphones, Rocket, ShieldCheck, TrendingUp, Heart } from "lucide-react";
+import { X, Check, Clock, AlertTriangle, DollarSign, Code, MessageSquareOff, TrendingDown, Sparkles, Zap, Headphones, Rocket, ShieldCheck, TrendingUp, Heart, ArrowUpRight } from "lucide-react";
 import { SectionHeader } from "./Services";
 import { Reveal } from "./Reveal";
 import { NoxaLogo } from "./Logo";
