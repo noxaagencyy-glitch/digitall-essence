@@ -102,45 +102,7 @@ export function Hero() {
           </a>
         </div>
 
-        <div className="mt-10 mx-auto max-w-3xl animate-fade-up" style={{ animationDelay: "260ms" }}>
-          <div className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-muted-foreground/70 mb-4">
-            Totul inclus în pachet
-          </div>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-            {[
-              "Hosting gratuit",
-              "SEO inclus",
-              "Suport după lansare",
-              "Integrare WhatsApp",
-              "Website rapid & fluid",
-              "Mobile responsive",
-              "Mentenanță 1 lună gratis",
-              "Livrare 3–7 zile",
-            ].map((b, i) => (
-              <div
-                key={b}
-                className="group relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-br from-white/20 via-white/5 to-transparent hover:from-accent/60 hover:to-electric/40 transition-all"
-                style={{ animationDelay: `${280 + i * 40}ms` }}
-              >
-                <div className="relative h-full rounded-[11px] glass-strong px-3 py-2.5 flex items-center gap-2">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-noxa shadow-[0_0_12px_oklch(0.7_0.2_295/0.6)]">
-                    <Check className="h-3 w-3 text-white" strokeWidth={3} />
-                  </span>
-                  <span className="text-[11px] sm:text-xs font-medium text-foreground/90 leading-tight text-left">
-                    {b}
-                  </span>
-                </div>
-              </div>
-            ))}
-            <div className="col-span-2 sm:col-span-4 group relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-r from-accent/50 via-white/15 to-electric/50">
-              <div className="relative rounded-[11px] glass-strong px-3 py-2.5 flex items-center justify-center gap-2">
-                <Sparkles className="h-3.5 w-3.5 text-accent" />
-                <span className="text-[11px] sm:text-xs font-medium text-foreground/90">
-                  și multe altele...
-                </span>
-              </div>
-            </div>
-          </div>
+        <BonusGrid />
 
           <div className="mt-6 flex justify-center">
             <button
