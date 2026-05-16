@@ -291,13 +291,16 @@ export function Portfolio() {
             className="group relative rounded-3xl overflow-hidden glass-strong p-3 text-left transition-transform duration-500 hover:-translate-y-1"
           >
             <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-black/40">
-              <img
-                src={it.image}
-                alt={`Preview ${it.title}`}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/10" />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-br from-secondary via-background to-primary/30 transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+              >
+                <div className="absolute left-5 top-5 h-2 w-24 rounded-full bg-foreground/15" />
+                <div className="absolute left-5 top-12 h-8 w-2/3 rounded-xl bg-foreground/10" />
+                <div className="absolute left-5 top-24 h-3 w-1/2 rounded-full bg-foreground/10" />
+                <div className="absolute right-5 top-5 bottom-5 w-1/3 rounded-2xl bg-gradient-noxa opacity-70" />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-background/10" />
 
               <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full glass-strong px-2.5 py-1 text-[11px]">
                 <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
