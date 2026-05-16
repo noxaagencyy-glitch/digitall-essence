@@ -45,7 +45,7 @@ const items: Item[] = [
     url: "bella-studio.ro",
     demoUrl: "/demo/beauty",
     description: "Site premium pentru salon de înfrumusețare cu sistem de programări online și galerie servicii.",
-    image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1280&auto=format&fit=crop&q=80",
+    image: demoBeauty,
     caseStudy: {
       problem: "Salonul pierdea programări din cauza unui site învechit, fără rezervări online și greu de folosit pe mobil.",
       solution: "Am construit o experiență premium, mobile-first, cu rezervări instant și o galerie ce pune în valoare lucrările.",
@@ -75,7 +75,7 @@ const items: Item[] = [
     url: "powerhouse-gym.ro",
     demoUrl: "/demo/fitness",
     description: "Platformă pentru sală de fitness cu abonamente, clase live și profile pentru antrenori.",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1280&auto=format&fit=crop&q=80",
+    image: demoFitness,
     caseStudy: {
       problem: "Sala de fitness nu avea o platformă centralizată pentru abonamente și orarul claselor era greu de actualizat.",
       solution: "Am creat o platformă completă cu management de abonamente, orar dinamic și profile pentru antrenori.",
@@ -105,7 +105,7 @@ const items: Item[] = [
     url: "trattoria23.ro",
     demoUrl: "/demo/restaurant",
     description: "Site de fine dining cu meniu interactiv, rezervări instant și storytelling pentru bucătar.",
-    image: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1280&auto=format&fit=crop&q=80",
+    image: demoRestaurant,
     caseStudy: {
       problem: "Restaurantul fine dining avea nevoie de o prezență digitală pe măsura experienței oferite în local.",
       solution: "Am livrat un site cinematic cu meniu interactiv, rezervări instant și storytelling vizual pentru chef.",
@@ -135,7 +135,7 @@ const items: Item[] = [
     url: "smile-dental.ro",
     demoUrl: "/demo/clinic",
     description: "Clinică stomatologică cu programări online, prezentare echipă medicală și recenzii pacienți.",
-    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1280&auto=format&fit=crop&q=80",
+    image: demoClinic,
     caseStudy: {
       problem: "Clinica primea majoritatea programărilor telefonic și pierdea pacienți care căutau servicii online.",
       solution: "Am construit un site profesional cu programări 24/7, prezentare detaliată a serviciilor și încredere prin recenzii.",
@@ -165,7 +165,7 @@ const items: Item[] = [
     url: "codify-academy.ro",
     demoUrl: "/demo/education",
     description: "Platformă educațională cu cursuri online, plăți integrate și dashboard pentru cursanți.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1280&auto=format&fit=crop&q=80",
+    image: demoEducation,
     caseStudy: {
       problem: "Cursurile erau vândute manual prin email, fără plată online și fără acces structurat la materiale.",
       solution: "Am dezvoltat o platformă LMS completă cu plăți, dashboard cursanți și progres tracking.",
@@ -195,7 +195,7 @@ const items: Item[] = [
     url: "premier-imobiliare.ro",
     demoUrl: "/demo/realestate",
     description: "Agenție imobiliară premium cu căutare avansată proprietăți și tururi virtuale.",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1280&auto=format&fit=crop&q=80",
+    image: demoRealestate,
     caseStudy: {
       problem: "Agenția prezenta proprietățile pe portaluri externe și pierdea controlul asupra branding-ului și lead-urilor.",
       solution: "Am creat o platformă proprie cu căutare avansată, tururi virtuale și captare directă de lead-uri.",
