@@ -91,7 +91,7 @@ export function StartProjectDialog({
         if (!o) setTimeout(reset, 300);
       }}
     >
-      <DialogContent className="max-w-2xl w-[95vw] p-0 overflow-hidden border-white/10 bg-background/95 backdrop-blur-xl [&>button]:hidden">
+      <DialogContent className="max-w-2xl w-[95vw] p-0 overflow-hidden border-white/10 bg-background/95 backdrop-blur-xl [&>button]:z-50 [&>button]:bg-background/80 [&>button]:backdrop-blur [&>button]:rounded-full [&>button]:p-2 [&>button]:opacity-100 [&>button]:ring-1 [&>button]:ring-white/15 [&>button]:hover:bg-white/10 [&>button]:transition-colors">
         <div className="absolute -top-32 -left-32 w-[400px] h-[400px] rounded-full bg-gradient-noxa opacity-30 blur-[100px] pointer-events-none" />
         <div className="absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full bg-accent/30 blur-[100px] pointer-events-none" />
 
