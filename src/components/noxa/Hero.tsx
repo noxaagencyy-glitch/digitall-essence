@@ -1,4 +1,4 @@
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight, Sparkles, Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NoxaLogo } from "./Logo";
 import { StartProjectDialog } from "./StartProjectDialog";
@@ -50,6 +50,27 @@ export function Hero() {
         <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs sm:text-sm text-muted-foreground animate-fade-up">
           <Sparkles className="h-3.5 w-3.5 text-accent" />
           Experiențe digitale premium
+        </div>
+
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-2 animate-fade-up" style={{ animationDelay: "30ms" }}>
+          {[
+            "Hosting gratuit",
+            "SEO inclus",
+            "Suport permanent după lansare",
+            "Integrare WhatsApp",
+            "Website rapid & fluid",
+            "Mobile responsive",
+            "Mentenanță prima lună gratuită",
+            "Livrare în 3–7 zile lucrătoare",
+          ].map((b) => (
+            <span
+              key={b}
+              className="inline-flex items-center gap-1.5 glass rounded-full px-3 py-1 text-[11px] sm:text-xs text-foreground/85"
+            >
+              <Check className="h-3 w-3 text-accent" />
+              {b}
+            </span>
+          ))}
         </div>
 
         <h1 className="mt-6 text-5xl sm:text-7xl md:text-[88px] font-semibold leading-[1.02] tracking-tight animate-fade-up" style={{ animationDelay: "60ms" }}>
