@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, ArrowUpRight, Sparkles } from "lucide-react";
+import { Mail, MessageCircle, ArrowUpRight, Sparkles, Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
 import { SectionHeader } from "./Services";
 import { SERVICES } from "./StartProjectDialog";
 
@@ -79,8 +79,22 @@ export function Contact() {
           <div className="glass rounded-3xl p-5">
             <div className="text-xs uppercase tracking-widest text-muted-foreground">Social</div>
             <div className="mt-3 flex gap-2">
-              {["IG", "X", "LI", "BE"].map((s) => (
-                <a key={s} className="h-10 w-10 rounded-xl glass flex items-center justify-center text-xs font-semibold hover:bg-white/10" href="#">{s}</a>
+              {[
+                { Icon: Instagram, href: "https://www.instagram.com/noxaweb/", label: "Instagram" },
+                { Icon: Facebook, href: "#", label: "Facebook" },
+                { Icon: Linkedin, href: "#", label: "LinkedIn" },
+                { Icon: Youtube, href: "#", label: "YouTube" },
+              ].map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  aria-label={label}
+                  className="h-10 w-10 rounded-xl glass flex items-center justify-center hover:bg-white/10 transition-colors"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
               ))}
             </div>
           </div>
