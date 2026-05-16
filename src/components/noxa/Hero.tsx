@@ -1,4 +1,4 @@
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight, Sparkles, Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NoxaLogo } from "./Logo";
 import { StartProjectDialog } from "./StartProjectDialog";
