@@ -98,7 +98,7 @@ export function Hero() {
             href="#portofoliu"
             className="inline-flex items-center gap-2 rounded-full glass px-6 py-3.5 text-sm font-medium text-foreground hover:bg-white/5 transition-colors"
           >
-            Vezi proiectele noastre
+            Descoperă platforma
           </a>
         </div>
 
