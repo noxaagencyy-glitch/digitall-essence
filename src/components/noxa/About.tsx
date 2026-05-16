@@ -143,6 +143,32 @@ export function About() {
           ))}
         </Reveal>
       </div>
+
+      {/* Pricing pitch */}
+      <Reveal>
+        <div className="mt-20 mx-auto max-w-3xl px-6">
+          <div className="relative rounded-2xl p-[1px] bg-gradient-to-br from-accent/40 via-white/10 to-electric/40">
+            <div className="rounded-[15px] glass-strong px-5 py-5 sm:px-7 sm:py-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+              <div className="flex-1 text-center sm:text-left">
+                <div className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-accent mb-1.5">
+                  Cel mai bun raport calitate / preț
+                </div>
+                <p className="text-sm sm:text-base text-foreground/90 leading-relaxed">
+                  Suntem printre <span className="text-gradient font-semibold">cele mai accesibile agenții</span> de web design din România.
+                  Cere o ofertă și convinge-te singur — totul e clar, corect și surprinzător de ieftin.
+                </p>
+              </div>
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent("noxa:open-start"))}
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-5 py-3 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform whitespace-nowrap"
+              >
+                Cere o ofertă
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </Reveal>
     </section>
   );
 }
