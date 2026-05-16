@@ -213,6 +213,28 @@
   .reveal-item { opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
   .reveal-item.in-view { opacity: 1; transform: translateY(0); }
 
+  /* Word-by-word typewriter reveal */
+  .word-reveal {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(6px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out, filter 0.5s ease-out;
+    will-change: opacity, transform, filter;
+  }
+  .word-reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  .word-reveal-highlight {
+    background: linear-gradient(120deg, oklch(0.78 0.18 295) 0%, oklch(0.82 0.16 220) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+  }
+
   /* Scroll reveal */
   .reveal {
     opacity: 0;
