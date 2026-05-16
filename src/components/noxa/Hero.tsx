@@ -1,7 +1,30 @@
 import { ArrowUpRight, Sparkles, Check } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NoxaLogo } from "./Logo";
 import { StartProjectDialog } from "./StartProjectDialog";
+
+function useInViewStagger<T extends HTMLElement>() {
+  const ref = useRef<T>(null);
+  useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    const items = Array.from(root.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).classList.add("in-view");
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -40px 0px" },
+    );
+    items.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}
 
 const INDUSTRIES = [
   "Beauty & Salon",
