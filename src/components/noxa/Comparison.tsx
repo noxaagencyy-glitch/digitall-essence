@@ -1,4 +1,4 @@
-import { X, Check, Clock, AlertTriangle, DollarSign, Code, MessageSquareOff, TrendingDown, Sparkles, Zap, Headphones, Rocket, ShieldCheck, TrendingUp, Heart } from "lucide-react";
+import { X, Check, Clock, AlertTriangle, DollarSign, Code, MessageSquareOff, TrendingDown, Sparkles, Zap, Headphones, Rocket, ShieldCheck, TrendingUp, Heart, ArrowUpRight } from "lucide-react";
 import { SectionHeader } from "./Services";
 import { Reveal } from "./Reveal";
 import { NoxaLogo } from "./Logo";
@@ -113,9 +113,18 @@ export function Comparison() {
       </div>
 
       <Reveal>
-        <p className="mt-12 text-center text-sm text-muted-foreground">
-          <span className="text-gradient font-semibold">Concluzia?</span> Cu NOXA primești mai mult, plătești corect și dormi liniștit.
-        </p>
+        <div className="mt-12 flex flex-col items-center gap-5 px-6">
+          <p className="text-center text-sm text-muted-foreground">
+            <span className="text-gradient font-semibold">Concluzia?</span> Cu NOXA primești mai mult, plătești corect și dormi liniștit.
+          </p>
+          <button
+            onClick={() => window.dispatchEvent(new CustomEvent("noxa:open-start"))}
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-6 py-3.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform"
+          >
+            Creează-ți site-ul acum
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </button>
+        </div>
       </Reveal>
     </section>
   );
