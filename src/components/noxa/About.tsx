@@ -73,7 +73,7 @@ export function About() {
           as="p"
           className="text-lg sm:text-2xl text-foreground/90 leading-relaxed font-light tracking-tight"
           text="NOXA Agency transformă ideile tale într-o prezență online care inspiră încredere și aduce clienți reali."
-          highlight={["noxa", "agency", "încredere", "clienți", "reali"]}
+          highlight={["noxa", "agency"]}
           step={60}
         />
 
@@ -81,7 +81,6 @@ export function About() {
           as="p"
           className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto"
           text="Nu suntem doar un furnizor de site-uri — suntem partenerul tău digital, echipa din spate care îți face brandul să strălucească prin design premium, tehnologie modernă și o obsesie pentru detalii."
-          highlight={["partenerul", "premium", "strălucească", "obsesie"]}
           step={45}
           delay={400}
         />
