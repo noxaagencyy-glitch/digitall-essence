@@ -4,6 +4,12 @@ import { Reveal } from "./Reveal";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ArrowUpRight, X, Target, Lightbulb, Package, TrendingUp, Star, Monitor, Tablet, Smartphone, RefreshCw } from "lucide-react";
+import demoBeauty from "@/assets/demo-beauty.png";
+import demoFitness from "@/assets/demo-fitness.png";
+import demoRestaurant from "@/assets/demo-restaurant.png";
+import demoClinic from "@/assets/demo-clinic.png";
+import demoEducation from "@/assets/demo-education.png";
+import demoRealestate from "@/assets/demo-realestate.png";
 
 type CaseStudy = {
   problem: string;
