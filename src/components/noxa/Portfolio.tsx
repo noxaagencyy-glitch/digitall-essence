@@ -294,44 +294,76 @@ export function Portfolio() {
             key={it.title}
             data-reveal-item
             onClick={() => setActive(it)}
-            className="group relative rounded-3xl overflow-hidden glass-strong p-3 text-left transition-transform duration-500 hover:-translate-y-1"
+            className="group relative text-left transition-transform duration-500 hover:-translate-y-1"
           >
-            <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-black/40">
-              <img
-                src={it.image}
-                alt={`${it.title} — preview`}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
+            {/* MacBook mockup */}
+            <div className="relative">
+              {/* Glow */}
+              <div
+                aria-hidden
+                className="absolute -inset-6 bg-gradient-noxa opacity-0 group-hover:opacity-30 blur-3xl transition-opacity duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/30 to-background/10" />
 
-              <div className="absolute top-3 left-3 flex items-center gap-1.5 rounded-full glass-strong px-2.5 py-1 text-[11px]">
+              {/* Laptop lid */}
+              <div className="relative rounded-t-2xl bg-gradient-to-b from-[#2a2a2e] to-[#1a1a1e] p-2.5 sm:p-3 shadow-[0_18px_40px_-20px_rgba(0,0,0,0.7)] ring-1 ring-white/10">
+                {/* Camera notch */}
+                <div className="absolute left-1/2 top-1 -translate-x-1/2 h-1 w-10 rounded-full bg-black/70 flex items-center justify-center">
+                  <span className="h-[3px] w-[3px] rounded-full bg-white/20" />
+                </div>
+
+                <div className="relative aspect-[16/10] rounded-md overflow-hidden bg-black">
+                  <img
+                    src={it.image}
+                    alt={`${it.title} — screenshot`}
+                    loading="lazy"
+                    className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-[1200ms] ease-out group-hover:scale-[1.02]"
+                  />
+
+                  {/* Subtle screen glare */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-60"
+                  />
+
+                  {/* Hover overlay with action */}
+                  <div className="absolute inset-0 bg-background/40 backdrop-blur-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-noxa px-4 py-2 text-xs font-medium text-white shadow-[0_10px_30px_-8px_oklch(0.55_0.27_285_/_0.7)]">
+                      Previzualizare <ArrowUpRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Laptop base */}
+              <div className="relative mx-auto h-2 sm:h-2.5 w-[108%] -ml-[4%] rounded-b-xl bg-gradient-to-b from-[#3a3a3e] to-[#1a1a1e] shadow-[0_14px_24px_-12px_rgba(0,0,0,0.7)]">
+                <div className="absolute left-1/2 top-0 -translate-x-1/2 h-1 w-16 rounded-b-md bg-black/40" />
+              </div>
+            </div>
+
+            {/* Info row */}
+            <div className="flex items-center justify-between gap-3 px-1 pt-5">
+              <div className="min-w-0">
+                <div className="text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground">{it.tag}</div>
+                <div className="mt-1 text-base sm:text-lg font-semibold truncate">{it.title}</div>
+              </div>
+              <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors whitespace-nowrap">
+                {it.url} →
+              </span>
+            </div>
+
+            {/* Proof row (bottom) */}
+            <div className="mt-3 flex flex-wrap items-center gap-1.5 px-1">
+              <span className="inline-flex items-center gap-1.5 rounded-full glass px-2.5 py-1 text-[11px]">
                 <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
                 <span className="font-semibold">{it.proof.rating}</span>
                 <span className="text-muted-foreground">({it.proof.reviewsCount})</span>
-              </div>
-
-              <div className="absolute bottom-3 left-3 right-3 flex flex-wrap gap-1.5">
-                {it.proof.highlightKpis.map((k) => (
-                  <span key={k.label} className="rounded-full glass-strong px-2.5 py-1 text-[10px] uppercase tracking-wider">
-                    <span className="font-semibold text-foreground">{k.value}</span>
-                    <span className="text-muted-foreground ml-1.5">{k.label}</span>
-                  </span>
-                ))}
-              </div>
-
-              <div className="absolute top-3 right-3 flex items-center gap-1.5 rounded-full glass-strong px-3 py-1.5 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                Deschide demo <ArrowUpRight className="w-3.5 h-3.5" />
-              </div>
-            </div>
-            <div className="flex items-center justify-between p-5">
-              <div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">{it.tag}</div>
-                <div className="mt-1 text-lg font-semibold">{it.title}</div>
-              </div>
-              <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
-                {it.url} →
               </span>
+              {it.proof.highlightKpis.map((k) => (
+                <span key={k.label} className="rounded-full glass px-2.5 py-1 text-[10px] uppercase tracking-wider">
+                  <span className="font-semibold text-foreground">{k.value}</span>
+                  <span className="text-muted-foreground ml-1.5">{k.label}</span>
+                </span>
+              ))}
             </div>
           </button>
         ))}
