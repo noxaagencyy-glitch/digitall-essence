@@ -109,6 +109,28 @@ export function Hero() {
                 </div>
               </div>
             ))}
+            <div className="col-span-2 sm:col-span-4 relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-br from-accent/40 via-white/10 to-electric/40">
+              <div className="relative rounded-[11px] glass-strong px-3 py-2.5 flex items-center justify-center gap-2">
+                <Sparkles className="h-3.5 w-3.5 text-accent" />
+                <span className="text-[11px] sm:text-xs font-medium text-foreground/90">
+                  și multe altele...
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => setOpenStart(true)}
+              className="group relative inline-flex items-center gap-3 rounded-full p-[2px] bg-gradient-to-r from-accent via-primary to-electric hover:scale-[1.03] transition-transform shadow-[0_20px_60px_-15px_oklch(0.7_0.2_295/0.6)]"
+            >
+              <span className="relative flex items-center gap-3 rounded-full bg-background/80 backdrop-blur-xl px-8 sm:px-10 py-4 sm:py-5 text-base sm:text-lg font-semibold text-foreground">
+                <Sparkles className="h-5 w-5 text-accent animate-pulse" />
+                Vreau site-ul meu premium
+                <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </span>
+              <span aria-hidden className="absolute inset-0 rounded-full bg-gradient-to-r from-accent via-primary to-electric opacity-50 blur-2xl -z-10" />
+            </button>
           </div>
         </div>
         {/* Mockup */}
