@@ -52,26 +52,6 @@ export function Hero() {
           Experiențe digitale premium
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-2 animate-fade-up" style={{ animationDelay: "30ms" }}>
-          {[
-            "Hosting gratuit",
-            "SEO inclus",
-            "Suport permanent după lansare",
-            "Integrare WhatsApp",
-            "Website rapid & fluid",
-            "Mobile responsive",
-            "Mentenanță prima lună gratuită",
-            "Livrare în 3–7 zile lucrătoare",
-          ].map((b) => (
-            <span
-              key={b}
-              className="inline-flex items-center gap-1.5 glass rounded-full px-3 py-1 text-[11px] sm:text-xs text-foreground/85"
-            >
-              <Check className="h-3 w-3 text-accent" />
-              {b}
-            </span>
-          ))}
-        </div>
 
         <h1 className="mt-6 text-5xl sm:text-7xl md:text-[88px] font-semibold leading-[1.02] tracking-tight animate-fade-up" style={{ animationDelay: "60ms" }}>
           Website-uri <span className="text-gradient">Premium</span> Pentru Orice Tip
@@ -99,6 +79,38 @@ export function Hero() {
           </a>
         </div>
 
+        <div className="mt-10 mx-auto max-w-3xl animate-fade-up" style={{ animationDelay: "260ms" }}>
+          <div className="text-[10px] sm:text-xs uppercase tracking-[0.25em] text-muted-foreground/70 mb-4">
+            Totul inclus în pachet
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            {[
+              "Hosting gratuit",
+              "SEO inclus",
+              "Suport după lansare",
+              "Integrare WhatsApp",
+              "Website rapid & fluid",
+              "Mobile responsive",
+              "Mentenanță 1 lună gratis",
+              "Livrare 3–7 zile",
+            ].map((b, i) => (
+              <div
+                key={b}
+                className="group relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-br from-white/20 via-white/5 to-transparent hover:from-accent/60 hover:to-electric/40 transition-all"
+                style={{ animationDelay: `${280 + i * 40}ms` }}
+              >
+                <div className="relative h-full rounded-[11px] glass-strong px-3 py-2.5 flex items-center gap-2">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-noxa shadow-[0_0_12px_oklch(0.7_0.2_295/0.6)]">
+                    <Check className="h-3 w-3 text-white" strokeWidth={3} />
+                  </span>
+                  <span className="text-[11px] sm:text-xs font-medium text-foreground/90 leading-tight text-left">
+                    {b}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
         {/* Mockup */}
         <div className="relative mt-20 mx-auto max-w-5xl animate-fade-up" style={{ animationDelay: "320ms" }}>
           <div className="absolute -inset-10 bg-gradient-noxa opacity-30 blur-3xl rounded-[40px]" />
