@@ -237,16 +237,14 @@ function BonusGrid() {
         ))}
         <div
           data-reveal
-          className="reveal-item col-span-2 sm:col-span-4 group relative overflow-hidden rounded-xl p-[1.5px] bg-[conic-gradient(from_0deg_at_50%_50%,oklch(0.7_0.2_295)_0%,oklch(0.8_0.18_200)_25%,oklch(0.75_0.22_330)_50%,oklch(0.8_0.18_200)_75%,oklch(0.7_0.2_295)_100%)]"
+          className="reveal-item col-span-2 sm:col-span-4 group relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-br from-white/20 via-white/5 to-transparent hover:from-accent/60 hover:to-electric/40 transition-all"
           style={{ transitionDelay: `${80 + BONUSES.length * 90}ms` }}
         >
-          <div className="relative rounded-[10px] glass-strong px-4 py-3 flex items-center justify-center gap-2.5 overflow-hidden">
-            <span aria-hidden className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-12 shimmer-sweep" />
-            <Sparkles className="h-4 w-4 text-accent animate-pulse" />
-            <span className="text-xs sm:text-sm font-semibold tracking-wide text-gradient">
+          <div className="relative h-full rounded-[11px] glass-strong px-3 py-2.5 flex items-center justify-center gap-2">
+            <Sparkles className="h-3.5 w-3.5 text-accent" />
+            <span className="text-[11px] sm:text-xs font-medium text-foreground/90">
               și multe altele...
             </span>
-            <Sparkles className="h-4 w-4 text-electric animate-pulse" style={{ animationDelay: "600ms" }} />
           </div>
         </div>
       </div>
