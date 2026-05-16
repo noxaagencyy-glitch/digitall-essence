@@ -1,7 +1,8 @@
-import { Heart, Eye, Zap, ShieldCheck, Code2, Palette, Megaphone, Headphones } from "lucide-react";
+import { Heart, Eye, Zap, ShieldCheck, Code2, Palette, Megaphone, Headphones, Sparkles } from "lucide-react";
 import { SectionHeader } from "./Services";
 import { Reveal } from "./Reveal";
 import { NoxaLogo } from "./Logo";
+import { Words } from "./Words";
 
 const values = [
   {
