@@ -46,7 +46,7 @@ export function Process() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
-          {steps.map((s, i) => {
+          {steps.map((s) => {
             return (
               <div
                 key={s.n}
