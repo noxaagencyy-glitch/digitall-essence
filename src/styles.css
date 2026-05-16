@@ -93,12 +93,11 @@
   }
   html {
     min-height: 100%;
-    scroll-behavior: smooth;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    scroll-behavior: auto;
+    overflow-x: hidden;
   }
   body {
-    min-height: 100%;
+    min-height: 100vh;
     background-color: var(--color-background);
     background-image:
       radial-gradient(ellipse 80% 50% at 50% -10%, oklch(0.50 0.28 285 / 0.25), transparent 60%),
@@ -110,8 +109,12 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    overflow-y: auto;
-    touch-action: pan-y;
+  }
+  @supports (overflow: clip) {
+    html,
+    body {
+      overflow-x: clip;
+    }
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
