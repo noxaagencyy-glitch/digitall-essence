@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { NoxaLogo } from "./Logo";
 
 const links = [
@@ -11,34 +11,18 @@ const links = [
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [progress, setProgress] = useState(0);
-  const lastY = useRef(0);
-  const ticking = useRef(false);
 
   useEffect(() => {
-    lastY.current = window.scrollY;
     const update = () => {
       const y = window.scrollY;
       const max = document.documentElement.scrollHeight - window.innerHeight;
       setProgress(max > 0 ? Math.min(100, (y / max) * 100) : 0);
       setScrolled(y > 20);
-      const delta = y - lastY.current;
-      if (Math.abs(delta) > 6) {
-        setHidden(delta > 0 && y > 120);
-        lastY.current = y;
-      }
-      ticking.current = false;
-    };
-    const onScroll = () => {
-      if (!ticking.current) {
-        ticking.current = true;
-        requestAnimationFrame(update);
-      }
     };
     update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
   }, []);
 
   return (
@@ -55,10 +39,8 @@ export function Nav() {
       </div>
 
       <header
-        className={`fixed top-0 inset-x-0 z-50 flex justify-center px-4 will-change-transform transition-[transform,opacity,padding] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-          hidden
-            ? "-translate-y-[140%] opacity-0 pt-2"
-            : `translate-y-0 opacity-100 ${scrolled ? "pt-2" : "pt-4"}`
+        className={`fixed top-0 inset-x-0 z-50 flex justify-center px-4 transition-[padding] duration-300 ease-out ${
+          scrolled ? "pt-2" : "pt-4"
         }`}
       >
         <nav
