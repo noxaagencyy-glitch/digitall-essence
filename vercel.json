@@ -1,8 +1,8 @@
 {
   "buildCommand": "bun run build:vercel",
-  "outputDirectory": "dist/client",
+  "outputDirectory": "dist",
   "framework": null,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/((?!assets/|favicon\\.ico).*)", "destination": "/index.html" }
   ]
 }
