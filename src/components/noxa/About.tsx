@@ -61,21 +61,31 @@ export function About() {
 
       <SectionHeader eyebrow="Cine suntem" title="O echipă care îți ia proiectul în serios" />
 
-      <Reveal>
-        <div className="mx-auto max-w-4xl px-6 mt-10 text-center">
-          <p className="text-lg sm:text-xl text-foreground/85 leading-relaxed">
-            <span className="text-gradient font-semibold">NOXA Agency</span> transformă ideile tale
-            într-o prezență online care inspiră încredere și aduce clienți reali. Nu suntem doar un
-            furnizor de site-uri — suntem partenerul tău digital, echipa din spate care îți face brandul
-            să strălucească.
-          </p>
-          <p className="mt-5 text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Combinăm design premium, tehnologie modernă și o obsesie pentru detalii ca să livrăm
-            experiențe digitale pe care vizitatorii tăi le țin minte. Fiecare proiect e construit cu
-            grijă, fiecare pixel își câștigă locul și fiecare client primește atenția pe care o merită.
-          </p>
-        </div>
-      </Reveal>
+      <div className="mx-auto max-w-4xl px-6 mt-10 text-center relative">
+        <Reveal>
+          <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-muted-foreground mb-6">
+            <Sparkles className="h-3.5 w-3.5 text-accent animate-pulse" />
+            Povestea noastră
+          </div>
+        </Reveal>
+
+        <Words
+          as="p"
+          className="text-lg sm:text-2xl text-foreground/90 leading-relaxed font-light tracking-tight"
+          text="NOXA Agency transformă ideile tale într-o prezență online care inspiră încredere și aduce clienți reali."
+          highlight={["noxa", "agency", "încredere", "clienți", "reali"]}
+          step={60}
+        />
+
+        <Words
+          as="p"
+          className="mt-6 text-base sm:text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto"
+          text="Nu suntem doar un furnizor de site-uri — suntem partenerul tău digital, echipa din spate care îți face brandul să strălucească prin design premium, tehnologie modernă și o obsesie pentru detalii."
+          highlight={["partenerul", "premium", "strălucească", "obsesie"]}
+          step={45}
+          delay={400}
+        />
+      </div>
 
       <Reveal stagger direction="up" className="mx-auto max-w-6xl px-6 mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {values.map((v) => (
