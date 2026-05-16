@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "vite build && rm -rf dist-vercel && mv dist/client dist-vercel && rm -rf dist && mv dist-vercel dist && cp dist/_shell.html dist/index.html && cp dist/_shell.html dist/404.html",
     "build:vercel": "vite build && rm -rf dist-vercel && mv dist/client dist-vercel && rm -rf dist && mv dist-vercel dist && cp dist/_shell.html dist/index.html && cp dist/_shell.html dist/404.html",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
