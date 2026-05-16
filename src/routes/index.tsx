@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/noxa/Nav";
+import { About } from "@/components/noxa/About";
 import { Hero } from "@/components/noxa/Hero";
 import { Services } from "@/components/noxa/Services";
 import { Portfolio } from "@/components/noxa/Portfolio";
@@ -27,6 +28,7 @@ function Index() {
       <Nav />
       <Hero />
       <Reveal><Services /></Reveal>
+      <Reveal direction="up"><About /></Reveal>
       <Reveal direction="scale"><Portfolio /></Reveal>
       <Reveal><WhyUs /></Reveal>
       <Reveal direction="left"><Testimonials /></Reveal>

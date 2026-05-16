@@ -3,6 +3,7 @@ import { NoxaLogo } from "./Logo";
 
 const links = [
   { href: "#servicii", label: "Servicii" },
+  { href: "#despre", label: "Despre" },
   { href: "#portofoliu", label: "Portofoliu" },
   { href: "#proces", label: "Proces" },
   { href: "#faq", label: "FAQ" },
