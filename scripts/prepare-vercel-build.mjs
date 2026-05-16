@@ -1,4 +1,4 @@
-import { copyFile, cp, readdir } from "node:fs/promises";
+import { copyFile, cp, mkdir, readdir, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 
@@ -21,4 +21,26 @@ for (const entry of entries) {
   await cp(source, destination, { recursive: true, force: true });
 }
 
-console.log("Prepared Vercel output in both dist/ and dist/client/.");
+const vercelOutputDir = join(".vercel", "output");
+const vercelStaticDir = join(vercelOutputDir, "static");
+
+await rm(vercelOutputDir, { recursive: true, force: true });
+await mkdir(vercelStaticDir, { recursive: true });
+await cp(clientDir, vercelStaticDir, { recursive: true, force: true });
+await writeFile(
+  join(vercelOutputDir, "config.json"),
+  `${JSON.stringify(
+    {
+      version: 3,
+      routes: [
+        { src: "^/assets/(.*)$", dest: "/assets/$1" },
+        { src: "^/favicon\\.ico$", dest: "/favicon.ico" },
+        { src: "^/(.*)$", dest: "/index.html" },
+      ],
+    },
+    null,
+    2
+  )}\n`
+);
+
+console.log("Prepared Vercel output in dist/, dist/client/, and .vercel/output/static/.");
