@@ -104,20 +104,6 @@ export function Hero() {
 
         <BonusGrid />
 
-          <div className="mt-6 flex justify-center">
-            <button
-              onClick={() => setOpenStart(true)}
-              className="group relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-r from-accent/60 via-primary/60 to-electric/60 hover:from-accent hover:via-primary hover:to-electric transition-all hover:-translate-y-0.5"
-            >
-              <span aria-hidden className="absolute -inset-x-12 -top-px h-px bg-gradient-to-r from-transparent via-white/80 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-              <span className="relative flex items-center gap-2.5 rounded-[11px] glass-strong px-6 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-[15px] font-semibold text-foreground">
-                <Sparkles className="h-4 w-4 text-accent" />
-                Vreau site-ul meu premium
-                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </span>
-            </button>
-          </div>
-        </div>
         {/* Mockup */}
         <div className="relative mt-20 mx-auto max-w-5xl animate-fade-up" style={{ animationDelay: "320ms" }}>
           <div className="absolute -inset-10 bg-gradient-noxa opacity-30 blur-3xl rounded-[40px]" />
