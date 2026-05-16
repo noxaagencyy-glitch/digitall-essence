@@ -9,7 +9,7 @@ const others = [
   { icon: Code, text: "Folosesc template-uri și tehnologii învechite din 2018" },
   { icon: TrendingDown, text: "Site-uri lente, scor SEO slab, conversii zero" },
   { icon: AlertTriangle, text: "Calitate slabă, design generic, fără identitate" },
-  { icon: MessageX, text: "Suport prin chatbot, răspund în 3-5 zile lucrătoare" },
+  { icon: MessageSquareOff, text: "Suport prin chatbot, răspund în 3-5 zile lucrătoare" },
   { icon: X, text: "Costuri ascunse, hosting separat, mentenanță extra" },
   { icon: X, text: "Te lasă singur după lansare, fără strategie pe termen lung" },
 ];
