@@ -3,6 +3,6 @@
   "outputDirectory": "dist/client",
   "framework": null,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/_shell" }
+    { "source": "/(.*)", "destination": "/_shell.html" }
   ]
 }
