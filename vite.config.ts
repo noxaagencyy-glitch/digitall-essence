@@ -9,9 +9,11 @@ function vercelStaticOutputPlugin() {
     async closeBundle() {
       const distDir = "dist";
       const clientDir = join(distDir, "client");
-      const shellFile = join(clientDir, "_shell.html");
+      const shellFile = [join(clientDir, "_shell.html"), join(distDir, "_shell.html")].find((file) =>
+        existsSync(file),
+      );
 
-      if (!existsSync(shellFile)) return;
+      if (!shellFile) return;
 
       await copyFile(shellFile, join(clientDir, "index.html"));
       await copyFile(shellFile, join(clientDir, "404.html"));
