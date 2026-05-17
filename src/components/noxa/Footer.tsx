@@ -1,6 +1,9 @@
 import { Mail, Instagram, Facebook, Linkedin, Youtube, ArrowUpRight, MapPin, Cookie } from "lucide-react";
 import { NoxaLogo } from "./Logo";
 import { openCookieManager } from "./CookieBanner";
+import { EmailLink, EmailText } from "./EmailLink";
+
+const CURRENT_YEAR = "2026";
 
 const cols: { title: string; links: { label: string; href: string; external?: boolean }[] }[] = [
   {
@@ -83,12 +86,11 @@ export function Footer() {
             Construim experiențe digitale moderne — web design premium, branding și platforme care convertesc.
           </p>
           <div className="mt-5 space-y-2 text-sm">
-            <a
-              href="mailto:contact@noxaweb.com"
+            <EmailLink
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
             >
-              <Mail className="h-4 w-4" /> contact@noxaweb.com
-            </a>
+              <Mail className="h-4 w-4" /> <EmailText />
+            </EmailLink>
             <div className="flex items-center gap-2 text-muted-foreground">
               <MapPin className="h-4 w-4" /> România · Servim global
             </div>
@@ -133,7 +135,7 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="relative border-t border-white/5">
         <div className="mx-auto max-w-6xl px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <div>© {new Date().getFullYear()} NOXA Agency. Toate drepturile rezervate.</div>
+          <div>© {CURRENT_YEAR} NOXA Agency. Toate drepturile rezervate.</div>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <a href="/termeni" className="hover:text-foreground transition-colors">Termeni</a>
             <a href="/confidentialitate" className="hover:text-foreground transition-colors">Confidențialitate</a>

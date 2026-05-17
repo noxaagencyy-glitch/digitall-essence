@@ -52,14 +52,9 @@ function vercelStaticOutputPlugin() {
   };
 }
 
-// Vercel-compatible build:
-// - disable Cloudflare Worker plugin (Vercel uses a different runtime)
-// - enable SPA mode so the build emits a static client bundle Vercel can serve directly
-// Lovable preview (dev server) is unaffected; both work in parallel.
 export default defineConfig({
   plugins: [vercelStaticOutputPlugin()],
-  cloudflare: false,
   tanstackStart: {
-    spa: { enabled: true },
+    server: { entry: "server" },
   },
 });

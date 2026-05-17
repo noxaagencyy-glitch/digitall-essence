@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Cookie } from "lucide-react";
 import { openCookieManager } from "@/components/noxa/CookieBanner";
+import { EmailLink, EmailText } from "@/components/noxa/EmailLink";
+
+const LAST_UPDATED = "17.05.2026";
 
 export const Route = createFileRoute("/confidentialitate")({
   head: () => ({
@@ -20,7 +23,7 @@ function PrivacyPage() {
           <ArrowLeft className="h-4 w-4" /> Înapoi la site
         </Link>
         <h1 className="mt-6 text-4xl sm:text-5xl font-semibold tracking-tight">Politica de confidențialitate</h1>
-        <p className="mt-3 text-sm text-muted-foreground">Ultima actualizare: {new Date().toLocaleDateString("ro-RO")}</p>
+        <p className="mt-3 text-sm text-muted-foreground">Ultima actualizare: {LAST_UPDATED}</p>
 
         <div className="mt-10 space-y-8 text-sm leading-relaxed text-muted-foreground">
           <Section title="1. Date colectate">
@@ -37,7 +40,7 @@ function PrivacyPage() {
           </Section>
           <Section title="5. Drepturile tale">
             Ai dreptul de acces, rectificare, ștergere, restricționare, portabilitate și opoziție. Trimite cererile la{" "}
-            <a className="underline hover:text-foreground" href="mailto:contact@noxaweb.com">contact@noxaweb.com</a>.
+            <EmailLink className="underline hover:text-foreground"><EmailText /></EmailLink>.
           </Section>
           <Section title="6. Cookie-uri">
             Folosim cookie-uri strict necesare, analitice și (opțional) de marketing. Poți schimba oricând preferințele tale.
@@ -52,7 +55,7 @@ function PrivacyPage() {
           </Section>
           <Section title="7. Contact">
             Pentru orice întrebare privind datele tale ne poți scrie la{" "}
-            <a className="underline hover:text-foreground" href="mailto:contact@noxaweb.com">contact@noxaweb.com</a>.
+            <EmailLink className="underline hover:text-foreground"><EmailText /></EmailLink>.
           </Section>
         </div>
       </div>
