@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Cookie } from "lucide-react";
 import { openCookieManager } from "@/components/noxa/CookieBanner";
+import { EmailLink, EmailText } from "@/components/noxa/EmailLink";
 
 export const Route = createFileRoute("/confidentialitate")({
   head: () => ({
@@ -37,7 +38,7 @@ function PrivacyPage() {
           </Section>
           <Section title="5. Drepturile tale">
             Ai dreptul de acces, rectificare, ștergere, restricționare, portabilitate și opoziție. Trimite cererile la{" "}
-            <a className="underline hover:text-foreground" href="mailto:contact@noxaweb.com">contact@noxaweb.com</a>.
+            <EmailLink className="underline hover:text-foreground"><EmailText /></EmailLink>.
           </Section>
           <Section title="6. Cookie-uri">
             Folosim cookie-uri strict necesare, analitice și (opțional) de marketing. Poți schimba oricând preferințele tale.
@@ -52,7 +53,7 @@ function PrivacyPage() {
           </Section>
           <Section title="7. Contact">
             Pentru orice întrebare privind datele tale ne poți scrie la{" "}
-            <a className="underline hover:text-foreground" href="mailto:contact@noxaweb.com">contact@noxaweb.com</a>.
+            <EmailLink className="underline hover:text-foreground"><EmailText /></EmailLink>.
           </Section>
         </div>
       </div>
