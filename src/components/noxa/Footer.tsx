@@ -1,6 +1,7 @@
 import { Mail, Instagram, Facebook, Linkedin, Youtube, ArrowUpRight, MapPin, Cookie } from "lucide-react";
 import { NoxaLogo } from "./Logo";
 import { openCookieManager } from "./CookieBanner";
+import { EmailLink, EmailText } from "./EmailLink";
 
 const cols: { title: string; links: { label: string; href: string; external?: boolean }[] }[] = [
   {
@@ -83,12 +84,11 @@ export function Footer() {
             Construim experiențe digitale moderne — web design premium, branding și platforme care convertesc.
           </p>
           <div className="mt-5 space-y-2 text-sm">
-            <a
-              href="mailto:contact@noxaweb.com"
+            <EmailLink
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
             >
-              <Mail className="h-4 w-4" /> contact@noxaweb.com
-            </a>
+              <Mail className="h-4 w-4" /> <EmailText />
+            </EmailLink>
             <div className="flex items-center gap-2 text-muted-foreground">
               <MapPin className="h-4 w-4" /> România · Servim global
             </div>
