@@ -4,10 +4,14 @@ import { join } from "node:path";
 
 const distDir = "dist";
 const clientDir = join(distDir, "client");
-const shellFile = join(clientDir, "_shell.html");
+const shellFile = [join(clientDir, "_shell.html"), join(distDir, "_shell.html")].find((file) =>
+  existsSync(file),
+);
 
-if (!existsSync(shellFile)) {
-  throw new Error("Vercel build failed: dist/client/_shell.html was not generated.");
+if (!shellFile) {
+  throw new Error(
+    "Vercel build failed: no app shell was generated. Expected dist/_shell.html or dist/client/_shell.html.",
+  );
 }
 
 await copyFile(shellFile, join(clientDir, "index.html"));
