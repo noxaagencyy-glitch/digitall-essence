@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
+import { EmailLink, EmailText } from "@/components/noxa/EmailLink";
 
 export const Route = createFileRoute("/termeni")({
   head: () => ({
@@ -41,7 +42,7 @@ function TermsPage() {
             Oricare dintre părți poate înceta colaborarea cu notificare scrisă. Sumele plătite pentru munca deja efectuată nu se restituie.
           </Section>
           <Section title="7. Contact">
-            Pentru orice întrebare ne poți scrie la <a className="underline hover:text-foreground" href="mailto:contact@noxaweb.com">contact@noxaweb.com</a>.
+            Pentru orice întrebare ne poți scrie la <EmailLink className="underline hover:text-foreground"><EmailText /></EmailLink>.
           </Section>
         </div>
       </div>
