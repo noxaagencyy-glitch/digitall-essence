@@ -3,6 +3,8 @@ import { NoxaLogo } from "./Logo";
 import { openCookieManager } from "./CookieBanner";
 import { EmailLink, EmailText } from "./EmailLink";
 
+const CURRENT_YEAR = "2026";
+
 const cols: { title: string; links: { label: string; href: string; external?: boolean }[] }[] = [
   {
     title: "Companie",
@@ -133,7 +135,7 @@ export function Footer() {
       {/* Bottom bar */}
       <div className="relative border-t border-white/5">
         <div className="mx-auto max-w-6xl px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <div>© {new Date().getFullYear()} NOXA Agency. Toate drepturile rezervate.</div>
+          <div>© {CURRENT_YEAR} NOXA Agency. Toate drepturile rezervate.</div>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <a href="/termeni" className="hover:text-foreground transition-colors">Termeni</a>
             <a href="/confidentialitate" className="hover:text-foreground transition-colors">Confidențialitate</a>
