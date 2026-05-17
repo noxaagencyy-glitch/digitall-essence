@@ -4,16 +4,22 @@ import { join } from "node:path";
 
 const distDir = "dist";
 const clientDir = join(distDir, "client");
-const shellFile = [join(clientDir, "_shell.html"), join(distDir, "_shell.html")].find((file) =>
-  existsSync(file),
-);
+await mkdir(clientDir, { recursive: true });
+
+const shellFile = [
+  join(clientDir, "_shell.html"),
+  join(distDir, "_shell.html"),
+  join(clientDir, "index.html"),
+  join(distDir, "index.html"),
+].find((file) => existsSync(file));
 
 if (!shellFile) {
   throw new Error(
-    "Vercel build failed: no app shell was generated. Expected dist/_shell.html or dist/client/_shell.html.",
+    "Vercel build failed: no HTML app shell was generated. Expected dist/_shell.html, dist/index.html, dist/client/_shell.html, or dist/client/index.html.",
   );
 }
 
+await copyFile(shellFile, join(clientDir, "_shell.html"));
 await copyFile(shellFile, join(clientDir, "index.html"));
 await copyFile(shellFile, join(clientDir, "404.html"));
 
