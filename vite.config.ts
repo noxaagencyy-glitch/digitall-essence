@@ -9,12 +9,17 @@ function vercelStaticOutputPlugin() {
     async closeBundle() {
       const distDir = "dist";
       const clientDir = join(distDir, "client");
-      const shellFile = [join(clientDir, "_shell.html"), join(distDir, "_shell.html")].find((file) =>
-        existsSync(file),
-      );
+      await mkdir(clientDir, { recursive: true });
+      const shellFile = [
+        join(clientDir, "_shell.html"),
+        join(distDir, "_shell.html"),
+        join(clientDir, "index.html"),
+        join(distDir, "index.html"),
+      ].find((file) => existsSync(file));
 
       if (!shellFile) return;
 
+      await copyFile(shellFile, join(clientDir, "_shell.html"));
       await copyFile(shellFile, join(clientDir, "index.html"));
       await copyFile(shellFile, join(clientDir, "404.html"));
 
