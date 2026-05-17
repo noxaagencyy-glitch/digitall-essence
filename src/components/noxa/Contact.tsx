@@ -1,6 +1,7 @@
 import { Mail, MessageCircle, ArrowUpRight, Sparkles, Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
 import { SectionHeader } from "./Services";
 import { SERVICES } from "./StartProjectDialog";
+import { EmailLink, EmailText } from "./EmailLink";
 
 function openStartDialog(services?: string[]) {
   window.dispatchEvent(
@@ -62,13 +63,13 @@ export function Contact() {
 
         {/* Right: contact options */}
         <div className="lg:col-span-2 space-y-4">
-          <a href="mailto:contact@noxaweb.com" className="flex items-center gap-4 glass rounded-3xl p-5 hover:ring-glow transition-all">
+          <EmailLink className="flex items-center gap-4 glass rounded-3xl p-5 hover:ring-glow transition-all">
             <div className="h-11 w-11 rounded-2xl bg-gradient-noxa flex items-center justify-center"><Mail className="h-5 w-5 text-white" /></div>
             <div>
               <div className="text-xs text-muted-foreground">Email</div>
-              <div className="font-medium">contact@noxaweb.com</div>
+              <div className="font-medium"><EmailText /></div>
             </div>
-          </a>
+          </EmailLink>
           <a href="https://wa.me/40000000000" className="flex items-center gap-4 glass rounded-3xl p-5 hover:ring-glow transition-all">
             <div className="h-11 w-11 rounded-2xl bg-gradient-noxa flex items-center justify-center"><MessageCircle className="h-5 w-5 text-white" /></div>
             <div>
