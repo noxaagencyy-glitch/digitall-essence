@@ -1,10 +1,51 @@
-import { copyFile, cp, mkdir, readdir, rm, writeFile } from "node:fs/promises";
+import { copyFile, cp, mkdir, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { join } from "node:path";
+import { basename, join } from "node:path";
 
 const distDir = "dist";
 const clientDir = join(distDir, "client");
 await mkdir(clientDir, { recursive: true });
+
+async function findClientEntry() {
+  const assetsDir = join(clientDir, "assets");
+  if (!existsSync(assetsDir)) return undefined;
+
+  const entries = await readdir(assetsDir, { withFileTypes: true });
+  for (const entry of entries) {
+    if (!entry.isFile() || !entry.name.endsWith(".js")) continue;
+    const file = join(assetsDir, entry.name);
+    const source = await readFile(file, "utf8");
+    if (source.includes("hydrateRoot(document")) return `assets/${entry.name}`;
+  }
+
+  const indexEntry = entries.find(
+    (entry) => entry.isFile() && /^index-[\w-]+\.js$/.test(entry.name),
+  );
+  return indexEntry ? `assets/${indexEntry.name}` : undefined;
+}
+
+async function writeStaticShell(destination) {
+  const clientEntry = await findClientEntry();
+  if (!clientEntry) {
+    throw new Error(
+      "Vercel build failed: client build completed, but no browser entry JS was found in dist/client/assets.",
+    );
+  }
+
+  const assetsDir = join(clientDir, "assets");
+  const assetEntries = existsSync(assetsDir) ? await readdir(assetsDir, { withFileTypes: true }) : [];
+  const stylesheet = assetEntries.find(
+    (entry) => entry.isFile() && entry.name.endsWith(".css"),
+  );
+  const stylesheetTag = stylesheet
+    ? `<link rel="stylesheet" href="/assets/${basename(stylesheet.name)}">`
+    : "";
+
+  await writeFile(
+    destination,
+    `<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">${stylesheetTag}<title>NOXA Agency</title><meta name="description" content="NOXA Agency builds premium, high-converting websites."></head><body><script type="module" src="/${clientEntry}"></script></body></html>\n`,
+  );
+}
 
 const shellFile = [
   join(clientDir, "_shell.html"),
@@ -13,15 +54,14 @@ const shellFile = [
   join(distDir, "index.html"),
 ].find((file) => existsSync(file));
 
-if (!shellFile) {
-  throw new Error(
-    "Vercel build failed: no HTML app shell was generated. Expected dist/_shell.html, dist/index.html, dist/client/_shell.html, or dist/client/index.html.",
-  );
+if (shellFile) {
+  await copyFile(shellFile, join(clientDir, "_shell.html"));
+} else {
+  await writeStaticShell(join(clientDir, "_shell.html"));
 }
 
-await copyFile(shellFile, join(clientDir, "_shell.html"));
-await copyFile(shellFile, join(clientDir, "index.html"));
-await copyFile(shellFile, join(clientDir, "404.html"));
+await copyFile(join(clientDir, "_shell.html"), join(clientDir, "index.html"));
+await copyFile(join(clientDir, "_shell.html"), join(clientDir, "404.html"));
 
 const entries = await readdir(clientDir, { withFileTypes: true });
 
