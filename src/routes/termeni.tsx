@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { EmailLink, EmailText } from "@/components/noxa/EmailLink";
 
+const LAST_UPDATED = "17.05.2026";
+
 export const Route = createFileRoute("/termeni")({
   head: () => ({
     meta: [
@@ -20,7 +22,7 @@ function TermsPage() {
           <ArrowLeft className="h-4 w-4" /> Înapoi la site
         </Link>
         <h1 className="mt-6 text-4xl sm:text-5xl font-semibold tracking-tight">Termeni și condiții</h1>
-        <p className="mt-3 text-sm text-muted-foreground">Ultima actualizare: {new Date().toLocaleDateString("ro-RO")}</p>
+        <p className="mt-3 text-sm text-muted-foreground">Ultima actualizare: {LAST_UPDATED}</p>
 
         <div className="prose prose-invert mt-10 space-y-8 text-sm leading-relaxed text-muted-foreground">
           <Section title="1. Despre noi">
