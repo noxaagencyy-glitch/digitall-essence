@@ -1,5 +1,5 @@
 import React from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { ArrowLeft, Cookie } from "lucide-react";
 import { openCookieManager } from "@/components/noxa/CookieBanner";
 import { EmailLink, EmailText } from "@/components/noxa/EmailLink";
@@ -23,10 +23,10 @@ function PrivacyPage() {
   return (
     <main className="relative min-h-screen px-6 py-24 sm:py-32">
       <div className="mx-auto max-w-3xl">
-        <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
+        <a href="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
           <ArrowLeft className="h-4 w-4" />
           Înapoi la site
-        </Link>
+        </a>
 
         <h1 className="mt-6 text-4xl font-semibold tracking-tight sm:text-5xl">Politica de confidențialitate</h1>
 
@@ -56,6 +56,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
   return (
     <section>
       <h2 className="text-lg font-semibold text-foreground">{title}</h2>
+
       <div className="mt-2">{children}</div>
     </section>
   );
