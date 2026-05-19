@@ -1,4 +1,4 @@
-import { Mail, Instagram, Facebook, Linkedin, Youtube, ArrowUpRight, MapPin, Cookie } from "lucide-react";
+import { Mail, Instagram, Facebook, Linkedin, Youtube, MapPin, Cookie } from "lucide-react";
 import { NoxaLogo } from "./Logo";
 import { openCookieManager } from "./CookieBanner";
 import { EmailLink, EmailText } from "./EmailLink";
