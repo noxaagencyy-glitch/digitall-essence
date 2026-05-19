@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, ArrowUpRight, Sparkles, Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
+import { Mail, MessageCircle, ArrowUpRight, Sparkles } from "lucide-react";
 import { SectionHeader } from "./Services";
 import { SERVICES } from "./StartProjectDialog";
 import { EmailLink, EmailText } from "./EmailLink";
