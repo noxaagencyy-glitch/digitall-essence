@@ -1,4 +1,4 @@
-import { Mail, Instagram, Facebook, Linkedin, Youtube, ArrowUpRight, MapPin, Cookie } from "lucide-react";
+import { Mail, Instagram, Facebook, Linkedin, Youtube, MapPin, Cookie } from "lucide-react";
 import { NoxaLogo } from "./Logo";
 import { openCookieManager } from "./CookieBanner";
 import { EmailLink, EmailText } from "./EmailLink";
@@ -48,29 +48,6 @@ export function Footer() {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
       <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-gradient-noxa opacity-[0.08] blur-[120px]" />
 
-      {/* CTA strip */}
-      <div className="relative mx-auto max-w-6xl px-6 pt-16">
-        <div className="relative glass-strong rounded-3xl p-8 sm:p-10 overflow-hidden">
-          <div className="absolute -top-24 -right-24 w-[320px] h-[320px] rounded-full bg-gradient-noxa opacity-25 blur-[100px]" />
-          <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div>
-              <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight">
-                Pregătit să <span className="text-gradient">construim împreună</span>?
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground max-w-md">
-                Răspundem în mai puțin de 24h cu o ofertă personalizată pentru proiectul tău.
-              </p>
-            </div>
-            <a
-              href="/#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-6 py-3.5 text-sm font-medium text-white shadow-[0_8px_24px_-8px_oklch(0.55_0.27_285_/_0.7)] hover:scale-[1.02] transition-transform"
-            >
-              Cere ofertă gratuită
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-          </div>
-        </div>
-      </div>
 
       {/* Main grid */}
       <div className="relative mx-auto max-w-6xl px-6 py-14 grid grid-cols-2 md:grid-cols-5 gap-10">

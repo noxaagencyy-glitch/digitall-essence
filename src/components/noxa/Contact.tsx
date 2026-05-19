@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, ArrowUpRight, Sparkles, Instagram, Facebook, Linkedin, Youtube } from "lucide-react";
+import { Mail, MessageCircle, ArrowUpRight, Sparkles } from "lucide-react";
 import { SectionHeader } from "./Services";
 import { SERVICES } from "./StartProjectDialog";
 import { EmailLink, EmailText } from "./EmailLink";
@@ -77,39 +77,9 @@ export function Contact() {
               <div className="font-medium">Chat direct</div>
             </div>
           </a>
-          <div className="glass rounded-3xl p-5">
-            <div className="text-xs uppercase tracking-widest text-muted-foreground">Social</div>
-            <div className="mt-3 flex gap-2">
-              {[
-                { Icon: Instagram, href: "https://www.instagram.com/noxaweb/", label: "Instagram" },
-                { Icon: Facebook, href: "#", label: "Facebook" },
-                { Icon: Linkedin, href: "#", label: "LinkedIn" },
-                { Icon: Youtube, href: "#", label: "YouTube" },
-              ].map(({ Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  aria-label={label}
-                  className="h-10 w-10 rounded-xl glass flex items-center justify-center hover:bg-white/10 transition-colors"
-                >
-                  <Icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
 
-      {/* Floating WhatsApp */}
-      <a
-        href="https://wa.me/40000000000"
-        aria-label="WhatsApp"
-        className="fixed bottom-6 right-6 z-40 h-14 w-14 rounded-full bg-gradient-noxa flex items-center justify-center glow-purple hover:scale-105 transition-transform"
-      >
-        <MessageCircle className="h-6 w-6 text-white" />
-      </a>
     </section>
   );
 }
