@@ -89,9 +89,9 @@ export function Hero() {
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-up" style={{ animationDelay: "220ms" }}>
           <button
             onClick={() => setOpenStart(true)}
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-6 py-3.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-7 py-4 text-base font-medium text-white hover:scale-[1.02] transition-transform"
           >
-            Creează acum
+            Începe proiectul acum
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
           <a
