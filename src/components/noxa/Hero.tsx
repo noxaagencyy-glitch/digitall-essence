@@ -89,9 +89,9 @@ export function Hero() {
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-up" style={{ animationDelay: "220ms" }}>
           <button
             onClick={() => setOpenStart(true)}
-            className="group inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-6 py-3.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform"
+            className="group inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-7 py-4 text-base font-medium text-white hover:scale-[1.02] transition-transform"
           >
-            Creează acum
+            Începe proiectul acum
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
           <a
@@ -226,8 +226,7 @@ function BonusGrid() {
           >
             <div className="flex items-center gap-4">
               <div
-                className="check-shine relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-noxa shadow-[0_0_20px_rgba(139,92,246,0.3)] group-hover:shadow-[0_0_28px_rgba(139,92,246,0.55)] transition-all"
-                style={{ animationDelay: `${i * 200}ms` }}
+                className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-noxa transition-all"
               >
                 <Check className="h-5 w-5 text-white" strokeWidth={2.5} />
               </div>
@@ -242,7 +241,7 @@ function BonusGrid() {
       <div className="mt-8 flex justify-center" data-reveal style={{ transitionDelay: `${80 + BONUSES.length * 70 + 100}ms` }}>
         <div className="reveal-item inline-flex items-center px-6 py-3 rounded-full bg-white/[0.02] border border-white/10 shadow-inner backdrop-blur-md">
           <Sparkles className="w-4 h-4 text-accent mr-2" />
-          <p className="text-sm text-muted-foreground font-light">și multe altele...</p>
+          <p className="text-sm text-muted-foreground font-light">+ multe alte funcționalități premium</p>
         </div>
       </div>
     </div>

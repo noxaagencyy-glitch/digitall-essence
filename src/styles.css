@@ -196,12 +196,6 @@
   .marquee-mask:hover .animate-marquee,
   .marquee-mask:hover .animate-marquee-reverse { animation-play-state: paused; }
 
-  /* Check icon sparkle */
-  @keyframes check-shine {
-    0%, 100% { box-shadow: 0 0 8px oklch(0.7 0.2 295 / 0.5), 0 0 0 0 oklch(0.85 0.18 200 / 0.0); }
-    50% { box-shadow: 0 0 18px oklch(0.75 0.22 295 / 0.85), 0 0 0 3px oklch(0.85 0.18 200 / 0.15); }
-  }
-  .check-shine { animation: check-shine 2.6s ease-in-out infinite; }
 
   @keyframes shimmer-sweep {
     0% { transform: translateX(-120%); }
