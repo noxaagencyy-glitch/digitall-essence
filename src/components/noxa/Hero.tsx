@@ -206,46 +206,43 @@ const BONUSES = [
 function BonusGrid() {
   const ref = useInViewStagger<HTMLDivElement>();
   return (
-    <div ref={ref} className="mt-10 mx-auto max-w-3xl">
-      <div
-        data-reveal
-        className="reveal-item text-[10px] sm:text-xs uppercase tracking-[0.25em] text-muted-foreground/70 mb-4"
-        style={{ transitionDelay: "0ms" }}
-      >
-        Totul inclus în pachet
+    <div ref={ref} className="mt-14 mx-auto max-w-6xl">
+      <div className="text-center mb-8" data-reveal style={{ transitionDelay: "0ms" }}>
+        <div className="reveal-item text-[10px] sm:text-xs font-semibold tracking-[0.3em] text-accent/80 uppercase mb-2">
+          Premium Benefits
+        </div>
+        <div className="reveal-item text-xl sm:text-2xl md:text-3xl font-medium text-foreground tracking-tight">
+          Totul inclus în pachet
+        </div>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {BONUSES.map((b, i) => (
           <div
             key={b}
             data-reveal
-            className="reveal-item group relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-br from-white/20 via-white/5 to-transparent hover:from-accent/60 hover:to-electric/40 transition-all"
-            style={{ transitionDelay: `${80 + i * 90}ms` }}
+            className="reveal-item group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-300 hover:bg-white/[0.06] hover:border-accent/50 backdrop-blur-md text-left"
+            style={{ transitionDelay: `${80 + i * 70}ms` }}
           >
-            <div className="relative h-full rounded-[11px] glass-strong px-3 py-2.5 flex items-center gap-2">
-              <span
-                className="check-shine flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gradient-noxa"
+            <div className="flex items-center gap-4">
+              <div
+                className="check-shine relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-noxa shadow-[0_0_20px_rgba(139,92,246,0.3)] group-hover:shadow-[0_0_28px_rgba(139,92,246,0.55)] transition-all"
                 style={{ animationDelay: `${i * 200}ms` }}
               >
-                <Check className="h-3 w-3 text-white" strokeWidth={3} />
-              </span>
-              <span className="text-[11px] sm:text-xs font-medium text-foreground/90 leading-tight text-left">
+                <Check className="h-5 w-5 text-white" strokeWidth={2.5} />
+              </div>
+              <span className="text-[15px] font-medium text-foreground/85 group-hover:text-foreground transition-colors leading-tight">
                 {b}
               </span>
             </div>
           </div>
         ))}
-        <div
-          data-reveal
-          className="reveal-item col-span-2 sm:col-span-4 group relative overflow-hidden rounded-xl p-[1px] bg-gradient-to-br from-white/20 via-white/5 to-transparent hover:from-accent/60 hover:to-electric/40 transition-all"
-          style={{ transitionDelay: `${80 + BONUSES.length * 90}ms` }}
-        >
-          <div className="relative h-full rounded-[11px] glass-strong px-3 py-2.5 flex items-center justify-center gap-2">
-            <Sparkles className="h-3.5 w-3.5 text-accent" />
-            <span className="text-[11px] sm:text-xs font-medium text-foreground/90">
-              și multe altele...
-            </span>
-          </div>
+      </div>
+
+      <div className="mt-8 flex justify-center" data-reveal style={{ transitionDelay: `${80 + BONUSES.length * 70 + 100}ms` }}>
+        <div className="reveal-item inline-flex items-center px-6 py-3 rounded-full bg-white/[0.02] border border-white/10 shadow-inner backdrop-blur-md">
+          <Sparkles className="w-4 h-4 text-accent mr-2" />
+          <p className="text-sm text-muted-foreground font-light">și multe altele...</p>
         </div>
       </div>
     </div>
