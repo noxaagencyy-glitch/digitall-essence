@@ -83,6 +83,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@Lovable" },
       { name: "twitter:title", content: "NOXA Agency" },
       { name: "twitter:description", content: "NOXA Agency builds premium, high-converting websites." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c98875d4-778d-4bf8-9bd0-0c14276384db/id-preview-dc4c8081--5ae8a8e7-be6f-4b02-855e-510ea6438531.lovable.app-1779205457292.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c98875d4-778d-4bf8-9bd0-0c14276384db/id-preview-dc4c8081--5ae8a8e7-be6f-4b02-855e-510ea6438531.lovable.app-1779205457292.png" },
     ],
     links: [
       {
