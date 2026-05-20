@@ -241,7 +241,7 @@ function BonusGrid() {
       <div className="mt-8 flex justify-center" data-reveal style={{ transitionDelay: `${80 + BONUSES.length * 70 + 100}ms` }}>
         <div className="reveal-item inline-flex items-center px-6 py-3 rounded-full bg-white/[0.02] border border-white/10 shadow-inner backdrop-blur-md">
           <Sparkles className="w-4 h-4 text-accent mr-2" />
-          <p className="text-sm text-muted-foreground font-light">și multe altele...</p>
+          <p className="text-sm text-muted-foreground font-light">+ multe alte funcționalități premium</p>
         </div>
       </div>
     </div>
