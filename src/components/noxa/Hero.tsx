@@ -226,8 +226,7 @@ function BonusGrid() {
           >
             <div className="flex items-center gap-4">
               <div
-                className="check-shine relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-noxa shadow-[0_0_20px_rgba(139,92,246,0.3)] group-hover:shadow-[0_0_28px_rgba(139,92,246,0.55)] transition-all"
-                style={{ animationDelay: `${i * 200}ms` }}
+                className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-noxa transition-all"
               >
                 <Check className="h-5 w-5 text-white" strokeWidth={2.5} />
               </div>
