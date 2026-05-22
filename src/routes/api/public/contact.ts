@@ -5,6 +5,9 @@ import { z } from 'zod'
 import { supabaseAdmin } from '@/integrations/supabase/client.server'
 import { TEMPLATES } from '@/lib/email-templates/registry'
 
+// Tables created by email infra migration aren't in generated types yet
+const db = supabaseAdmin as any
+
 const SITE_NAME = 'NOXA Agency'
 const SENDER_DOMAIN = 'notify.noxaweb.com'
 const FROM_DOMAIN = 'noxaweb.com'
