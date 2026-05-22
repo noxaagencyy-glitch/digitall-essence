@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { renderAsync } from '@react-email/components'
+import { render } from '@react-email/components'
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
 import { supabaseAdmin } from '@/integrations/supabase/client.server'
@@ -42,8 +42,8 @@ export const Route = createFileRoute('/api/public/contact')({
         const messageId = crypto.randomUUID()
 
         const element = React.createElement(template.component, data)
-        const html = await renderAsync(element)
-        const text = await renderAsync(element, { plainText: true })
+        const html = await render(element)
+        const text = await render(element, { plainText: true })
         const subject =
           typeof template.subject === 'function'
             ? template.subject(data)
