@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, ArrowUpRight, Sparkles } from "lucide-react";
+import { Mail, ArrowUpRight, Sparkles } from "lucide-react";
 import { SectionHeader } from "./Services";
 import { SERVICES } from "./StartProjectDialog";
 import { EmailLink, EmailText } from "./EmailLink";
@@ -11,7 +11,7 @@ function openStartDialog(services?: string[]) {
 
 export function Contact() {
   return (
-    <section id="contact" className="relative py-24 sm:py-32">
+    <section id="contact" className="relative pt-10 sm:pt-14 pb-24 sm:pb-32">
       <SectionHeader eyebrow="Contact" title="Hai să-ți creștem afacerea online" />
 
       <div className="mx-auto max-w-5xl px-6 mt-14 grid grid-cols-1 lg:grid-cols-5 gap-6">
@@ -70,13 +70,6 @@ export function Contact() {
               <div className="font-medium"><EmailText /></div>
             </div>
           </EmailLink>
-          <a href="https://wa.me/40000000000" className="flex items-center gap-4 glass rounded-3xl p-5 hover:ring-glow transition-all">
-            <div className="h-11 w-11 rounded-2xl bg-gradient-noxa flex items-center justify-center"><MessageCircle className="h-5 w-5 text-white" /></div>
-            <div>
-              <div className="text-xs text-muted-foreground">WhatsApp</div>
-              <div className="font-medium">Chat direct</div>
-            </div>
-          </a>
         </div>
       </div>
 
