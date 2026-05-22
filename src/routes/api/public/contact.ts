@@ -52,14 +52,14 @@ export const Route = createFileRoute('/api/public/contact')({
             ? template.subject(data)
             : template.subject
 
-        await supabaseAdmin.from('email_send_log').insert({
+        await db.from('email_send_log').insert({
           message_id: messageId,
           template_name: 'contact-form',
           recipient_email: recipient,
           status: 'pending',
         })
 
-        const { error: enqueueError } = await supabaseAdmin.rpc('enqueue_email', {
+        const { error: enqueueError } = await db.rpc('enqueue_email', {
           queue_name: 'transactional_emails',
           payload: {
             message_id: messageId,
@@ -79,7 +79,7 @@ export const Route = createFileRoute('/api/public/contact')({
 
         if (enqueueError) {
           console.error('contact-form enqueue failed', enqueueError)
-          await supabaseAdmin.from('email_send_log').insert({
+          await db.from('email_send_log').insert({
             message_id: messageId,
             template_name: 'contact-form',
             recipient_email: recipient,
