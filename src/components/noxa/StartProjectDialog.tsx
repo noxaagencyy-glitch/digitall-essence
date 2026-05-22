@@ -36,6 +36,8 @@ export function StartProjectDialog({
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", message: "" });
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     if (open && initialServices && initialServices.length > 0) {
