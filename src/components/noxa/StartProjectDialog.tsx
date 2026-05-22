@@ -36,6 +36,8 @@ export function StartProjectDialog({
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", message: "" });
   const [errors, setErrors] = useState<Errors>({});
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   useEffect(() => {
     if (open && initialServices && initialServices.length > 0) {
@@ -79,28 +81,36 @@ export function StartProjectDialog({
     setSent(false);
   };
 
-  const submit = () => {
+  const submit = async () => {
+    if (submitting) return;
+    setSubmitError(null);
+    setSubmitting(true);
     const serviceLabels = services
       .map((id) => SERVICES.find((s) => s.id === id)?.label)
       .filter(Boolean)
       .join(", ");
-    const lines = [
-      `Nume: ${form.name}`,
-      `Email: ${form.email}`,
-      form.phone ? `Telefon: ${form.phone}` : null,
-      form.company ? `Companie: ${form.company}` : null,
-      ``,
-      `Servicii: ${serviceLabels}`,
-      `Buget: ${budget}`,
-      `Timeline: ${timeline}`,
-      ``,
-      form.message ? `Mesaj:\n${form.message}` : null,
-    ].filter(Boolean);
-    const subject = `Cerere ofertă — ${form.name || "Client nou"}`;
-    const body = lines.join("\n");
-    const mailto = `mailto:contact@noxaweb.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    setSent(true);
+    try {
+      const res = await fetch("/api/public/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          company: form.company,
+          message: form.message,
+          services: serviceLabels,
+          budget,
+          timeline,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setSent(true);
+    } catch {
+      setSubmitError("Trimiterea a eșuat. Încearcă din nou sau scrie-ne direct la contact@noxaweb.com.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -293,12 +303,18 @@ export function StartProjectDialog({
                 ) : (
                   <button
                     onClick={submit}
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-5 py-2.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform"
+                    disabled={submitting}
+                    className="inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-5 py-2.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform disabled:opacity-60 disabled:pointer-events-none"
                   >
-                    Trimite cererea <Send className="h-4 w-4" />
+                    {submitting ? "Se trimite..." : "Trimite cererea"} <Send className="h-4 w-4" />
                   </button>
                 )}
               </div>
+              {submitError && (
+                <div className="mt-3 text-right">
+                  <FieldError msg={submitError} />
+                </div>
+              )}
             </>
           )}
 
