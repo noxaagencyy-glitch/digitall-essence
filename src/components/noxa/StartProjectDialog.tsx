@@ -80,6 +80,26 @@ export function StartProjectDialog({
   };
 
   const submit = () => {
+    const serviceLabels = services
+      .map((id) => SERVICES.find((s) => s.id === id)?.label)
+      .filter(Boolean)
+      .join(", ");
+    const lines = [
+      `Nume: ${form.name}`,
+      `Email: ${form.email}`,
+      form.phone ? `Telefon: ${form.phone}` : null,
+      form.company ? `Companie: ${form.company}` : null,
+      ``,
+      `Servicii: ${serviceLabels}`,
+      `Buget: ${budget}`,
+      `Timeline: ${timeline}`,
+      ``,
+      form.message ? `Mesaj:\n${form.message}` : null,
+    ].filter(Boolean);
+    const subject = `Cerere ofertă — ${form.name || "Client nou"}`;
+    const body = lines.join("\n");
+    const mailto = `mailto:contact@noxaweb.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
     setSent(true);
   };
 
