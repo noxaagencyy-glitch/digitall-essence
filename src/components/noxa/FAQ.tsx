@@ -13,7 +13,7 @@ const faqs = [
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="relative py-24 sm:py-32">
+    <section id="faq" className="relative pt-24 sm:pt-32 pb-10 sm:pb-14">
       <SectionHeader eyebrow="FAQ" title="Întrebări frecvente" />
       <div className="mx-auto max-w-3xl px-6 mt-14 space-y-3">
         {faqs.map((f, i) => {

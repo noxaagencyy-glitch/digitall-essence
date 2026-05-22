@@ -22,8 +22,7 @@ const cols: { title: string; links: { label: string; href: string; external?: bo
       { label: "Web Design", href: "/#servicii" },
       { label: "Branding", href: "/#servicii" },
       { label: "Dezvoltare", href: "/#servicii" },
-      { label: "AI Integration", href: "/#servicii" },
-      { label: "Mentenanță", href: "/#servicii" },
+      { label: "Mentenanță", href: "mailto:contact@noxaweb.com?subject=Cerere%20mentenan%C8%9B%C4%83%20website" },
     ],
   },
   {

@@ -128,9 +128,37 @@ export function Hero() {
                   </div>
                 </div>
                 <div className="col-span-5 relative">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-noxa opacity-80 blur-xl" />
-                  <div className="relative h-full rounded-2xl glass-strong flex items-center justify-center">
-                    <NoxaLogo className="h-24 w-24 animate-float" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-noxa opacity-40 blur-2xl" />
+                  <div className="relative h-full rounded-2xl glass-strong p-4 sm:p-5 flex flex-col gap-3 overflow-hidden">
+                    {/* Browser preview header */}
+                    <div className="flex items-center gap-2">
+                      <div className="flex gap-1">
+                        <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
+                        <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
+                      </div>
+                      <div className="flex-1 h-4 rounded-md bg-white/5 border border-white/5" />
+                    </div>
+                    {/* Mini hero preview */}
+                    <div className="relative rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/5 p-3 flex-1 flex flex-col justify-center gap-2 overflow-hidden">
+                      <div className="h-1.5 w-10 rounded-full bg-accent/60" />
+                      <div className="h-2 w-4/5 rounded bg-white/20" />
+                      <div className="h-2 w-3/5 rounded bg-white/15" />
+                      <div className="mt-1 h-5 w-20 rounded-full bg-gradient-noxa" />
+                      <NoxaLogo className="absolute -right-3 -bottom-3 h-16 w-16 opacity-30 animate-float" />
+                    </div>
+                    {/* Design tokens row */}
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex gap-1.5">
+                        <span className="h-3.5 w-3.5 rounded-full bg-gradient-noxa ring-1 ring-white/20" />
+                        <span className="h-3.5 w-3.5 rounded-full bg-electric ring-1 ring-white/20" />
+                        <span className="h-3.5 w-3.5 rounded-full bg-accent ring-1 ring-white/20" />
+                        <span className="h-3.5 w-3.5 rounded-full bg-white/80 ring-1 ring-white/20" />
+                      </div>
+                      <div className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
+                        Aa · Design
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
