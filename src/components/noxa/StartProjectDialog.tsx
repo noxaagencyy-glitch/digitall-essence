@@ -303,12 +303,18 @@ export function StartProjectDialog({
                 ) : (
                   <button
                     onClick={submit}
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-5 py-2.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform"
+                    disabled={submitting}
+                    className="inline-flex items-center gap-2 rounded-full bg-gradient-noxa px-5 py-2.5 text-sm font-medium text-white glow-purple hover:scale-[1.02] transition-transform disabled:opacity-60 disabled:pointer-events-none"
                   >
-                    Trimite cererea <Send className="h-4 w-4" />
+                    {submitting ? "Se trimite..." : "Trimite cererea"} <Send className="h-4 w-4" />
                   </button>
                 )}
               </div>
+              {submitError && (
+                <div className="mt-3 text-right">
+                  <FieldError msg={submitError} />
+                </div>
+              )}
             </>
           )}
 
