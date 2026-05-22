@@ -81,28 +81,36 @@ export function StartProjectDialog({
     setSent(false);
   };
 
-  const submit = () => {
+  const submit = async () => {
+    if (submitting) return;
+    setSubmitError(null);
+    setSubmitting(true);
     const serviceLabels = services
       .map((id) => SERVICES.find((s) => s.id === id)?.label)
       .filter(Boolean)
       .join(", ");
-    const lines = [
-      `Nume: ${form.name}`,
-      `Email: ${form.email}`,
-      form.phone ? `Telefon: ${form.phone}` : null,
-      form.company ? `Companie: ${form.company}` : null,
-      ``,
-      `Servicii: ${serviceLabels}`,
-      `Buget: ${budget}`,
-      `Timeline: ${timeline}`,
-      ``,
-      form.message ? `Mesaj:\n${form.message}` : null,
-    ].filter(Boolean);
-    const subject = `Cerere ofertă — ${form.name || "Client nou"}`;
-    const body = lines.join("\n");
-    const mailto = `mailto:contact@noxaweb.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    setSent(true);
+    try {
+      const res = await fetch("/api/public/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          company: form.company,
+          message: form.message,
+          services: serviceLabels,
+          budget,
+          timeline,
+        }),
+      });
+      if (!res.ok) throw new Error("Failed");
+      setSent(true);
+    } catch {
+      setSubmitError("Trimiterea a eșuat. Încearcă din nou sau scrie-ne direct la contact@noxaweb.com.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
