@@ -20,6 +20,7 @@ import { Route as DemoEducationRouteImport } from './routes/demo.education'
 import { Route as DemoClinicRouteImport } from './routes/demo.clinic'
 import { Route as DemoBeautyRouteImport } from './routes/demo.beauty'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
+import { Route as ApiPublicContactRouteImport } from './routes/api/public/contact'
 import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
@@ -79,6 +80,11 @@ const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
   path: '/lovable/email/suppression',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicContactRoute = ApiPublicContactRouteImport.update({
+  id: '/api/public/contact',
+  path: '/api/public/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LovableEmailTransactionalSendRoute =
   LovableEmailTransactionalSendRouteImport.update({
     id: '/lovable/email/transactional/send',
@@ -109,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/demo/realestate': typeof DemoRealestateRoute
   '/demo/restaurant': typeof DemoRestaurantRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
+  '/api/public/contact': typeof ApiPublicContactRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -125,6 +132,7 @@ export interface FileRoutesByTo {
   '/demo/realestate': typeof DemoRealestateRoute
   '/demo/restaurant': typeof DemoRestaurantRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
+  '/api/public/contact': typeof ApiPublicContactRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -142,6 +150,7 @@ export interface FileRoutesById {
   '/demo/realestate': typeof DemoRealestateRoute
   '/demo/restaurant': typeof DemoRestaurantRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
+  '/api/public/contact': typeof ApiPublicContactRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -160,6 +169,7 @@ export interface FileRouteTypes {
     | '/demo/realestate'
     | '/demo/restaurant'
     | '/email/unsubscribe'
+    | '/api/public/contact'
     | '/lovable/email/suppression'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -176,6 +186,7 @@ export interface FileRouteTypes {
     | '/demo/realestate'
     | '/demo/restaurant'
     | '/email/unsubscribe'
+    | '/api/public/contact'
     | '/lovable/email/suppression'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -192,6 +203,7 @@ export interface FileRouteTypes {
     | '/demo/realestate'
     | '/demo/restaurant'
     | '/email/unsubscribe'
+    | '/api/public/contact'
     | '/lovable/email/suppression'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -209,6 +221,7 @@ export interface RootRouteChildren {
   DemoRealestateRoute: typeof DemoRealestateRoute
   DemoRestaurantRoute: typeof DemoRestaurantRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
+  ApiPublicContactRoute: typeof ApiPublicContactRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
   LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
@@ -294,6 +307,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LovableEmailSuppressionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/contact': {
+      id: '/api/public/contact'
+      path: '/api/public/contact'
+      fullPath: '/api/public/contact'
+      preLoaderRoute: typeof ApiPublicContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lovable/email/transactional/send': {
       id: '/lovable/email/transactional/send'
       path: '/lovable/email/transactional/send'
@@ -329,6 +349,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoRealestateRoute: DemoRealestateRoute,
   DemoRestaurantRoute: DemoRestaurantRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
+  ApiPublicContactRoute: ApiPublicContactRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
   LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,
