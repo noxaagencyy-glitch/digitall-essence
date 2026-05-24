@@ -12,6 +12,14 @@ const SITE_NAME = 'NOXA Agency'
 const SENDER_DOMAIN = 'notify.noxaweb.com'
 const FROM_DOMAIN = 'noxaweb.com'
 
+function generateToken(): string {
+  const bytes = new Uint8Array(32)
+  crypto.getRandomValues(bytes)
+  return Array.from(bytes)
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('')
+}
+
 const ContactSchema = z.object({
   name: z.string().trim().min(1).max(120),
   email: z.string().trim().email().max(200),
@@ -43,6 +51,46 @@ export const Route = createFileRoute('/api/public/contact')({
         const template = TEMPLATES['contact-form']
         const recipient = template.to!
         const messageId = crypto.randomUUID()
+        const normalizedRecipient = recipient.toLowerCase()
+
+        const { data: existingToken, error: tokenLookupError } = await db
+          .from('email_unsubscribe_tokens')
+          .select('token, used_at')
+          .eq('email', normalizedRecipient)
+          .maybeSingle()
+
+        if (tokenLookupError) {
+          console.error('contact-form token lookup failed', tokenLookupError)
+          return Response.json({ error: 'Failed to send' }, { status: 500 })
+        }
+
+        let unsubscribeToken = existingToken?.used_at ? null : existingToken?.token
+        if (!unsubscribeToken) {
+          unsubscribeToken = generateToken()
+          const { error: tokenError } = await db
+            .from('email_unsubscribe_tokens')
+            .upsert(
+              { token: unsubscribeToken, email: normalizedRecipient },
+              { onConflict: 'email', ignoreDuplicates: true }
+            )
+
+          if (tokenError) {
+            console.error('contact-form token create failed', tokenError)
+            return Response.json({ error: 'Failed to send' }, { status: 500 })
+          }
+
+          const { data: storedToken, error: storedTokenError } = await db
+            .from('email_unsubscribe_tokens')
+            .select('token')
+            .eq('email', normalizedRecipient)
+            .maybeSingle()
+
+          if (storedTokenError || !storedToken?.token) {
+            console.error('contact-form token confirm failed', storedTokenError)
+            return Response.json({ error: 'Failed to send' }, { status: 500 })
+          }
+          unsubscribeToken = storedToken.token
+        }
 
         const element = React.createElement(template.component, data)
         const html = await render(element)
@@ -70,6 +118,7 @@ export const Route = createFileRoute('/api/public/contact')({
             subject,
             html,
             text,
+            unsubscribe_token: unsubscribeToken,
             purpose: 'transactional',
             label: 'contact-form',
             idempotency_key: messageId,
