@@ -36,9 +36,6 @@ const cols: { title: string; links: { label: string; href: string; external?: bo
 
 const socials = [
   { Icon: Instagram, href: "https://www.instagram.com/noxaweb/", label: "Instagram" },
-  { Icon: Facebook, href: "#", label: "Facebook" },
-  { Icon: Linkedin, href: "#", label: "LinkedIn" },
-  { Icon: Youtube, href: "#", label: "YouTube" },
 ];
 
 export function Footer() {
