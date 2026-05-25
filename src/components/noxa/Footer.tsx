@@ -1,4 +1,4 @@
-import { Mail, Instagram, Facebook, Linkedin, Youtube, MapPin, Cookie } from "lucide-react";
+import { Mail, Instagram, MapPin, Cookie } from "lucide-react";
 import { NoxaLogo } from "./Logo";
 import { openCookieManager } from "./CookieBanner";
 import { EmailLink, EmailText } from "./EmailLink";
@@ -36,14 +36,11 @@ const cols: { title: string; links: { label: string; href: string; external?: bo
 
 const socials = [
   { Icon: Instagram, href: "https://www.instagram.com/noxaweb/", label: "Instagram" },
-  { Icon: Facebook, href: "#", label: "Facebook" },
-  { Icon: Linkedin, href: "#", label: "LinkedIn" },
-  { Icon: Youtube, href: "#", label: "YouTube" },
 ];
 
 export function Footer() {
   return (
-    <footer className="relative mt-20 border-t border-white/5 overflow-hidden">
+    <footer className="relative mt-6 border-t border-white/5 overflow-hidden">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
       <div className="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[600px] h-[400px] rounded-full bg-gradient-noxa opacity-[0.08] blur-[120px]" />
 

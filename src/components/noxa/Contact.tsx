@@ -11,7 +11,7 @@ function openStartDialog(services?: string[]) {
 
 export function Contact() {
   return (
-    <section id="contact" className="relative pt-10 sm:pt-14 pb-24 sm:pb-32">
+    <section id="contact" className="relative pt-10 sm:pt-14 pb-12 sm:pb-16">
       <SectionHeader eyebrow="Contact" title="Hai să-ți creștem afacerea online" />
 
       <div className="mx-auto max-w-5xl px-6 mt-14 grid grid-cols-1 lg:grid-cols-5 gap-6">
