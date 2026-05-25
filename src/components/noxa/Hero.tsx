@@ -224,41 +224,41 @@ const BONUSES = [
   "Hosting gratuit",
   "SEO inclus",
   "Suport după lansare",
-  "Integrare WhatsApp",
   "Website rapid & fluid",
   "Mobile responsive",
   "Mentenanță 1 lună gratis",
   "Livrare 3–7 zile",
+  "Design premium",
 ];
 
 function BonusGrid() {
   const ref = useInViewStagger<HTMLDivElement>();
   return (
     <div ref={ref} className="mt-14 mx-auto max-w-6xl">
-      <div className="text-center mb-8" data-reveal style={{ transitionDelay: "0ms" }}>
+      <div className="text-center mb-6 sm:mb-8" data-reveal style={{ transitionDelay: "0ms" }}>
         <div className="reveal-item text-[10px] sm:text-xs font-semibold tracking-[0.3em] text-accent/80 uppercase mb-2">
           Premium Benefits
         </div>
-        <div className="reveal-item text-xl sm:text-2xl md:text-3xl font-medium text-foreground tracking-tight">
+        <div className="reveal-item text-lg sm:text-2xl md:text-3xl font-medium text-foreground tracking-tight">
           Totul inclus în pachet
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
         {BONUSES.map((b, i) => (
           <div
             key={b}
             data-reveal
-            className="reveal-item group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-300 hover:bg-white/[0.06] hover:border-accent/50 backdrop-blur-md text-left"
+            className="reveal-item group relative overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-white/[0.03] p-2.5 sm:p-5 transition-all duration-300 hover:bg-white/[0.06] hover:border-accent/50 backdrop-blur-md text-left"
             style={{ transitionDelay: `${80 + i * 70}ms` }}
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 sm:gap-4">
               <div
-                className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-noxa transition-all"
+                className="relative flex h-7 w-7 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-lg sm:rounded-xl bg-gradient-noxa transition-all"
               >
-                <Check className="h-5 w-5 text-white" strokeWidth={2.5} />
+                <Check className="h-3.5 w-3.5 sm:h-5 sm:w-5 text-white" strokeWidth={2.5} />
               </div>
-              <span className="text-[15px] font-medium text-foreground/85 group-hover:text-foreground transition-colors leading-tight">
+              <span className="text-[12px] sm:text-[15px] font-medium text-foreground/85 group-hover:text-foreground transition-colors leading-tight">
                 {b}
               </span>
             </div>
