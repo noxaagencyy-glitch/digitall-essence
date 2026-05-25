@@ -104,80 +104,102 @@ export function Hero() {
 
         <BonusGrid />
 
-        {/* Mockup */}
+        {/* Showcase */}
         <div className="relative mt-20 mx-auto max-w-5xl animate-fade-up" style={{ animationDelay: "320ms" }}>
-          <div className="absolute -inset-10 bg-gradient-noxa opacity-30 blur-3xl rounded-[40px]" />
-          <div className="relative glass-strong rounded-3xl p-3 shadow-card ring-1 ring-white/10">
-            <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-[oklch(0.16_0.05_270)] to-[oklch(0.13_0.06_295)] aspect-[16/9] relative">
-              {/* Window chrome */}
-              <div className="flex items-center gap-1.5 px-4 py-3 border-b border-white/5">
-                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-                <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
+          {/* Decorative glows */}
+          <div aria-hidden className="absolute -top-20 -left-20 w-80 h-80 bg-[oklch(0.5_0.3_285)] opacity-20 blur-[120px]" />
+          <div aria-hidden className="absolute -bottom-20 -right-20 w-80 h-80 bg-[oklch(0.6_0.2_260)] opacity-20 blur-[120px]" />
+
+          {/* Main browser frame */}
+          <div className="relative rounded-3xl border border-white/5 bg-[oklch(0.14_0.04_280)]/80 backdrop-blur-xl shadow-card overflow-hidden ring-1 ring-white/10">
+            {/* Browser header */}
+            <div className="flex items-center gap-2 px-6 py-4 border-b border-white/5">
+              <div className="flex gap-1.5">
+                <span className="w-3 h-3 rounded-full bg-white/10" />
+                <span className="w-3 h-3 rounded-full bg-white/10" />
+                <span className="w-3 h-3 rounded-full bg-white/10" />
               </div>
-              <div className="grid grid-cols-12 gap-4 p-6 sm:p-10 h-full">
-                <div className="col-span-7 space-y-4">
-                  <div className="h-3 w-24 rounded-full bg-white/10" />
-                  <div className="h-10 w-3/4 rounded-lg bg-gradient-to-r from-white/15 to-white/5" />
-                  <div className="h-10 w-2/3 rounded-lg bg-gradient-to-r from-white/15 to-white/5" />
-                  <div className="h-3 w-1/2 rounded-full bg-white/10" />
-                  <div className="h-3 w-2/5 rounded-full bg-white/10" />
-                  <div className="flex gap-2 pt-3">
-                    <div className="h-9 w-32 rounded-full bg-gradient-noxa" />
-                    <div className="h-9 w-28 rounded-full bg-white/10" />
-                  </div>
+              <div className="mx-auto h-5 w-1/3 rounded-full bg-white/5 border border-white/5" />
+            </div>
+
+            {/* Content preview */}
+            <div className="p-6 sm:p-8 lg:p-12 flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+              {/* Text column */}
+              <div className="flex-1 space-y-5 sm:space-y-6 text-left w-full">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[oklch(0.6_0.2_285)]/10 border border-[oklch(0.6_0.2_285)]/20 text-[oklch(0.78_0.13_285)] text-[10px] sm:text-xs font-semibold uppercase tracking-widest">
+                  Case Study · Volantis
                 </div>
-                <div className="col-span-5 relative">
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-noxa opacity-40 blur-2xl" />
-                  <div className="relative h-full rounded-2xl glass-strong p-4 sm:p-5 flex flex-col gap-3 overflow-hidden">
-                    {/* Browser preview header */}
-                    <div className="flex items-center gap-2">
-                      <div className="flex gap-1">
-                        <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
-                        <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
-                        <span className="h-1.5 w-1.5 rounded-full bg-white/30" />
-                      </div>
-                      <div className="flex-1 h-4 rounded-md bg-white/5 border border-white/5" />
-                    </div>
-                    {/* Mini hero preview */}
-                    <div className="relative rounded-xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/5 p-3 flex-1 flex flex-col justify-center gap-2 overflow-hidden">
-                      <div className="h-1.5 w-10 rounded-full bg-accent/60" />
-                      <div className="h-2 w-4/5 rounded bg-white/20" />
-                      <div className="h-2 w-3/5 rounded bg-white/15" />
-                      <div className="mt-1 h-5 w-20 rounded-full bg-gradient-noxa" />
-                      <NoxaLogo className="absolute -right-3 -bottom-3 h-16 w-16 opacity-30 animate-float" />
-                    </div>
-                    {/* Design tokens row */}
-                    <div className="flex items-center justify-between gap-2">
-                      <div className="flex gap-1.5">
-                        <span className="h-3.5 w-3.5 rounded-full bg-gradient-noxa ring-1 ring-white/20" />
-                        <span className="h-3.5 w-3.5 rounded-full bg-electric ring-1 ring-white/20" />
-                        <span className="h-3.5 w-3.5 rounded-full bg-accent ring-1 ring-white/20" />
-                        <span className="h-3.5 w-3.5 rounded-full bg-white/80 ring-1 ring-white/20" />
-                      </div>
-                      <div className="text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
-                        Aa · Design
-                      </div>
-                    </div>
-                  </div>
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-[1.05] tracking-tight">
+                  Redefining Digital
+                  <br />
+                  <span className="text-gradient">Luxury Experiences.</span>
+                </h3>
+                <p className="text-white/50 text-sm sm:text-base lg:text-lg leading-relaxed max-w-md">
+                  Cum am ajutat un brand premium să-și crească prezența online prin arhitectură custom și motion design de înaltă fidelitate.
+                </p>
+                <div className="flex gap-3 pt-2">
+                  <div className="h-11 w-32 rounded-xl bg-gradient-noxa shadow-[0_10px_30px_-8px_oklch(0.55_0.27_285_/_0.5)]" />
+                  <div className="h-11 w-11 rounded-xl bg-white/5 border border-white/10" />
                 </div>
               </div>
+
+              {/* Visual column */}
+              <div className="flex-1 relative w-full h-[280px] sm:h-[360px] lg:h-[400px]">
+                {/* Back card */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent border border-white/10 rounded-2xl shadow-2xl backdrop-blur-md transform rotate-2 transition-transform duration-500 hover:rotate-0">
+                  <div className="p-5 sm:p-6 space-y-4">
+                    <div className="h-32 sm:h-40 w-full rounded-lg bg-gradient-to-tr from-[oklch(0.55_0.27_285)]/20 via-white/5 to-[oklch(0.6_0.25_220)]/20 relative overflow-hidden">
+                      <NoxaLogo className="absolute right-3 bottom-3 h-12 w-12 opacity-50 animate-float" />
+                    </div>
+                    <div className="h-3 w-3/4 rounded bg-white/15" />
+                    <div className="h-3 w-1/2 rounded bg-white/10" />
+                    <div className="flex gap-2 pt-1">
+                      <span className="h-6 w-16 rounded-full bg-gradient-noxa" />
+                      <span className="h-6 w-12 rounded-full bg-white/10" />
+                    </div>
+                  </div>
+                </div>
+                {/* Mobile card */}
+                <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-28 sm:w-36 h-52 sm:h-64 bg-black/50 border border-white/20 rounded-3xl shadow-2xl backdrop-blur-2xl p-2.5 sm:p-3 transform -rotate-6 z-10">
+                  <div className="w-full h-full rounded-2xl bg-white/5 overflow-hidden border border-white/10">
+                    <div className="p-3 sm:p-4 space-y-2">
+                      <div className="w-full h-20 sm:h-24 rounded-lg bg-gradient-to-b from-[oklch(0.6_0.2_285)]/30 to-transparent" />
+                      <div className="h-1.5 w-full rounded bg-white/20" />
+                      <div className="h-1.5 w-2/3 rounded bg-white/10" />
+                      <div className="h-5 w-12 rounded-lg bg-gradient-noxa mt-3" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Brand mark */}
+            <div className="absolute bottom-5 right-6 sm:bottom-8 sm:right-12 opacity-20 pointer-events-none">
+              <span className="text-[10px] tracking-[0.3em] font-bold text-white uppercase">NOXA DESIGN LABS</span>
             </div>
           </div>
 
           {/* Floating cards */}
-          <div className="hidden sm:flex absolute -left-6 top-1/3 glass-strong rounded-2xl px-4 py-3 items-center gap-3 animate-float">
-            <div className="h-8 w-8 rounded-lg bg-gradient-noxa" />
+          <div className="hidden sm:flex absolute top-1/4 -left-8 lg:-left-12 items-center gap-3 px-4 py-3 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl z-20 animate-float">
+            <div className="h-10 w-10 rounded-full bg-gradient-noxa flex items-center justify-center shadow-[0_0_20px_oklch(0.55_0.27_285_/_0.4)]">
+              <ArrowUpRight className="h-5 w-5 text-white" strokeWidth={2.5} />
+            </div>
             <div>
-              <div className="text-xs text-muted-foreground">Conversion</div>
-              <div className="text-sm font-semibold">+184%</div>
+              <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">Conversion</div>
+              <div className="text-lg font-bold">+184%</div>
             </div>
           </div>
-          <div className="hidden sm:flex absolute -right-6 bottom-1/4 glass-strong rounded-2xl px-4 py-3 items-center gap-3 animate-float" style={{ animationDelay: "1.5s" }}>
-            <div className="h-8 w-8 rounded-lg bg-electric" />
+          <div className="hidden sm:flex absolute bottom-16 -right-6 lg:-right-8 items-center gap-3 px-4 py-3 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl z-20 animate-float" style={{ animationDelay: "1.5s" }}>
+            <div className="relative h-10 w-10 flex items-center justify-center">
+              <svg className="w-10 h-10 -rotate-90" viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="4" fill="transparent" className="text-white/10" />
+                <circle cx="24" cy="24" r="20" stroke="currentColor" strokeWidth="4" fill="transparent" strokeDasharray="125.6" strokeDashoffset="2.5" className="text-electric" strokeLinecap="round" />
+              </svg>
+              <span className="absolute text-[10px] font-bold">98</span>
+            </div>
             <div>
-              <div className="text-xs text-muted-foreground">Page speed</div>
-              <div className="text-sm font-semibold">98 / 100</div>
+              <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">Page speed</div>
+              <div className="text-lg font-bold">98 <span className="text-muted-foreground text-xs font-medium">/ 100</span></div>
             </div>
           </div>
         </div>
