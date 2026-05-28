@@ -1,4 +1,4 @@
-import { Mail, Instagram, MapPin, Cookie } from "lucide-react";
+import { Mail, Instagram, Facebook, MapPin, Cookie } from "lucide-react";
 import { NoxaLogo } from "./Logo";
 import { openCookieManager } from "./CookieBanner";
 import { EmailLink, EmailText } from "./EmailLink";
@@ -36,6 +36,7 @@ const cols: { title: string; links: { label: string; href: string; external?: bo
 
 const socials = [
   { Icon: Instagram, href: "https://www.instagram.com/noxaweb/", label: "Instagram" },
+  { Icon: Facebook, href: "https://www.facebook.com/profile.php?id=61589557965061", label: "Facebook" },
 ];
 
 export function Footer() {
