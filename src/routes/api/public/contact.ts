@@ -1,24 +1,5 @@
-import * as React from 'react'
-import { render } from '@react-email/components'
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
-import { supabaseAdmin } from '@/integrations/supabase/client.server'
-import { TEMPLATES } from '@/lib/email-templates/registry'
-
-// Tables created by email infra migration aren't in generated types yet
-const db = supabaseAdmin as any
-
-const SITE_NAME = 'NOXA Agency'
-const SENDER_DOMAIN = 'notify.noxaweb.com'
-const FROM_DOMAIN = 'noxaweb.com'
-
-function generateToken(): string {
-  const bytes = new Uint8Array(32)
-  crypto.getRandomValues(bytes)
-  return Array.from(bytes)
-    .map((b) => b.toString(16).padStart(2, '0'))
-    .join('')
-}
 
 const ContactSchema = z.object({
   name: z.string().trim().min(1).max(120),
@@ -48,93 +29,38 @@ export const Route = createFileRoute('/api/public/contact')({
         }
         const data = parsed.data
 
-        const template = TEMPLATES['contact-form']
-        const recipient = template.to!
-        const messageId = crypto.randomUUID()
-        const normalizedRecipient = recipient.toLowerCase()
+        const { sendTemplateEmail } = await import('@/lib/email-templates/send-email')
+        const { supabaseAdmin } = await import('@/integrations/supabase/client.server')
+        const db = supabaseAdmin as any
+        const { TEMPLATES } = await import('@/lib/email-templates/registry')
+        const recipient = TEMPLATES['contact-form'].to!
+        const submissionId = crypto.randomUUID()
 
-        const { data: existingToken, error: tokenLookupError } = await db
-          .from('email_unsubscribe_tokens')
-          .select('token, used_at')
-          .eq('email', normalizedRecipient)
-          .maybeSingle()
-
-        if (tokenLookupError) {
-          console.error('contact-form token lookup failed', tokenLookupError)
-          return Response.json({ error: 'Failed to send' }, { status: 500 })
-        }
-
-        let unsubscribeToken = existingToken?.used_at ? null : existingToken?.token
-        if (!unsubscribeToken) {
-          unsubscribeToken = generateToken()
-          const { error: tokenError } = await db
-            .from('email_unsubscribe_tokens')
-            .upsert(
-              { token: unsubscribeToken, email: normalizedRecipient },
-              { onConflict: 'email', ignoreDuplicates: true }
-            )
-
-          if (tokenError) {
-            console.error('contact-form token create failed', tokenError)
-            return Response.json({ error: 'Failed to send' }, { status: 500 })
-          }
-
-          const { data: storedToken, error: storedTokenError } = await db
-            .from('email_unsubscribe_tokens')
-            .select('token')
-            .eq('email', normalizedRecipient)
-            .maybeSingle()
-
-          if (storedTokenError || !storedToken?.token) {
-            console.error('contact-form token confirm failed', storedTokenError)
-            return Response.json({ error: 'Failed to send' }, { status: 500 })
-          }
-          unsubscribeToken = storedToken.token
-        }
-
-        const element = React.createElement(template.component, data)
-        const html = await render(element)
-        const text = await render(element, { plainText: true })
-        const subject =
-          typeof template.subject === 'function'
-            ? template.subject(data)
-            : template.subject
-
-        await db.from('email_send_log').insert({
-          message_id: messageId,
-          template_name: 'contact-form',
-          recipient_email: recipient,
-          status: 'pending',
-        })
-
-        const { error: enqueueError } = await db.rpc('enqueue_email', {
-          queue_name: 'transactional_emails',
-          payload: {
-            message_id: messageId,
-            to: recipient,
-            from: `${SITE_NAME} <noreply@${FROM_DOMAIN}>`,
-            reply_to: data.email,
-            sender_domain: SENDER_DOMAIN,
-            subject,
-            html,
-            text,
-            unsubscribe_token: unsubscribeToken,
-            purpose: 'transactional',
-            label: 'contact-form',
-            idempotency_key: messageId,
-            queued_at: new Date().toISOString(),
-          },
-        })
-
-        if (enqueueError) {
-          console.error('contact-form enqueue failed', enqueueError)
-          await db.from('email_send_log').insert({
-            message_id: messageId,
+        const log = async (row: Record<string, unknown>) => {
+          const { error } = await db.from('email_send_log').insert({
+            message_id: null,
             template_name: 'contact-form',
             recipient_email: recipient,
-            status: 'failed',
-            error_message: 'Failed to enqueue',
+            ...row,
           })
+          if (error) console.error('contact-form send log failed', { code: error.code, message: error.message })
+        }
+
+        try {
+          const result = await sendTemplateEmail('contact-form', recipient, {
+            templateData: data,
+            idempotencyKey: `contact-form-${submissionId}`,
+            replyTo: data.email,
+          })
+          if (result.sent) {
+            await log({ status: 'sent' })
+          } else {
+            await log({ status: 'suppressed' })
+          }
+        } catch (err) {
+          const message = err instanceof Error ? err.message : String(err)
+          console.error('contact-form send failed', message)
+          await log({ status: 'failed', error_message: message })
           return Response.json({ error: 'Failed to send' }, { status: 500 })
         }
 
