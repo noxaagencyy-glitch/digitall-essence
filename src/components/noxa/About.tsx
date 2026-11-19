@@ -52,6 +52,12 @@ const team = [
     bio: "Punctul tău de contact. Coordonează lansarea și se asigură că totul merge perfect după.",
     icon: Headphones,
   },
+  {
+    name: "Andrei Cristian",
+    role: "QA & Technical Support Lead",
+    bio: "Testează fiecare pagină pe toate dispozitivele și se asigură că site-ul rămâne rapid, sigur și actualizat non-stop.",
+    icon: ShieldCheck,
+  },
 ];
 
 export function About() {
@@ -86,7 +92,7 @@ export function About() {
         />
       </div>
 
-      <Reveal stagger direction="up" className="mx-auto max-w-6xl px-6 mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <Reveal stagger direction="up" className="mx-auto max-w-6xl px-6 mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
         {values.map((v) => (
           <div
             key={v.title}
@@ -120,7 +126,7 @@ export function About() {
           </div>
         </Reveal>
 
-        <Reveal stagger direction="up" className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <Reveal stagger direction="up" className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
           {team.map((m) => (
             <div
               key={m.name}
