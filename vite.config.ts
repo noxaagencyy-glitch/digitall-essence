@@ -5,6 +5,8 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 const isVercel = !!process.env.VERCEL;
 
 export default defineConfig(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (
   isVercel
     ? {
         cloudflare: false,
@@ -13,5 +15,5 @@ export default defineConfig(
           server: { entry: "server" },
         },
       }
-    : {},
+    : {}) as any,
 );
