@@ -9,25 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TermeniRouteImport } from './routes/termeni'
-import { Route as ConfidentialitateRouteImport } from './routes/confidentialitate'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
-import { Route as DemoRestaurantRouteImport } from './routes/demo.restaurant'
-import { Route as DemoRealestateRouteImport } from './routes/demo.realestate'
-import { Route as DemoFitnessRouteImport } from './routes/demo.fitness'
-import { Route as DemoEducationRouteImport } from './routes/demo.education'
-import { Route as DemoClinicRouteImport } from './routes/demo.clinic'
+import { Route as ConfidentialitateRouteImport } from './routes/confidentialitate'
+import { Route as TermeniRouteImport } from './routes/termeni'
 import { Route as DemoBeautyRouteImport } from './routes/demo.beauty'
-import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
+import { Route as DemoClinicRouteImport } from './routes/demo.clinic'
+import { Route as DemoEducationRouteImport } from './routes/demo.education'
+import { Route as DemoFitnessRouteImport } from './routes/demo.fitness'
+import { Route as DemoRealestateRouteImport } from './routes/demo.realestate'
+import { Route as DemoRestaurantRouteImport } from './routes/demo.restaurant'
+import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
 import { Route as ApiPublicContactRouteImport } from './routes/api/public/contact'
-import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
-import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
+import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
+import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
+import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
 
-const TermeniRoute = TermeniRouteImport.update({
-  id: '/termeni',
-  path: '/termeni',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConfidentialitateRoute = ConfidentialitateRouteImport.update({
@@ -35,39 +35,9 @@ const ConfidentialitateRoute = ConfidentialitateRouteImport.update({
   path: '/confidentialitate',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
-  id: '/email/unsubscribe',
-  path: '/email/unsubscribe',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoRestaurantRoute = DemoRestaurantRouteImport.update({
-  id: '/demo/restaurant',
-  path: '/demo/restaurant',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoRealestateRoute = DemoRealestateRouteImport.update({
-  id: '/demo/realestate',
-  path: '/demo/realestate',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoFitnessRoute = DemoFitnessRouteImport.update({
-  id: '/demo/fitness',
-  path: '/demo/fitness',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoEducationRoute = DemoEducationRouteImport.update({
-  id: '/demo/education',
-  path: '/demo/education',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoClinicRoute = DemoClinicRouteImport.update({
-  id: '/demo/clinic',
-  path: '/demo/clinic',
+const TermeniRoute = TermeniRouteImport.update({
+  id: '/termeni',
+  path: '/termeni',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DemoBeautyRoute = DemoBeautyRouteImport.update({
@@ -75,9 +45,34 @@ const DemoBeautyRoute = DemoBeautyRouteImport.update({
   path: '/demo/beauty',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
-  id: '/lovable/email/suppression',
-  path: '/lovable/email/suppression',
+const DemoClinicRoute = DemoClinicRouteImport.update({
+  id: '/demo/clinic',
+  path: '/demo/clinic',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoEducationRoute = DemoEducationRouteImport.update({
+  id: '/demo/education',
+  path: '/demo/education',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoFitnessRoute = DemoFitnessRouteImport.update({
+  id: '/demo/fitness',
+  path: '/demo/fitness',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRealestateRoute = DemoRealestateRouteImport.update({
+  id: '/demo/realestate',
+  path: '/demo/realestate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoRestaurantRoute = DemoRestaurantRouteImport.update({
+  id: '/demo/restaurant',
+  path: '/demo/restaurant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
+  id: '/email/unsubscribe',
+  path: '/email/unsubscribe',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicContactRoute = ApiPublicContactRouteImport.update({
@@ -85,10 +80,15 @@ const ApiPublicContactRoute = ApiPublicContactRouteImport.update({
   path: '/api/public/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LovableEmailTransactionalSendRoute =
-  LovableEmailTransactionalSendRouteImport.update({
-    id: '/lovable/email/transactional/send',
-    path: '/lovable/email/transactional/send',
+const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
+  id: '/lovable/email/suppression',
+  path: '/lovable/email/suppression',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LovableEmailQueueProcessRoute =
+  LovableEmailQueueProcessRouteImport.update({
+    id: '/lovable/email/queue/process',
+    path: '/lovable/email/queue/process',
     getParentRoute: () => rootRouteImport,
   } as any)
 const LovableEmailTransactionalPreviewRoute =
@@ -97,10 +97,10 @@ const LovableEmailTransactionalPreviewRoute =
     path: '/lovable/email/transactional/preview',
     getParentRoute: () => rootRouteImport,
   } as any)
-const LovableEmailQueueProcessRoute =
-  LovableEmailQueueProcessRouteImport.update({
-    id: '/lovable/email/queue/process',
-    path: '/lovable/email/queue/process',
+const LovableEmailTransactionalSendRoute =
+  LovableEmailTransactionalSendRouteImport.update({
+    id: '/lovable/email/transactional/send',
+    path: '/lovable/email/transactional/send',
     getParentRoute: () => rootRouteImport,
   } as any)
 
@@ -230,11 +230,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/termeni': {
-      id: '/termeni'
-      path: '/termeni'
-      fullPath: '/termeni'
-      preLoaderRoute: typeof TermeniRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/confidentialitate': {
@@ -244,53 +244,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConfidentialitateRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/email/unsubscribe': {
-      id: '/email/unsubscribe'
-      path: '/email/unsubscribe'
-      fullPath: '/email/unsubscribe'
-      preLoaderRoute: typeof EmailUnsubscribeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/restaurant': {
-      id: '/demo/restaurant'
-      path: '/demo/restaurant'
-      fullPath: '/demo/restaurant'
-      preLoaderRoute: typeof DemoRestaurantRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/realestate': {
-      id: '/demo/realestate'
-      path: '/demo/realestate'
-      fullPath: '/demo/realestate'
-      preLoaderRoute: typeof DemoRealestateRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/fitness': {
-      id: '/demo/fitness'
-      path: '/demo/fitness'
-      fullPath: '/demo/fitness'
-      preLoaderRoute: typeof DemoFitnessRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/education': {
-      id: '/demo/education'
-      path: '/demo/education'
-      fullPath: '/demo/education'
-      preLoaderRoute: typeof DemoEducationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/clinic': {
-      id: '/demo/clinic'
-      path: '/demo/clinic'
-      fullPath: '/demo/clinic'
-      preLoaderRoute: typeof DemoClinicRouteImport
+    '/termeni': {
+      id: '/termeni'
+      path: '/termeni'
+      fullPath: '/termeni'
+      preLoaderRoute: typeof TermeniRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/beauty': {
@@ -300,11 +258,46 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DemoBeautyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lovable/email/suppression': {
-      id: '/lovable/email/suppression'
-      path: '/lovable/email/suppression'
-      fullPath: '/lovable/email/suppression'
-      preLoaderRoute: typeof LovableEmailSuppressionRouteImport
+    '/demo/clinic': {
+      id: '/demo/clinic'
+      path: '/demo/clinic'
+      fullPath: '/demo/clinic'
+      preLoaderRoute: typeof DemoClinicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/education': {
+      id: '/demo/education'
+      path: '/demo/education'
+      fullPath: '/demo/education'
+      preLoaderRoute: typeof DemoEducationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/fitness': {
+      id: '/demo/fitness'
+      path: '/demo/fitness'
+      fullPath: '/demo/fitness'
+      preLoaderRoute: typeof DemoFitnessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/realestate': {
+      id: '/demo/realestate'
+      path: '/demo/realestate'
+      fullPath: '/demo/realestate'
+      preLoaderRoute: typeof DemoRealestateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/restaurant': {
+      id: '/demo/restaurant'
+      path: '/demo/restaurant'
+      fullPath: '/demo/restaurant'
+      preLoaderRoute: typeof DemoRestaurantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/email/unsubscribe': {
+      id: '/email/unsubscribe'
+      path: '/email/unsubscribe'
+      fullPath: '/email/unsubscribe'
+      preLoaderRoute: typeof EmailUnsubscribeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/contact': {
@@ -314,11 +307,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lovable/email/transactional/send': {
-      id: '/lovable/email/transactional/send'
-      path: '/lovable/email/transactional/send'
-      fullPath: '/lovable/email/transactional/send'
-      preLoaderRoute: typeof LovableEmailTransactionalSendRouteImport
+    '/lovable/email/suppression': {
+      id: '/lovable/email/suppression'
+      path: '/lovable/email/suppression'
+      fullPath: '/lovable/email/suppression'
+      preLoaderRoute: typeof LovableEmailSuppressionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lovable/email/queue/process': {
+      id: '/lovable/email/queue/process'
+      path: '/lovable/email/queue/process'
+      fullPath: '/lovable/email/queue/process'
+      preLoaderRoute: typeof LovableEmailQueueProcessRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lovable/email/transactional/preview': {
@@ -328,11 +328,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LovableEmailTransactionalPreviewRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lovable/email/queue/process': {
-      id: '/lovable/email/queue/process'
-      path: '/lovable/email/queue/process'
-      fullPath: '/lovable/email/queue/process'
-      preLoaderRoute: typeof LovableEmailQueueProcessRouteImport
+    '/lovable/email/transactional/send': {
+      id: '/lovable/email/transactional/send'
+      path: '/lovable/email/transactional/send'
+      fullPath: '/lovable/email/transactional/send'
+      preLoaderRoute: typeof LovableEmailTransactionalSendRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
