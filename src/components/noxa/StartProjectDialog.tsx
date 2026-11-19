@@ -90,7 +90,10 @@ export function StartProjectDialog({
       .filter(Boolean)
       .join(", ");
     try {
-      const res = await fetch("/api/public/contact", {
+      const res = await fetch(
+        (window.location.hostname.endsWith("lovable.app") || window.location.hostname === "localhost"
+          ? ""
+          : "https://digitall-essence.lovable.app") + "/api/public/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

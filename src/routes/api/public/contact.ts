@@ -12,20 +12,28 @@ const ContactSchema = z.object({
   message: z.string().trim().max(2000).optional().or(z.literal('')),
 })
 
+const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Max-Age': '86400',
+}
+
 export const Route = createFileRoute('/api/public/contact')({
   server: {
     handlers: {
+      OPTIONS: async () => new Response(null, { status: 204, headers: CORS }),
       POST: async ({ request }) => {
         let body: unknown
         try {
           body = await request.json()
         } catch {
-          return Response.json({ error: 'Invalid JSON' }, { status: 400 })
+          return Response.json({ error: 'Invalid JSON' }, { status: 400, headers: CORS })
         }
 
         const parsed = ContactSchema.safeParse(body)
         if (!parsed.success) {
-          return Response.json({ error: 'Invalid input' }, { status: 400 })
+          return Response.json({ error: 'Invalid input' }, { status: 400, headers: CORS })
         }
         const data = parsed.data
 
@@ -61,10 +69,10 @@ export const Route = createFileRoute('/api/public/contact')({
           const message = err instanceof Error ? err.message : String(err)
           console.error('contact-form send failed', message)
           await log({ status: 'failed', error_message: message })
-          return Response.json({ error: 'Failed to send' }, { status: 500 })
+          return Response.json({ error: 'Failed to send' }, { status: 500, headers: CORS })
         }
 
-        return Response.json({ success: true })
+        return Response.json({ success: true }, { headers: CORS })
       },
     },
   },
